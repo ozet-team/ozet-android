@@ -1,0 +1,127 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+
+    <style name="Theme.OZET" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/system_white</item>
+        <item name="backgroundColor">@color/background</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_500</item>
+        <item name="colorAccent">@color/purple_500</item>
+        <item name="colorControlActivated">@color/purple_500</item>
+        <item name="android:textCursorDrawable">@color/purple_500</item>
+        <item name="android:windowBackground">@color/system_white</item>
+        <!--        <item name="bottomSheetDialogTheme">@style/MyAppBottomSheetDialogTheme</item>-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+
+    <!--splash 화면에 사용될 테마-->
+    <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/base</item>
+        <item name="colorPrimaryDark">@color/base</item>
+        <item name="colorAccent">@color/base</item>
+    </style>
+
+    <!-- font 스타일가이드 -->
+
+    <style name="Text.H2" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.H3" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.H4" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.H5" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.H6" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Button" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Body1" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Body2" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Body3" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Subtitle1" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Subtitle2" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

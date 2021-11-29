@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <!--    app:startDestination="@id/bottom_nav_2" -->
+    <data>
+        <variable
+            name="vm"
+            type="com.team.ozet.views.notice_detail.NoticeDetailViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.MainActivity"
+        android:padding="30dp"
+        >
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
