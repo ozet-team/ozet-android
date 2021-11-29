@@ -22,7 +22,7 @@ class MainFragmentViewModel : ViewModel() {
         _clickEvent.call()
     }
     fun setNoticeList(){
-        var list = listOf<String>("hi","ho")
+        var list = listOf<String>("hi","ho","aaa","bbb","ccc","ddd","fff","ggg","hhhh","iiii","jjj","kkk","lll","mmm","nnn","o3")
         _noticeList.value = list
     }
 

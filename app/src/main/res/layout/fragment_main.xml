@@ -76,16 +76,13 @@
 
                 <TextView
                     android:id="@+id/tv"
+                    style="@style/Text.H2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/system_black"
                     android:layout_margin="20dp"
                     android:text="나만의 이력서 작성하기 \n\n로그인을 통해\n나만의 이력서를 작성해보세요"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.cardview.widget.CardView>
 
@@ -102,13 +99,11 @@
 
                 <TextView
                     android:id="@+id/tv_1"
+                    style="@style/Text.H3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="당신이 찾던 이력서,\n오젯이 찾아왔어요!"
-                    android:textColor="@color/system_black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,26 +113,23 @@
                 android:id="@+id/tv_notice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/on_surface"
+                style="@style/Text.H3"
                 android:text="추천공고"
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/cv_test_2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 />
+
             <TextView
                 android:id="@+id/tv_notice_plus"
+                style="@style/Text.H6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/font_purple"
                 android:text="더보기"
-                app:layout_constraintTop_toTopOf="@id/tv_notice"
-                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/ozet_purple100"
                 app:layout_constraintBottom_toBottomOf="@id/tv_notice"
-                />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_notice" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_notice"
@@ -156,9 +148,7 @@
                 android:id="@+id/tv_notice_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/system_black"
+                style="@style/Text.H3"
                 android:text="북마크한 +공고"
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/rv_notice"
@@ -166,12 +156,11 @@
                 />
             <TextView
                 android:id="@+id/tv_notice_plus_2"
+                style="@style/Text.H6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/font_purple"
                 android:text="더보기"
+                android:textColor="@color/ozet_purple100"
                 app:layout_constraintTop_toTopOf="@id/tv_notice_2"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/tv_notice_2"
@@ -192,11 +181,9 @@
 
             <TextView
                 android:id="@+id/tv_notice_3"
+                style="@style/Text.H3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/system_black"
                 android:text="모든 공고"
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/rv_notice_2"
@@ -204,11 +191,10 @@
                 />
             <TextView
                 android:id="@+id/tv_notice_plus_3"
+                style="@style/Text.H6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/font_purple"
+                android:textColor="@color/ozet_purple100"
                 android:text="더보기"
                 app:layout_constraintTop_toTopOf="@id/tv_notice_3"
                 app:layout_constraintRight_toRightOf="parent"
@@ -230,23 +216,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        >-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_main"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            />-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-
-
-
 
 </layout>

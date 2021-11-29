@@ -25,6 +25,7 @@ class NoticeAdapter (
             RecyclerView.ViewHolder(binding.root){
                 fun bind (item:String){
                     binding.apply {
+                        tvTitle.text = item
                         cvBookmark.setOnClickListener {
                             // test 용
                             ivBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_active_))

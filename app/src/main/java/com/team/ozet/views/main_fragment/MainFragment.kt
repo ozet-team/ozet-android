@@ -16,7 +16,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private val viewModel: MainFragmentViewModel by viewModel()
 
     private lateinit var noticeAdapter: NoticeAdapter
-    private lateinit var mainAdapter: MainAdapter
 
     override fun init() {
         binding.vm = viewModel
@@ -44,19 +43,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
         noticeAdapter = NoticeAdapter(thisContext)
 
-//        mainAdapter = MainAdapter(noticeAdapter = NoticeAdapter(thisContext))
-//
-//        binding.rvMain.apply {
-//            layoutManager = LinearLayoutManager(
-//                    thisContext,LinearLayoutManager.VERTICAL,false
-//            )
-//            adapter = mainAdapter
-//        }
-
         binding.rvNotice.apply {
             layoutManager = LinearLayoutManager(
                 thisContext, LinearLayoutManager.HORIZONTAL,false)
             adapter = noticeAdapter
+            setRecyclerListener {
+            }
         }
 
         binding.rvNotice2.apply {
