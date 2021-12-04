@@ -18,11 +18,16 @@
         <action
             android:id="@+id/action_mainFragment_to_noticeListFragment"
             app:destination="@id/noticeListFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/noticeListFragment"
         android:name="com.team.ozet.views.notice_list.NoticeListFragment"
-        android:label="NoticeListFragment" />
+        android:label="NoticeListFragment" >
+        <argument
+            android:name="name"
+            app:argType="string"/>
+    </fragment>
 
 
 

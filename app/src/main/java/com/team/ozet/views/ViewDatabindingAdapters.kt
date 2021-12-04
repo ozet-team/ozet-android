@@ -3,7 +3,6 @@ package com.team.ozet.views
 import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.team.ozet.views.main_fragment.MainAdapter
 import com.team.ozet.views.main_fragment.NoticeAdapter
 
 
@@ -20,13 +19,7 @@ fun RecyclerView.setAdapterItems(items:List<Any>?){
                 }
             }
         }
-        is MainAdapter->{
-            items?.let {
-                with(adapter as MainAdapter){
-                    clear()
-                }
-            }
-        }
+
 
         else ->{
         Log.d("AAA", "바인딩어댑터 setItems 예외 에러")

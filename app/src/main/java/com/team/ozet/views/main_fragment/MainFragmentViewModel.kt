@@ -1,9 +1,13 @@
 package com.team.ozet.views.main_fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team.ozet.utils.SingleLiveEvent
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.concurrent.timerTask
 
 class MainFragmentViewModel : ViewModel() {
     private val _clickEvent = SingleLiveEvent<Unit>()
@@ -12,11 +16,13 @@ class MainFragmentViewModel : ViewModel() {
     private val _themeChange = SingleLiveEvent<Unit>()
     private val _goLogin = SingleLiveEvent<Unit>()
 
+
     val clickEvent : LiveData<Unit> get() = _clickEvent
     val string: LiveData<String> get() = _string
     val noticeList: LiveData<List<String>> get() = _noticeList
     val themeChange: LiveData<Unit> get() = _themeChange
     val goLogin : LiveData<Unit> get() = _goLogin
+
 
     fun click(){
         _clickEvent.call()
@@ -33,4 +39,9 @@ class MainFragmentViewModel : ViewModel() {
     fun goLogin(){
         _goLogin.call()
     }
+
+
+
+
+
 }
