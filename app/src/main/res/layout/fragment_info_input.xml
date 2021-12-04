@@ -22,8 +22,7 @@
             <include
                 layout="@layout/back_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -33,35 +32,75 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/but"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"/>
+
             <TextView
                 android:id="@+id/textView6"
+                style="@style/Text.Subtitle1"
+                android:textColor="@color/system_gray03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="이름" />
 
-            <include
-                layout="@layout/name_text_box"
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/Text.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:paddingTop="17dp"
+                android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/round_box_line_r8"
+                android:hint="이름을 입력해주세요" />
 
             <TextView
                 android:id="@+id/textView7"
+                style="@style/Text.Subtitle1"
+                android:textColor="@color/system_gray03"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="이름" />
 
-            <include
-                layout="@layout/name_text_box"
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/Text.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:paddingTop="17dp"
+                android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/round_box_line_r8"
+                android:text="TextView" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_next"
+                style="@style/Text.Button"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_box_stsem_gray01_11r"
+                android:onClick="@{()->vm.click()}"
+                android:text="인증번호 발송"
+                android:textColor="@color/system_gray03"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
