@@ -21,7 +21,7 @@
                 android:src="@drawable/main_logo_"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:tint="@color/ozet_purple100"
+                app:tint="@color/system_white"
                 />
 
             <ImageView

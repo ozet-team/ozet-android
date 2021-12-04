@@ -4,10 +4,12 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bottom_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/but"
-        android:text="인증번호 발송" />
+        android:layout_height="58dp"
+        android:background="@color/system_gray01"
+        style="@style/Text.Button"
+        android:textColor="#939497"
+        android:text="ㅂㅓ튼" />
 
 </LinearLayout>

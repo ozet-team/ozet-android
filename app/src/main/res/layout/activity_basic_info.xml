@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.team.ozet.view.login.LoginViewModel" />
+            type="com.team.ozet.views.join.JoinViewModel"/>
     </data>
 
     <LinearLayout
