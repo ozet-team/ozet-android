@@ -32,6 +32,23 @@
     <fragment
         android:id="@+id/joinFragment"
         android:name="com.team.ozet.views.join.JoinFragment"
-        android:label="JoinFragment" />
+        android:label="JoinFragment">
+        <action
+            android:id="@+id/action_joinFragment_to_infoInputFragment"
+            app:destination="@id/infoInputFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/infoInputFragment"
+        android:name="com.team.ozet.views.info_input.InfoInputFragment"
+        android:label="InfoInputFragment"
+        >
+        <argument
+            android:name="user_phone"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_infoInputFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>
