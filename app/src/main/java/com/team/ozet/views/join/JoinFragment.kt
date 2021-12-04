@@ -1,7 +1,14 @@
 package com.team.ozet.views.join
 
+import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import android.view.WindowManager
+import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentJoinBinding
@@ -14,16 +21,31 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     private val viewModel: JoinViewModel by viewModel()
 
     override fun init() {
-        getActivity()?.getWindow()
-            ?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         binding.vm = viewModel
+        callback()
+        checkPhoneNumber()
     }
 
     private fun callback() {
         with(viewModel) {
             clickEvent.observe(this@JoinFragment, Observer {
-
+                binding.llAuth.visibility = View.VISIBLE
+                if (isValidCellPhoneNumber(binding.editTextPhone.text.toString())){
+                    //TODO 인증번호 조건 추가 시 if 조건 추가
+//                    findNavController().navigate(R.id)
+                }
             })
+        }
+    }
+
+    fun checkPhoneNumber() {
+        binding.editTextPhone.addTextChangedListener {
+            if (isValidCellPhoneNumber(binding.editTextPhone.text.toString())) {
+                binding.btnNext.setBackgroundColor(Color.parseColor("#5D2FFF"));
+                binding.btnNext.setTextColor(Color.parseColor("#FFFFFF"))
+            } else {
+                binding.btnNext.setBackgroundColor(Color.parseColor("#F0F2F5"));
+            }
         }
     }
 
