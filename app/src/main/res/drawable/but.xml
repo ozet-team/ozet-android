@@ -3,5 +3,5 @@
         android:drawable="@drawable/round_box_stsem_gray01_11r" />
     <item
         android:state_selected="true"
-        android:drawable="@drawable/round_box_ozet_purple100_11r" />
+        android:drawable="@drawable/round_box_system_white_11r" />
 </selector>

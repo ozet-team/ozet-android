@@ -2,9 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/mainFragment"
+    app:startDestination="@id/joinFragment"
     >
-
 
     <activity
         android:id="@+id/mainActivity"
@@ -20,6 +19,7 @@
             app:destination="@id/noticeListFragment" />
 
     </fragment>
+
     <fragment
         android:id="@+id/noticeListFragment"
         android:name="com.team.ozet.views.notice_list.NoticeListFragment"
@@ -29,8 +29,9 @@
             app:argType="string"/>
     </fragment>
 
-
-
-
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.team.ozet.views.join.JoinFragment"
+        android:label="JoinFragment" />
 
 </navigation>

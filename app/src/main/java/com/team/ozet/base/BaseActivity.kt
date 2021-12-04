@@ -27,7 +27,4 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes val layoutId: Int) :
         super.onDestroy()
         compositeDisposable.clear()
     }
-
-
-
 }

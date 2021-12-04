@@ -1,5 +1,6 @@
 package com.team.ozet.module
 
+import com.team.ozet.views.join.JoinViewModel
 import com.team.ozet.views.main.MainViewModel
 import com.team.ozet.views.main_fragment.MainFragmentViewModel
 import com.team.ozet.views.notice_detail.NoticeDetailViewModel
@@ -13,6 +14,7 @@ val viewModelModule: Module = module {
     viewModel { NoticeDetailViewModel() }
     viewModel { MainFragmentViewModel() }
     viewModel { NoticeListViewModel() }
+    viewModel { JoinViewModel() }
 
 //    viewModel {  }
 }
