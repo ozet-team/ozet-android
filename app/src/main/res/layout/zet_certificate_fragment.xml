@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+        <include
+            android:id="@+id/include_appbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/include_appbar"
+            android:text="자격증"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="30dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_certificate_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "자격증 이름"
+            app:et_input_hint = "자격증 이름을 기재해주세요 "
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_certificate_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_certificate_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "자격증 취득일 "
+            app:et_input_hint = "2000.00.00"
+            />
+
+
+
+
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_certificate_organization"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_certificate_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "자격증 발급기관"
+            app:et_input_hint = "자격증 발급 기관을 기재해주세요"
+            />
+
+
+        <include
+            android:id="@+id/include_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/button_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

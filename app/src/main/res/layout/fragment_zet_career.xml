@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        >
+
+        <include
+            android:id="@+id/include_appbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_shop_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include_appbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="30dp"
+            app:tv_title = "샵 이름"
+            app:et_input_hint = "근무하신 샵 이름을 적어주세요"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_work_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_shop_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:tv_title = "근무일"
+            app:et_input_hint = "0000.00"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingRight="3dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_resignation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_shop_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tv_title = "퇴사"
+            app:et_input_hint = "0000.00/현재"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingLeft="3dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sc_check_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_work_day"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text=" 근무중"
+            android:layoutDirection="rtl"
+            android:textColor="@color/system_gray02"
+            android:layout_marginTop="20dp"
+            />
+
+
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_position"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/sc_check_work"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tv_title = "직책"
+            app:et_input_hint = "근무하신 샵 내 직책을 선택해주세요"
+            android:layout_marginTop="28dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_result_work"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_position"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tv_title = "근무 내용 &amp; 성과 "
+            app:et_input_hint = "근무하신 샵에서의 경력을 자유롭게 서술해주세요"
+            android:layout_marginTop="28dp"
+            />
+
+        <include
+            android:id="@+id/include_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/button_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

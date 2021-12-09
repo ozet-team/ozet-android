@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+        <include
+            android:id="@+id/include_appbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_military_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/include_appbar"
+            android:layout_marginTop="30dp"
+            android:text="병역구분"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+
+
+
+                <RadioButton
+                    android:id="@+id/rb_finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="군필"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_military_select"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_yet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="미필"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toTopOf="@+id/rb_finish"
+                    app:layout_constraintRight_toLeftOf="@+id/rb_exemption"
+                    app:layout_constraintLeft_toRightOf="@+id/rb_finish"
+                    />
+                <RadioButton
+                    android:id="@+id/rb_exemption"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="면제"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toTopOf="@+id/rb_finish"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+
+
+
+
+
+
+
+
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_military_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rb_finish"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:tv_title = "복무 기간"
+            app:et_input_hint = "0000.00"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingRight="3dp"
+            android:layout_marginTop="40dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_military_day_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rb_finish"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tv_title = ""
+            app:et_input_hint = "0000.00"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingLeft="3dp"
+            android:layout_marginTop="40dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_exemption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_military_day"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "면제 사유"
+            app:et_input_hint = "면제 사유를 입력해주세요"
+            />
+
+
+        <include
+            android:id="@+id/include_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/button_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

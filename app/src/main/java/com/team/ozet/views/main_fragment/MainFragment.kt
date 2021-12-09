@@ -24,7 +24,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         binding.vm = viewModel
         initAdapter()
         callback()
-        startAuthTime()
 
 
     }
@@ -76,7 +75,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             })
             goLogin.observe(this@MainFragment, Observer {
-                findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+                findNavController().navigate(R.id.action_mainFragment_to_zetMilitaryServiceFragment)
             })
 
 

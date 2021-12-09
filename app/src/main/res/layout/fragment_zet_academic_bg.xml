@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+        <include
+            android:id="@+id/include_appbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_academic_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include_appbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="30dp"
+            app:tv_title = "학교명"
+            app:et_input_hint = "학교명을 기재해주세요"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_department_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_academic_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "학과명"
+            app:et_input_hint = "학과명을 기재해주세요"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_academic_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_department_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:tv_title = "재학 기간"
+            app:et_input_hint = "0000.00"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingRight="3dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_academic_day_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_department_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:tv_title = ""
+            app:et_input_hint = "0000.00"
+            app:layout_constraintWidth_percent="0.5"
+            android:paddingLeft="3dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <com.team.ozet.views.custom_view.CustomInputComponent
+            android:id="@+id/cm_academic_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_academic_day"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            app:tv_title = "학교 소재지"
+            app:et_input_hint = "학교 소재지를 입력해주세요"
+            />
+
+
+        <include
+            android:id="@+id/include_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/button_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

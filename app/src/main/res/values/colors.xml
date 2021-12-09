@@ -14,8 +14,10 @@
     <color name="system_white">#FFFFFF</color>
     <color name="system_black">#000000</color>
     <color name="system_gray01">#F0F2F5</color>
-    <color name="system_gray02">#D7D8DB</color>
+    <color name="system_gray02">#d7d7d7</color>
     <color name="system_gray03">#939497</color>
+    <color name="system_black10">#1A000000</color>
+    <color name="system_black5">#0D000000</color>
     <!--  투명  -->
     <color name="transparent" type="color">#00000000</color>
     <!--   theme-->
