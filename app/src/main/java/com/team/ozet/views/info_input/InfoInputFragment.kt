@@ -32,6 +32,6 @@ class InfoInputFragment : BaseFragment<FragmentInfoInputBinding>(R.layout.fragme
     fun aa(){
         val arg = requireArguments()
         val phonNumber = arg.getString("userPhonNumber")
-        binding.tvPhone.text = phonNumber
+//        binding.incluePhone.etBase.text = phonNumber
     }
 }
