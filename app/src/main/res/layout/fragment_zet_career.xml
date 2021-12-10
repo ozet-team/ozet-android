@@ -27,7 +27,7 @@
 
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_shop_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,13 +37,15 @@
             android:layout_marginTop="30dp"
             app:tv_title = "샵 이름"
             app:et_input_hint = "근무하신 샵 이름을 적어주세요"
+
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+<!--       todo  date picker dialog-->
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_work_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cm_shop_name"
+            app:layout_constraintBottom_toBottomOf="@+id/cm_resignation"
             app:layout_constraintLeft_toLeftOf="parent"
             app:tv_title = "근무일"
             app:et_input_hint = "0000.00"
@@ -52,46 +54,48 @@
             android:layout_marginTop="20dp"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_resignation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cm_shop_name"
+            app:layout_constraintTop_toBottomOf="@id/sc_check_work"
             app:layout_constraintRight_toRightOf="parent"
-            app:tv_title = "퇴사"
             app:et_input_hint = "0000.00/현재"
             app:layout_constraintWidth_percent="0.5"
             android:paddingLeft="3dp"
-            android:layout_marginTop="20dp"
+            app:tv_visibility = "false"
             />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/sc_check_work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cm_work_day"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cm_shop_name"
+            app:layout_constraintRight_toRightOf="parent"
             android:text=" 근무중"
-            android:layoutDirection="rtl"
+            android:layoutDirection="ltr"
             android:textColor="@color/system_gray02"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
+
             />
 
 
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+<!--       todo bottom sheet dialog 추가 -->
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_position"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/sc_check_work"
+            app:layout_constraintTop_toBottomOf="@+id/cm_resignation"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:tv_title = "직책"
             app:et_input_hint = "근무하신 샵 내 직책을 선택해주세요"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="30dp"
+            android:imeOptions = "actionDone"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_result_work"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -101,7 +105,14 @@
             app:tv_title = "근무 내용 &amp; 성과 "
             app:et_input_hint = "근무하신 샵에서의 경력을 자유롭게 서술해주세요"
             android:layout_marginTop="28dp"
+            app:et_single_line = "false"
+            app:et_background = "false"
+
             />
+
+
+
+
 
         <include
             android:id="@+id/include_btn"

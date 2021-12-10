@@ -24,7 +24,7 @@
 
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_academic_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:et_input_hint = "학교명을 기재해주세요"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_department_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,33 +48,47 @@
             app:et_input_hint = "학과명을 기재해주세요"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sc_check_attending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cm_department_name"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text=" 근무중"
+            android:layoutDirection="ltr"
+            android:textColor="@color/system_gray02"
+            android:layout_marginTop="12dp"
+
+            />
+
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_academic_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cm_department_name"
+            app:layout_constraintBottom_toBottomOf="@+id/cm_academic_day_end"
             app:layout_constraintLeft_toLeftOf="parent"
             app:tv_title = "재학 기간"
             app:et_input_hint = "0000.00"
             app:layout_constraintWidth_percent="0.5"
             android:paddingRight="3dp"
-            android:layout_marginTop="20dp"
+
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_academic_day_end"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/cm_department_name"
+            app:layout_constraintTop_toBottomOf="@+id/sc_check_attending"
             app:layout_constraintRight_toRightOf="parent"
             app:tv_title = ""
             app:et_input_hint = "0000.00"
             app:layout_constraintWidth_percent="0.5"
             android:paddingLeft="3dp"
-            android:layout_marginTop="20dp"
+
+            app:tv_visibility = "false"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_academic_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

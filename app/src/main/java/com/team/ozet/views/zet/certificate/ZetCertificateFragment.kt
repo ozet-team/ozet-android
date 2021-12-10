@@ -20,7 +20,7 @@ class ZetCertificateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.zet_certificate_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_zet_certificate, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

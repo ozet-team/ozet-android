@@ -2,11 +2,16 @@
 <resources>
 
 
-    <declare-styleable name="input_component">
+    <declare-styleable name="default_edit_text">
         <attr name="bg" format="reference|integer" />
         <attr name="symbol" format="reference|integer" />
         <attr name="tv_title" format="reference|string" />
         <attr name="et_input_hint" format="reference|string" />
+        <attr name="et_single_line" format="reference|boolean"/>
+        <attr name="tv_visibility" format="reference|boolean"/>
+        <attr name="android:inputType" />
+        <attr name="et_background" format="reference|boolean"/>
+        <attr name="android:imeOptions"/>
     </declare-styleable>
 
 </resources>

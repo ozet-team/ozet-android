@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
+        <variable
+            name="vm"
+            type="com.team.ozet.views.notice_list.NoticeListViewModel" />
 
     </data>
 
@@ -14,8 +17,29 @@
         <WebView
             android:id="@+id/wv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/et_url"
             />
+
+
+        <EditText
+            android:id="@+id/et_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/bg_border_radius"
+            android:padding="10dp"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

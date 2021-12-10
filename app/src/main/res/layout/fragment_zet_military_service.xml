@@ -78,7 +78,7 @@
 
 
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_military_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_marginTop="40dp"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_military_day_end"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:layout_marginTop="40dp"
             />
 
-        <com.team.ozet.views.custom_view.CustomInputComponent
+        <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/cm_exemption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
