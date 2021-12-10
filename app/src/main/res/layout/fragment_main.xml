@@ -30,7 +30,6 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="17dp"
-                android:onClick="@{()->vm.goZet()}"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -55,7 +54,6 @@
                     android:id="@+id/circle_iv"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:onClick="@{()->vm.goMypage()}"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
