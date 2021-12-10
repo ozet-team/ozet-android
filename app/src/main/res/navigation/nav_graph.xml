@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_mainFragment_to_joinFragment"
             app:destination="@id/joinFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_zetCareerFragment"
+            app:destination="@id/zetCareerFragment" />
 
 
     </fragment>
@@ -61,6 +64,10 @@
         android:id="@+id/zetCertificateFragment"
         android:name="com.team.ozet.views.zet.certificate.ZetCertificateFragment"
         android:label="ZetCertificateFragment" />
+    <fragment
+        android:id="@+id/zetCareerFragment"
+        android:name="com.team.ozet.views.zet.career.ZetCareerFragment"
+        android:label="ZetCareerFragment" />
 
 
 </navigation>

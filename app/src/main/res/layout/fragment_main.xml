@@ -30,6 +30,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="17dp"
+                android:onClick="@{()->vm.goZet()}"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
