@@ -32,13 +32,16 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_iv"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 app:srcCompat="@drawable/but"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="30dp"
-                android:layout_gravity="center"/>
+                android:src="@color/system_gray01"
+                android:layout_gravity="center"
+                />
 
             <TextView
                 android:id="@+id/textView6"
@@ -49,16 +52,18 @@
                 android:layout_marginBottom="8dp"
                 android:text="이름" />
 
-            <TextView
-                android:id="@+id/textView5"
-                style="@style/Text.Body1"
+            <include
+                android:id="@+id/inclue_phone"
+                style="@style/Text.H4"
+                layout="@layout/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="17dp"
-                android:paddingBottom="17dp"
-                android:paddingLeft="15dp"
-                android:background="@drawable/round_box_line_r8"
-                android:hint="이름을 입력해주세요" />
+                android:hint="숫자만 입력해주세요"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -70,16 +75,18 @@
                 android:layout_marginBottom="8dp"
                 android:text="이름" />
 
-            <TextView
-                android:id="@+id/tv_phone"
-                style="@style/Text.Body1"
+            <include
+                android:id="@+id/inclue_phone2"
+                style="@style/Text.H4"
+                layout="@layout/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="17dp"
-                android:paddingBottom="17dp"
-                android:paddingLeft="15dp"
-                android:background="@drawable/round_box_line_r8"
-                android:text="TextView" />
+                android:hint="숫자만 입력해주세요"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,19 +95,16 @@
 
             <Button
                 android:id="@+id/btn_next"
-                style="@style/Text.Button"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/round_box_stsem_gray01_11r"
-                android:onClick="@{()->vm.click()}"
-                android:text="인증번호 발송"
+                android:background="@color/system_gray01"
+                style="@style/Text.Button"
                 android:textColor="@color/system_gray03"
+                android:text="인증번호 발송"
+                android:onClick="@{()->vm.click()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

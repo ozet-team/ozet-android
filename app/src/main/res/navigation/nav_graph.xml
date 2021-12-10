@@ -17,12 +17,16 @@
         <action
             android:id="@+id/action_mainFragment_to_noticeListFragment"
             app:destination="@id/noticeListFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_zetCareerFragment"
-            app:destination="@id/zetCareerFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_zetMilitaryServiceFragment"
             app:destination="@id/zetMilitaryServiceFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mypageFragment"
+            app:destination="@id/mypageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_zetCertificateFragment"
+            app:destination="@id/zetCertificateFragment" />
 
     </fragment>
 
@@ -57,12 +61,17 @@
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
-        android:id="@+id/zetCareerFragment"
-        android:name="com.team.ozet.views.zet.career.ZetCareerFragment"
-        android:label="ZetCareerFragment" />
-    <fragment
         android:id="@+id/zetMilitaryServiceFragment"
         android:name="com.team.ozet.views.zet.military_service.ZetMilitaryServiceFragment"
         android:label="ZetMilitaryServiceFragment" />
+    <fragment
+        android:id="@+id/zetCertificateFragment"
+        android:name="com.team.ozet.views.zet.certificate.ZetCertificateFragment"
+        android:label="ZetCertificateFragment" />
+    <fragment
+        android:id="@+id/mypageFragment"
+        android:name="com.team.ozet.views.my_page.MypageFragment"
+        android:label="MypageFragment" />
+
 
 </navigation>

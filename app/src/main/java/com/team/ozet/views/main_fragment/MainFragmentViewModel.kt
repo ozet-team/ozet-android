@@ -16,6 +16,7 @@ class MainFragmentViewModel : ViewModel() {
     private val _themeChange = SingleLiveEvent<Unit>()
     private val _goLogin = SingleLiveEvent<Unit>()
     private val _goZet = SingleLiveEvent<Unit>()
+    private val _goMyPage = SingleLiveEvent<Unit>()
 
 
     val clickEvent : LiveData<Unit> get() = _clickEvent
@@ -23,7 +24,8 @@ class MainFragmentViewModel : ViewModel() {
     val noticeList: LiveData<List<String>> get() = _noticeList
     val themeChange: LiveData<Unit> get() = _themeChange
     val goLogin : LiveData<Unit> get() = _goLogin
-    val goZet:LiveData<Unit> get() = _goZet
+    val goZet : LiveData<Unit> get() = _goZet
+    val goMypage : LiveData<Unit> get() = _goMyPage
 
 
     fun click(){
@@ -45,6 +47,14 @@ class MainFragmentViewModel : ViewModel() {
     fun goZet(){
         _goZet.call()
     }
+
+    fun goMypage(){
+        _goMyPage.call()
+    }
+
+
+
+
 
 
 

@@ -46,31 +46,33 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp">
 
-                    <EditText
-                        android:id="@+id/editTextPhone"
+                    <include
+                        android:id="@+id/inclue_phone"
+                        style="@style/Text.H4"
+                        android:imeOptions="actionDone"
+                        layout="@layout/edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:maxLength="11"
                         android:hint="숫자만 입력해주세요"
                         android:inputType="phone"
+                        android:maxLength="11"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
                         android:textSize="16sp"
-                        style="@style/Text.H4"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/inclue_phone"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/button_close_round"
-                        android:visibility="gone"/>
+                        app:srcCompat="@drawable/button_close_round" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -82,8 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -93,7 +94,8 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <EditText
+                <include
+                    layout="@layout/edit_text"
                     android:id="@+id/editTextPhone2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,15 +115,17 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                    <Button
+                        android:id="@+id/tv_resend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0dp"
+                        android:background="@color/transparent"
                         android:layout_weight="1"
                         android:text="재인증" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tv_timer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

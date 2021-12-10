@@ -5,6 +5,7 @@ import com.team.ozet.views.info_input.InfoInputViewModel
 import com.team.ozet.views.join.JoinViewModel
 import com.team.ozet.views.main.MainViewModel
 import com.team.ozet.views.main_fragment.MainFragmentViewModel
+import com.team.ozet.views.my_page.MypageViewModel
 import com.team.ozet.views.notice_detail.NoticeDetailViewModel
 import com.team.ozet.views.notice_list.NoticeListViewModel
 import com.team.ozet.views.zet.career.ZetCareerViewModel
@@ -20,6 +21,7 @@ val viewModelModule: Module = module {
     viewModel { JoinViewModel() }
     viewModel { InfoInputViewModel() }
     viewModel { ZetCareerViewModel() }
+    viewModel { MypageViewModel() }
 
 //    viewModel {  }
 }
