@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
-        android:layout_width="220dp"
+        android:layout_width="174dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,8 +24,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_bookmark"
-        android:layout_width="9dp"
-        android:layout_height="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardBackgroundColor="@color/system_gray03"
         app:cardCornerRadius="8dp"

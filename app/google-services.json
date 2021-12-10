@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "473671036728",
+    "project_id": "ozet-e1d6a",
+    "storage_bucket": "ozet-e1d6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473671036728:android:1b65b3404adad4e3a69bcd",
+        "android_client_info": {
+          "package_name": "com.team.ozet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473671036728-2aiirkh5tt7pe306j89skok2nkk8ch04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAO42y85e5pBxtslWLk_JRoFEDSu1Rreo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473671036728-2aiirkh5tt7pe306j89skok2nkk8ch04.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "473671036728-3u7eb4o2n4q1mlg3va6evph89beajpms.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.ozet.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
