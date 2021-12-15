@@ -41,26 +41,24 @@
             />
 
 <!--       todo  date picker dialog-->
-        <com.team.ozet.views.custom_view.DefaultEditText
+        <com.team.ozet.views.custom_view.DatePickerTextView
             android:id="@+id/cm_work_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/cm_resignation"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:tv_title = "근무일"
-            app:et_input_hint = "0000.00"
             app:layout_constraintWidth_percent="0.5"
             android:paddingRight="3dp"
             android:layout_marginTop="20dp"
+
             />
 
-        <com.team.ozet.views.custom_view.DefaultEditText
+        <com.team.ozet.views.custom_view.DatePickerTextView
             android:id="@+id/cm_resignation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/sc_check_work"
             app:layout_constraintRight_toRightOf="parent"
-            app:et_input_hint = "0000.00/현재"
             app:layout_constraintWidth_percent="0.5"
             android:paddingLeft="3dp"
             app:tv_visibility = "false"

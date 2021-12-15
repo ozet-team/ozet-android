@@ -14,4 +14,9 @@
         <attr name="android:imeOptions"/>
     </declare-styleable>
 
+    <declare-styleable name="date_picker_text">
+        <attr name="tv_title_visibility" format="reference|boolean"/>
+        <attr name="tv_date_text" format="reference|string"/>
+    </declare-styleable>
+
 </resources>
