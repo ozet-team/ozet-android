@@ -14,5 +14,10 @@ data class UserEx(
         var email: String = "",
         var pw: String = "",
         var image: String = "",
-        var tel: String = ""
+        var tel: String = "",
+        var additionalProp1:String = "",
+        var additionalProp2:String = "",
+        var additionalProp3:String = ""
+
+
 ) : Parcelable

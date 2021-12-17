@@ -12,7 +12,7 @@ object ApiClient {
 
      var str :String = URLDecoder.decode( "" , "EUC-KR" );
 
-    const val URL = ""
+    const val URL = "https://api-staging.ozet.app/"
 
     // SingleTon 싱글톤 패턴 사용, 인스턴스 재생성 방지
     fun getInstance(): Retrofit {

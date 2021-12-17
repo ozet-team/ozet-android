@@ -15,7 +15,6 @@ class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.lay
 
 
     override fun init() {
-        binding.includeAppbar.tvTitle.text = "자격증"
     }
 
 

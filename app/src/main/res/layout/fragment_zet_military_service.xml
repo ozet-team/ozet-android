@@ -12,22 +12,22 @@
         android:layout_height="match_parent"
 
         >
-        <include
-            android:id="@+id/include_appbar"
+        <com.team.ozet.views.custom_view.DefaultAppbar
+            android:id="@+id/appbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            layout="@layout/back_button"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-
+            app:srcCompat = "@drawable/icon_back_"
+            app:tv_appbar_title = "병역"
             />
 
         <TextView
             android:id="@+id/tv_military_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/include_appbar"
+            app:layout_constraintTop_toBottomOf="@id/appbar"
             android:layout_marginTop="30dp"
             android:text="병역구분"
             android:textSize="12sp"

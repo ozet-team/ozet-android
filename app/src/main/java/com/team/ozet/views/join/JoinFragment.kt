@@ -25,6 +25,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         binding.vm = viewModel
         callback()
         checkPhoneNumber()
+        viewModel.test()
     }
 
     private fun callback() {

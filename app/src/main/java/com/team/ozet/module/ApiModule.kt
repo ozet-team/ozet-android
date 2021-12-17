@@ -1,9 +1,25 @@
 package com.team.ozet.module
 
+import com.google.gson.GsonBuilder
+import com.team.ozet.api.ApiClient
+import com.team.ozet.api.UserLogin
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 
 val apiModule:Module = module {
+    val gson = GsonBuilder().setLenient().create()
+    single {
+        Retrofit.Builder()
+            .baseUrl(ApiClient.URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+            .create(UserLogin::class.java)
+    }
 
 }

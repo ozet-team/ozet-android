@@ -16,7 +16,6 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
 
     override fun init() {
         binding.vm = viewModel
-        binding.includeAppbar.tvTitle.text = "경력"
         callback()
         checkWorking()
     }
@@ -37,6 +36,9 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
                 val workResult = binding.cmDefaultResultWork.getEditText()
 //                findNavController().navigate(R.id.action_zetCareerFragment_to_zetCertificateFragment)
 
+            })
+            backClick.observe(this@ZetCareerFragment, Observer {
+                Log.i("AAA","back click")
             })
         }
     }

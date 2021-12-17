@@ -18,7 +18,7 @@ val viewModelModule: Module = module {
     viewModel { NoticeDetailViewModel() }
     viewModel { MainFragmentViewModel() }
     viewModel { NoticeListViewModel() }
-    viewModel { JoinViewModel() }
+    viewModel { JoinViewModel(get()) }
     viewModel { InfoInputViewModel() }
     viewModel { ZetCareerViewModel() }
     viewModel { MypageViewModel() }

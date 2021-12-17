@@ -32,4 +32,13 @@
         <attr name="android:maxLength"/>
     </declare-styleable>
 
+    <declare-styleable name="default_appbar">
+        <attr name="tv_appbar_title" format="reference|string" />
+        <attr name="tv_appbar_sub_title" format="reference|string" />
+        <attr name="android:textColor"/>
+        <attr name="srcCompat" />
+
+
+    </declare-styleable>
+
 </resources>
