@@ -1,18 +1,20 @@
 package com.team.ozet.views.custom_view
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.Editable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.DatePicker
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import com.team.ozet.R
 import com.team.ozet.databinding.CustomDatePickerTextBinding
-import com.team.ozet.databinding.CustomDefaultEditTextBinding
+import com.team.ozet.views.dialog.YearMonthPickerDialog
+import java.text.DecimalFormat
 import java.util.*
 
 class DatePickerTextView @JvmOverloads constructor(
@@ -25,7 +27,6 @@ class DatePickerTextView @JvmOverloads constructor(
 
     init {
         getAttrs(attrs, defStyleAttr)
-        datePickerSet()
     }
 
 
@@ -41,22 +42,67 @@ class DatePickerTextView @JvmOverloads constructor(
 
     private fun setTypeArray(typedArray: TypedArray){
         binding.tvTitle.apply {
-//            text = typedArray.getString(R.styleable.date_picker_text_tv_title)
-            var tvVisibility = typedArray.getBoolean(R.styleable.default_edit_text_tv_visibility,true)
+            text = typedArray.getString(R.styleable.date_picker_text_tv_title_name)
+            var tvVisibility = typedArray.getBoolean(R.styleable.date_picker_text_tv_title_visibility,true)
             if(tvVisibility){
                 visibility = View.VISIBLE
             }else{
                 visibility = View.GONE
             }
         }
+        binding.tvDate.apply {
+            text = typedArray.getString(R.styleable.date_picker_text_tv_date_text)
 
+        }
+
+        datePickerSet(typedArray.getInt(R.styleable.date_picker_text_date_mode,0))
+    }
+
+//    mode 0: basic      mode 1 : year month
+    private fun datePickerSet(mode:Int){
+        binding.tvDate.setOnClickListener {
+            when(mode){
+                0 -> basicDatePicker()
+                1 -> yearMonth()
+            }
+        }
 
     }
 
-    private fun datePickerSet(){
+    public fun checkWorking(check:Boolean,content:String){
+        binding.tvDate.apply {
+            if (check){
+                text = content
+                //todo enabled  false 시 text color 설정 문제 있음
+                isEnabled = false
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    setTextColor(context.getColor(R.color.text_selector))
+                }
 
-        binding.tvDate.setOnClickListener {
-            val calendar: Calendar = Calendar.getInstance()
+            }else{
+                text = "YYYY.DD"
+                isEnabled = true
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    binding.tvDate.setTextColor(context.getColor(R.color.system_gray02))
+                }
+            }
+        }
+
+    }
+
+    private fun yearMonth(){
+        val dialog = YearMonthPickerDialog {year, month ->
+
+            binding.tvDate.text = "${year.toString()}.${DecimalFormat("00").format(month)}"
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                binding.tvDate.setTextAppearance(R.style.TextAppearance_AppCompat_Body2)
+            }
+        }
+        dialog.show((context as FragmentActivity).supportFragmentManager, "tag")
+    }
+
+    private fun basicDatePicker(){
+        val calendar: Calendar = Calendar.getInstance()
             DatePickerDialog(
                 context,
                 DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -65,19 +111,40 @@ class DatePickerTextView @JvmOverloads constructor(
                         Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
                     // ...
                     var month = monthOfYear + 1
-                    binding.tvDate.text = "${year.toString()}.${month.toString()}"
-
+                    binding.tvDate.text = "${year.toString()}." +
+                            "${DecimalFormat("00").format(month)}." +
+                            "${DecimalFormat("00").format(dayOfMonth)}"
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                        binding.tvDate.setTextAppearance(R.style.TextAppearance_AppCompat_Body2)
+                    }
 
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
-        }
 
+//            DatePickerDialog(context,R.style.customDatePickerStyle,
+//                    DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+//                        // 선택된 날짜가 필요하면 이 currentDate 변수를 적절하게 사용하면 된다.
+//                        val currentDate =
+//                                Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
+//                        // ...
+//                        var month = monthOfYear + 1
+//                        binding.tvDate.text = "${year.toString()}.${month.toString()}"
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//                            binding.tvDate.setTextAppearance(R.style.TextAppearance_AppCompat_Body2)
+//                        }
+//
+//                    },
+//                    calendar.get(Calendar.YEAR),
+//                    calendar.get(Calendar.MONTH),
+//                    calendar.get(Calendar.DAY_OF_MONTH)
+//            ).show()
     }
 
-    fun showDatePickerDialog() {
-
+    public fun getText(): CharSequence? {
+        return binding.tvDate.text
     }
+
 }

@@ -14,6 +14,8 @@
         <item name="backgroundColor">@color/background</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/background</item>
+        <!-- bottom sheet dialog -->
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -24,10 +26,30 @@
         <item name="colorControlActivated">@color/purple_500</item>
         <item name="android:textCursorDrawable">@color/purple_500</item>
         <item name="android:windowBackground">@color/system_white</item>
-        <!--        <item name="bottomSheetDialogTheme">@style/MyAppBottomSheetDialogTheme</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
+
     </style>
 
+    <!-- bottom sheet dialog -->
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_base</item>
+    </style>
+
+<!--    date picker-->
+    <style name="customDatePickerStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:datePickerStyle">@style/customDatePicker</item>
+    </style>
+
+    <style name="customDatePicker" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:calendarViewShown">false</item>
+    </style>
 
     <!--splash 화면에 사용될 테마-->
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">

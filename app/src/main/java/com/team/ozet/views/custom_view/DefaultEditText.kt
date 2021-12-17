@@ -2,6 +2,7 @@ package com.team.ozet.views.custom_view
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.Editable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class DefaultEditText @JvmOverloads constructor(
 
     init {
         getAttrs(attrs, defStyleAttr)
+
     }
 
 
@@ -31,10 +33,43 @@ class DefaultEditText @JvmOverloads constructor(
 
     private fun getAttrs(attrs: AttributeSet?,defStyleAttr: Int){
         val typedArray:TypedArray =  context.obtainStyledAttributes(attrs,R.styleable.default_edit_text,defStyleAttr,0)
-        setTypeArray(typedArray)
+        setTypeArrayText(typedArray)
+        setTypeArrayEdit(typedArray)
+    }
+    private fun setTypeArrayEdit(typedArray: TypedArray) {
+        binding.etInput.apply {
+
+            var single: Boolean =
+                typedArray.getBoolean(R.styleable.default_edit_text_et_single_line, true)
+            var etBackground: Boolean =
+                typedArray.getBoolean(R.styleable.default_edit_text_et_background, true)
+            setText(typedArray.getString(R.styleable.default_edit_text_et_input_text))
+
+            isEnabled = typedArray.getBoolean(R.styleable.default_edit_text_et_enabled,true)
+
+            inputType =
+                typedArray.getInt(R.styleable.default_edit_text_android_inputType, 0x00000001)
+            imeOptions =
+                typedArray.getInt(R.styleable.default_edit_text_android_imeOptions, 0x00000005)
+            hint = typedArray.getString(R.styleable.default_edit_text_et_input_hint)
+
+            if (single) {
+                isSingleLine = single
+                Log.i("AAA", "boolean $single")
+            } else {
+                Log.i("AAA", "boolean $single")
+                isSingleLine = single
+            }
+            if (etBackground) {
+                background = context.getDrawable(R.drawable.bg_border_radius)
+            } else {
+                background = null
+            }
+
+        }
     }
 
-    private fun setTypeArray(typedArray: TypedArray){
+    private fun setTypeArrayText(typedArray: TypedArray){
         binding.tvTitle.apply {
             text = typedArray.getString(R.styleable.default_edit_text_tv_title)
             var tvVisibility = typedArray.getBoolean(R.styleable.default_edit_text_tv_visibility,true)
@@ -44,31 +79,20 @@ class DefaultEditText @JvmOverloads constructor(
                 visibility = View.GONE
             }
         }
-        binding.etInput.apply {
-
-            var single:Boolean = typedArray.getBoolean(R.styleable.default_edit_text_et_single_line,true)
-            var etBackground:Boolean = typedArray.getBoolean(R.styleable.default_edit_text_et_background,true)
-
-            inputType = typedArray.getInt(R.styleable.default_edit_text_android_inputType,0x00000001)
-            imeOptions = typedArray.getInt(R.styleable.default_edit_text_android_imeOptions,0x00000005)
-            hint = typedArray.getString(R.styleable.default_edit_text_et_input_hint)
-
-            if (single){
-                isSingleLine = single
-                Log.i("AAA","boolean $single")
-            }else{
-                Log.i("AAA","boolean $single")
-                isSingleLine = single
-            }
-            if (etBackground){
-                background = context.getDrawable(R.drawable.bg_border_radius)
-            }else{
-                background = null
-            }
-
-
         }
 
+
+    public fun setEditText(text:String){
+        binding.etInput.setText(text)
     }
+
+    public fun getEditText(): Editable? {
+        return binding.etInput.text
+    }
+
+    public fun setText(text:String){
+        binding.tvTitle.text = text
+    }
+
 
 }

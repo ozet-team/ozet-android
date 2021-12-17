@@ -9,4 +9,10 @@ class ZetAcademicBGFragment : BaseFragment<FragmentZetAcademicBgBinding>(R.layou
         binding.includeBtn.button.text = "완료"
     }
 
+
+    private fun checkWorking(){
+        binding.scCheckAttending.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.cmAcademicDayEnd.checkWorking(isChecked,binding.scCheckAttending.text.toString())
+        }
+    }
 }

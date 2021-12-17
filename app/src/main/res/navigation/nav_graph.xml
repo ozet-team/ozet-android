@@ -18,9 +18,6 @@
             android:id="@+id/action_mainFragment_to_noticeListFragment"
             app:destination="@id/noticeListFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_zetCertificateFragment"
-            app:destination="@id/zetCertificateFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_joinFragment"
             app:destination="@id/joinFragment" />
         <action
@@ -67,7 +64,11 @@
     <fragment
         android:id="@+id/zetCareerFragment"
         android:name="com.team.ozet.views.zet.career.ZetCareerFragment"
-        android:label="ZetCareerFragment" />
+        android:label="ZetCareerFragment" >
+        <action
+            android:id="@+id/action_zetCareerFragment_to_zetCertificateFragment"
+            app:destination="@id/zetCertificateFragment" />
+    </fragment>
 
 
 </navigation>
