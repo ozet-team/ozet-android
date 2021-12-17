@@ -5,6 +5,9 @@ import io.reactivex.Single
 import retrofit2.http.*
 
 interface UserLogin {
+//    //로그인 체크
+//    @POST("api/v1/member/auth/passcode") //?loginId=cloud0
+//    fun getUserInfo(@Query("loginId") loginId: String): Single<SignUpInfo>
 
 //    //로그인 체크
 //    @GET("api/v1/users/loginIdChk") //?loginId=cloud0
