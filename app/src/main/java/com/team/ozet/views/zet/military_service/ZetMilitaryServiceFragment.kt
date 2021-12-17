@@ -1,11 +1,6 @@
 package com.team.ozet.views.zet.military_service
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetMilitaryServiceBinding
@@ -22,9 +17,10 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbYet.isChecked = false
                     rbExemption.isChecked = false
-                    cmMilitaryDay.visibility = View.VISIBLE
-                    cmMilitaryDayEnd.visibility = View.VISIBLE
-                    cmExemption.visibility = View.GONE
+                    cmDateMilitaryStart.visibility = View.VISIBLE
+                    cmDateMilitaryEnd.visibility = View.VISIBLE
+                    cmDefaultExemption.visibility = View.GONE
+
                 }
 
             }
@@ -34,9 +30,9 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbFinish.isChecked = false
                     rbExemption.isChecked = false
-                    cmMilitaryDay.visibility = View.GONE
-                    cmMilitaryDayEnd.visibility = View.GONE
-                    cmExemption.visibility = View.GONE
+                    cmDateMilitaryStart.visibility = View.GONE
+                    cmDateMilitaryEnd.visibility = View.GONE
+                    cmDefaultExemption.visibility = View.GONE
                 }
             }
         }
@@ -45,9 +41,9 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbYet.isChecked = false
                     rbFinish.isChecked = false
-                    cmMilitaryDay.visibility = View.GONE
-                    cmMilitaryDayEnd.visibility = View.GONE
-                    cmExemption.visibility = View.VISIBLE
+                    cmDateMilitaryStart.visibility = View.GONE
+                    cmDateMilitaryEnd.visibility = View.GONE
+                    cmDefaultExemption.visibility = View.VISIBLE
                 }
             }
         }

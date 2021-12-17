@@ -7,26 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.team.ozet.R
+import com.team.ozet.base.BaseFragment
+import com.team.ozet.databinding.FragmentZetCertificateBinding
 
-class ZetCertificateFragment : Fragment() {
+class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.layout.fragment_zet_certificate) {
 
-    companion object {
-        fun newInstance() = ZetCertificateFragment()
+
+
+    override fun init() {
+        binding.includeAppbar.tvTitle.text = "자격증"
     }
 
-    private lateinit var viewModel: ZetCertificateViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_zet_certificate, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ZetCertificateViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

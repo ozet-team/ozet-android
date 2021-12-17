@@ -2,17 +2,23 @@
 <resources>
 
 
-    <declare-styleable
-        name="default_edit_text">
-        <attr name="bg" format="reference|integer" />
-        <attr name="symbol" format="reference|integer" />
+    <declare-styleable name="default_edit_text">
         <attr name="tv_title" format="reference|string" />
-        <attr name="et_input_hint" format="reference|string" />
-        <attr name="et_single_line" format="reference|boolean"/>
         <attr name="tv_visibility" format="reference|boolean"/>
-        <attr name="android:inputType" />
+        <attr name="et_enabled" format="reference|boolean"/>
+        <attr name="et_input_hint" format="reference|string" />
+        <attr name="et_input_text" format="reference|string" />
+        <attr name="et_single_line" format="reference|boolean"/>
         <attr name="et_background" format="reference|boolean"/>
+        <attr name="android:inputType" />
         <attr name="android:imeOptions"/>
+    </declare-styleable>
+
+    <declare-styleable name="date_picker_text">
+        <attr name="tv_title_visibility" format="reference|boolean"/>
+        <attr name="tv_title_name" format="reference|string" />
+        <attr name="tv_date_text" format="reference|string"/>
+        <attr name="date_mode" format="reference|integer"/>
     </declare-styleable>
 
 
