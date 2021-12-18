@@ -10,15 +10,11 @@ class ZetCareerViewModel : BaseViewModel() {
     private val _clickDone = SingleLiveEvent<Unit>()
 
     val clickPosition :LiveData<Unit> get() = _clickPosition
-    val clickDone :LiveData<Unit> get() = _clickDone
 
     fun clickPosition(){
         _clickPosition.call()
     }
 
-    fun clickDone(){
-        _clickDone.call()
-    }
 
 
 }

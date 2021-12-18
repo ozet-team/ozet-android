@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.team.ozet.R
+import com.team.ozet.base.BaseViewModel
 import com.team.ozet.databinding.CustomAppbarBinding
+import io.reactivex.Single
+
 
 class DefaultAppbar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet?  = null, defStyleAttr: Int = 0
@@ -34,8 +38,10 @@ class DefaultAppbar @JvmOverloads constructor(
             imageView.setImageResource(
                 typedArray.getResourceId(R.styleable.default_appbar_srcCompat,-1)
             )
-            imageView.setOnClickListener {
+            binding.imageView.setOnClickListener {
+                findNavController().popBackStack()
             }
+
             tvTitle.text = typedArray.getText(R.styleable.default_appbar_tv_appbar_title)
 
             tvSubTitle.text = typedArray.getText(R.styleable.default_appbar_tv_appbar_sub_title)

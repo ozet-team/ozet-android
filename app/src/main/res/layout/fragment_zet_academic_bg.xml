@@ -20,6 +20,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "학력"
+            android:textColor = "@color/ozet"
+            app:tv_appbar_sub_title = "저장하기"
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
@@ -134,16 +136,6 @@
             app:et_input_hint = "학교 소재지를 입력해주세요"
             />
 
-
-        <include
-            android:id="@+id/include_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            layout="@layout/button_next"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -22,7 +22,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
-            app:tv_appbar_title = "자격증"
+            app:tv_appbar_title = "주소"
             android:textColor = "@color/ozet"
             app:tv_appbar_sub_title = "저장하기"
             />
@@ -30,7 +30,7 @@
 
 
         <com.team.ozet.views.custom_view.DefaultEditText
-            android:id="@+id/cm_certificate_name"
+            android:id="@+id/de_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -39,42 +39,25 @@
             app:layout_constraintTop_toBottomOf="@+id/appbar"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:tv_title = "자격증 이름"
-            app:et_input_hint = "자격증 이름을 기재해주세요 "
+            app:et_input_hint="주소를 입력해주세요"
+            app:tv_title = "주소"
             />
-
-
-        <com.team.ozet.views.custom_view.DatePickerTextView
-            android:id="@+id/cm_certificate_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/cm_certificate_name"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:tv_title_name="근무 기간"
-            app:tv_date_text = "YYYY.MM.DD"
-            app:date_mode ="0"
-            />
-
-
-
         <com.team.ozet.views.custom_view.DefaultEditText
-            android:id="@+id/cm_certificate_organization"
+            android:id="@+id/de_address_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/cm_certificate_date"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/de_address"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="30dp"
-            app:tv_title = "자격증 발급기관"
-            app:et_input_hint = "자격증 발급 기관을 기재해주세요"
+            app:et_input_hint="상세 주소를 입력해주세요"
+            app:tv_visibility = "false"
             android:imeOptions = "actionDone"
             />
+
+
 
 
 

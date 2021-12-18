@@ -37,8 +37,17 @@
         <attr name="tv_appbar_sub_title" format="reference|string" />
         <attr name="android:textColor"/>
         <attr name="srcCompat" />
-
+        <attr name="android:onClick"/>
 
     </declare-styleable>
 
+    <declare-styleable name="info_text">
+    <attr name="info_title" format="reference|string" />
+    <attr name="info_content" format="reference|string" />
+    </declare-styleable>
+
+    <declare-styleable name="add_recycler">
+        <attr name="ar_title" format="reference|string" />
+        <attr name="ar_btn_text" format="reference|string"/>
+    </declare-styleable>
 </resources>
