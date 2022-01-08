@@ -2,7 +2,9 @@ package com.team.ozet.module
 
 import com.google.gson.GsonBuilder
 import com.team.ozet.api.ApiClient
+import com.team.ozet.api.AuthPassCode
 import com.team.ozet.api.UserLogin
+import com.team.ozet.data.pass_code.PassCode
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -19,7 +21,7 @@ val apiModule:Module = module {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(UserLogin::class.java)
+            .create(AuthPassCode::class.java)
     }
 
 }
