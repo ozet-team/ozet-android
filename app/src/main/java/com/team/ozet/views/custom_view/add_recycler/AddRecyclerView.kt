@@ -5,13 +5,14 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.team.ozet.R
 import com.team.ozet.databinding.CustomAddRecyclerviewBinding
-import com.team.ozet.databinding.CustomTextInfoBinding
-import com.team.ozet.views.main_fragment.NoticeAdapter
 
 class AddRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -34,7 +35,7 @@ class AddRecyclerView @JvmOverloads constructor(
 
         binding.rv.apply {
             layoutManager = LinearLayoutManager(
-                context, LinearLayoutManager.HORIZONTAL, false
+                context, LinearLayoutManager.VERTICAL, false
             )
             adapter = addAdapter
             setRecyclerListener {
@@ -42,11 +43,17 @@ class AddRecyclerView @JvmOverloads constructor(
         }
 
         if (addAdapter.itemCount == 0){
-            binding.rv.visibility = View.GONE
-            binding.btnAdd.visibility = View.VISIBLE
+            binding.apply {
+                rv.visibility = View.GONE
+                tvSub.visibility = View.GONE
+                btnAdd.visibility = View.VISIBLE
+            }
         }else{
-            binding.rv.visibility = View.VISIBLE
-            binding.btnAdd.visibility = View.GONE
+            binding.apply {
+                rv.visibility = View.VISIBLE
+                tvSub.visibility = View.VISIBLE
+                btnAdd.visibility = View.GONE
+            }
         }
 
     }
@@ -59,10 +66,33 @@ class AddRecyclerView @JvmOverloads constructor(
 
     private fun setTypeArray(typedArray: TypedArray){
         binding.tvTitle.text = typedArray.getString(R.styleable.add_recycler_ar_title)
+        var sub = typedArray.getString(R.styleable.add_recycler_ar_sub_title)
+        when(sub){
+            null -> binding.tvSub.visibility = View.GONE
+            "" -> binding.tvSub.visibility = View.GONE
+            else -> binding.tvSub.apply {
+                visibility = View.VISIBLE
+                text = sub
+            }
+        }
+
     }
 
 
+    fun rv(): RecyclerView {
+        return binding.rv
+    }
 
+    fun btnAdd(): Button {
+        return binding.btnAdd
+    }
 
+    fun adapter(): AddAdapter {
+        return addAdapter
+    }
+
+    fun tvSub(): TextView {
+        return binding.tvSub
+    }
 
 }

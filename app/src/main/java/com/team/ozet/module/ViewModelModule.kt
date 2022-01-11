@@ -9,6 +9,7 @@ import com.team.ozet.views.my_page.MypageViewModel
 import com.team.ozet.views.notice_detail.NoticeDetailViewModel
 import com.team.ozet.views.notice_list.NoticeListViewModel
 import com.team.ozet.views.zet.career.ZetCareerViewModel
+import com.team.ozet.views.zet.main.ZetMainViewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,7 +23,7 @@ val viewModelModule: Module = module {
     viewModel { InfoInputViewModel() }
     viewModel { ZetCareerViewModel() }
     viewModel { MypageViewModel() }
-
+    viewModel { ZetMainViewModel() }
 
 //    viewModel {  }
 }
