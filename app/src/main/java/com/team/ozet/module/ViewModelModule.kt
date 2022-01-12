@@ -23,7 +23,7 @@ val viewModelModule: Module = module {
     viewModel { InfoInputViewModel() }
     viewModel { ZetCareerViewModel() }
     viewModel { MypageViewModel() }
-    viewModel { ZetMainViewModel() }
+    viewModel { ZetMainViewModel(get()) }
 
 //    viewModel {  }
 }

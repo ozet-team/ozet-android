@@ -22,13 +22,14 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
         viewModelCallBack()
         addRvCallback()
         viewModel.setSimpleList()
+        viewModel.getResume()
 
     }
 
     private fun viewModelCallBack(){
         with(viewModel){
             zetSimpleList.observe(this@ZetMainFragment, Observer {
-                binding.arAcademicBg.adapter().addItems(it)
+                binding.arAcademicBg.addItems(it)
             })
         }
     }

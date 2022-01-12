@@ -37,6 +37,5 @@ interface UserLogin {
     fun postPasscodeResult(@Body body: Test): Single<Test>
     @POST("api/v1/member/auth/passcode/pass")
     fun postPasscodePass(
-
         @Body body: Test): Single<Test>
 }

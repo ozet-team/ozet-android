@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team.ozet.R
+import com.team.ozet.data.zet.ZetSimple
 import com.team.ozet.databinding.CustomAddRecyclerviewBinding
 
 class AddRecyclerView @JvmOverloads constructor(
@@ -87,8 +88,21 @@ class AddRecyclerView @JvmOverloads constructor(
         return binding.btnAdd
     }
 
-    fun adapter(): AddAdapter {
-        return addAdapter
+    fun addItems(list : List<ZetSimple>) {
+        if(list.size != 0){
+            binding.apply {
+                rv.visibility = View.VISIBLE
+                tvSub.visibility = View.VISIBLE
+                btnAdd.visibility = View.GONE
+            }
+        }else{
+            binding.apply {
+                rv.visibility = View.GONE
+                tvSub.visibility = View.GONE
+                btnAdd.visibility = View.VISIBLE
+            }
+        }
+        addAdapter.addItems(list)
     }
 
     fun tvSub(): TextView {
