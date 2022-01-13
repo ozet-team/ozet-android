@@ -32,7 +32,7 @@ class AddRecyclerView @JvmOverloads constructor(
     }
 
     private fun initAdapter() {
-        addAdapter = AddAdapter(context)
+        addAdapter = AddAdapter()
 
         binding.rv.apply {
             layoutManager = LinearLayoutManager(
@@ -88,7 +88,7 @@ class AddRecyclerView @JvmOverloads constructor(
         return binding.btnAdd
     }
 
-    fun addItems(list : List<ZetSimple>) {
+    fun setItems(list : List<ZetSimple>) {
         if(list.size != 0){
             binding.apply {
                 rv.visibility = View.VISIBLE
@@ -102,11 +102,15 @@ class AddRecyclerView @JvmOverloads constructor(
                 btnAdd.visibility = View.VISIBLE
             }
         }
-        addAdapter.addItems(list)
+        addAdapter.setItmes(list)
     }
 
     fun tvSub(): TextView {
         return binding.tvSub
+    }
+
+    fun adapter(): AddAdapter {
+        return addAdapter
     }
 
 }

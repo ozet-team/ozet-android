@@ -1,8 +1,15 @@
 package com.team.ozet.data.resume
 
-data class Academic(
-    val joinAt: String,
-    val location: String,
-    val major: String,
-    val quitAt: String
-)
+import androidx.annotation.Keep
+import java.io.Serializable
+import java.lang.reflect.Constructor
+
+@Keep data class Academic(
+    var joinAt: String,
+    var location: String,
+    var major: String,
+    var quitAt: String,
+
+):Serializable{
+    constructor():this("","","","")
+}

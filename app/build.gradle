@@ -75,6 +75,7 @@ dependencies {
     // DI 앱 의존성 추가
     implementation 'org.koin:koin-androidx-viewmodel:2.2.2'
 
+
     // rxjava
     implementation "io.reactivex.rxjava2:rxjava:2.2.17"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
@@ -97,8 +98,10 @@ dependencies {
     implementation "androidx.room:room-rxjava2:2.2.5"
     testImplementation "androidx.room:room-testing:2.2.5"
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
-    kapt "androidx.room:room-compiler:2.2.5"
+    kapt "androidx.room:room-compiler:2.3.0-alpha04"
     implementation 'androidx.room:room-ktx:2.2.5'
+
+
 
     // apollo
     implementation "com.apollographql.apollo:apollo-runtime:2.5.2"

@@ -48,6 +48,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
             goZet.observe(this@MainFragment, Observer {
                 findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
+
             })
 
 

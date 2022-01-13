@@ -122,7 +122,6 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:onClick="@{()->vm.clickPosition()}"
             >
 
             <TextView

@@ -2,6 +2,7 @@ package com.team.ozet.views.dialog
 
 import android.os.Bundle
 import android.view.*
+import android.widget.NumberPicker
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.team.ozet.R
@@ -56,4 +57,14 @@ class YearMonthPickerDialog(val itemClick:(year:Int,month:Int) -> Unit) : Dialog
         dialog!!.window!!.attributes = params
 
     }
+
+   fun setDate(year: Int,month: Int){
+        lazy {
+            binding.npYear.value = year
+            binding.npMonth.value = month
+        }
+    }
+
+    fun getNpYear(): NumberPicker =  binding.npYear
+    fun getNpMonth(): NumberPicker =  binding.npMonth
 }

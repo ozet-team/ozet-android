@@ -7,7 +7,6 @@
         <attr name="tv_visibility" format="reference|boolean"/>
         <attr name="et_enabled" format="reference|boolean"/>
         <attr name="et_input_hint" format="reference|string" />
-        <attr name="et_input_text" format="reference|string" />
         <attr name="et_single_line" format="reference|boolean"/>
         <attr name="et_background" format="reference|boolean"/>
         <attr name="android:inputType" />

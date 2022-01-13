@@ -13,7 +13,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.team.ozet.views.main_fragment.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment"
+        >
         <action
             android:id="@+id/action_mainFragment_to_noticeListFragment"
             app:destination="@id/noticeListFragment" />
@@ -33,7 +34,8 @@
         android:label="NoticeListFragment" >
         <argument
             android:name="name"
-            app:argType="string"/>
+            app:argType="string"
+            />
     </fragment>
 
     <fragment
@@ -44,6 +46,9 @@
             android:id="@+id/action_joinFragment_to_infoInputFragment"
             app:destination="@id/infoInputFragment"
             />
+        <action
+            android:id="@+id/action_joinFragment_to_zetCareerFragment"
+            app:destination="@id/zetCareerFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoInputFragment"
@@ -60,11 +65,21 @@
     <fragment
         android:id="@+id/zetCertificateFragment"
         android:name="com.team.ozet.views.zet.certificate.ZetCertificateFragment"
-        android:label="ZetCertificateFragment" />
+        android:label="ZetCertificateFragment" >
+        <argument
+            android:name="certificate"
+            app:argType="com.team.ozet.data.resume.Certificate"
+            />
+
+    </fragment>
     <fragment
         android:id="@+id/zetCareerFragment"
         android:name="com.team.ozet.views.zet.career.ZetCareerFragment"
         android:label="ZetCareerFragment" >
+        <argument
+            android:name="career"
+            app:argType="com.team.ozet.data.resume.Career"
+            />
     </fragment>
     <fragment
         android:id="@+id/zetMilitaryServiceFragment"
@@ -77,7 +92,13 @@
     <fragment
         android:id="@+id/zetAcademicBGFragment"
         android:name="com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragment"
-        android:label="ZetAcademicBGFragment" />
+        android:label="ZetAcademicBGFragment" >
+        <argument
+            android:name="academic"
+            app:argType="com.team.ozet.data.resume.Academic"
+            />
+
+    </fragment>
     <fragment
         android:id="@+id/zetMainFragment"
         android:name="com.team.ozet.views.zet.main.ZetMainFragment"
@@ -100,6 +121,9 @@
         <action
             android:id="@+id/action_zetMainFragment_to_zetSNSFragment"
             app:destination="@id/zetSNSFragment" />
+        <action
+            android:id="@+id/action_zetMainFragment_to_zetMilitaryServiceFragment"
+            app:destination="@id/zetMilitaryServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/zetSelfIntroFragment"

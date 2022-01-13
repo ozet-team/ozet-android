@@ -12,5 +12,5 @@ interface ResumeApi {
     @GET("api/v1/member/user/me/resume")
     fun getResume2(@Header("Authorization") Token : String ,@Query("id") id:String): Single<Resume>
     @GET("api/v1/member/user/me/resume")
-    fun getResume(@Header("Authorization") Token : String ): Single<Resume>
+    fun getResume(@Header("authorization") Token : String ): Single<Resume>
 }
