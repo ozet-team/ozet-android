@@ -11,5 +11,4 @@ val repositoryModule: Module = module {
 //    single<HomeRepository> { HomeRepositoryImpl() }
     single<LoginRepository> {LoginRepositoryImpl(get())}
     single<PassCodeRepository> {PassCodeRepositoryImpl(get())}
-
 }

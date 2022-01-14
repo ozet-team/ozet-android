@@ -39,3 +39,4 @@ data class User(
     @Expose
     var phoneNumber: String = "",
 )
+// requestedVerify를 USER ㅊㅓ럼 작업 하기

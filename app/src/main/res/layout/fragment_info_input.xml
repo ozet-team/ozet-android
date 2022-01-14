@@ -43,7 +43,7 @@
                 android:layout_gravity="center"
                 />
 
-            <com.team.ozet.views.custom_view.JoinEditText
+            <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
@@ -54,7 +54,7 @@
                 android:paddingBottom="15dp"
                 android:textSize="16sp" />
 
-            <com.team.ozet.views.custom_view.JoinEditText
+            <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
