@@ -49,6 +49,7 @@
             android:layout_marginTop="30dp"
             app:tv_title = "샵 이름"
             app:et_input_hint = "근무하신 샵 이름을 적어주세요"
+            app:et_info_text="@={vm.career.company}"
             />
 
 
@@ -65,6 +66,7 @@
             app:tv_title_name="근무 기간"
             app:tv_date_text = "YYYY.MM"
             app:date_mode ="1"
+            app:tv_date="@={vm.career.joinAt}"
             />
 
         <com.team.ozet.views.custom_view.DatePickerTextView
@@ -80,6 +82,7 @@
             app:tv_title_visibility = "false"
             app:tv_date_text = "YYYY.MM"
             app:date_mode ="1"
+            app:tv_date="@={vm.career.quitAt}"
             />
 
         <TextView
@@ -173,6 +176,7 @@
             app:layout_constraintVertical_bias="0.0"
             app:tv_title="근무 내용 &amp; 성과 "
             android:imeOptions ="actionDone"
+            app:et_info_text="@={vm.career.workedOn}"
             />
 
 

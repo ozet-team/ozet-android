@@ -2,7 +2,6 @@ package com.team.ozet.data.resume
 
 import androidx.annotation.Keep
 import java.io.Serializable
-import java.lang.reflect.Constructor
 
 @Keep data class Academic(
     var joinAt: String,

@@ -4,9 +4,9 @@ import androidx.annotation.Keep
 import java.io.Serializable
 
 @Keep data class Certificate(
-    val certificateAt: String,
-    val name: String,
-    val vendor: String
+    var certificateAt: String,
+    var name: String,
+    var vendor: String
 ):Serializable{
     constructor():this("","","")
 }

@@ -43,6 +43,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:tv_title = "자격증 이름"
             app:et_input_hint = "자격증 이름을 기재해주세요 "
+            app:et_info_text="@={vm.certificate.name}"
             />
 
 
@@ -59,6 +60,7 @@
             app:tv_title_name="근무 기간"
             app:tv_date_text = "YYYY.MM.DD"
             app:date_mode ="0"
+            app:tv_date="@={vm.certificate.certificateAt}"
             />
 
 
@@ -76,6 +78,7 @@
             app:tv_title = "자격증 발급기관"
             app:et_input_hint = "자격증 발급 기관을 기재해주세요"
             android:imeOptions = "actionDone"
+            app:et_info_text="@={vm.certificate.vendor}"
             />
 
 
