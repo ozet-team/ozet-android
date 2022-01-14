@@ -1,27 +1,37 @@
-package com.team.ozet.data.user_login
+package com.team.ozet.data.pass_code
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Test(
 
-    var user_id:String = "",
-    var token : String = "",
-    var phoneNumber: String = "",
+data class PassCode(
+    var phoneNumber: String,
+    var passCode: String ="",
+    var userId: String="",
     @SerializedName("requestedVerify")
-    var requestedVerify:List<RequestedVerify?>? =null,
+    @Expose
+    var requestedVerify:RequestedVerify? =null,
 
     @SerializedName("user")
     @Expose
-    var user:User? =null
+    var user: User? =null
 )
 
 @Entity(tableName = "requestedVerify")
 data class RequestedVerify(
+    @SerializedName("requesterPhoneNumber")
+    @Expose
     var requesterPhoneNumber: String = "",
+    @SerializedName("requesterDeviceUuid")
+    @Expose
     var requesterDeviceUuid: String = "",
+    @SerializedName("status")
+    @Expose
     var status: String = "",
+    @SerializedName("expireAt")
+    @Expose
     var expireAt: String = "",
 )
 @Entity(tableName = "user")
@@ -39,4 +49,10 @@ data class User(
     @Expose
     var phoneNumber: String = "",
 )
-// requestedVerify를 USER ㅊㅓ럼 작업 하기
+
+@Entity(tableName = "token")
+data class Token(
+    @SerializedName("token")
+    @Expose
+    var token: String = ""
+)

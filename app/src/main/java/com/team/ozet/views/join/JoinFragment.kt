@@ -25,7 +25,6 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         binding.vm = viewModel
         callback()
         checkPhoneNumber()
-        viewModel.test()
     }
 
     private fun callback() {
@@ -33,6 +32,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
             clickEvent.observe(this@JoinFragment, Observer {
                 binding.llAuth.visibility = View.VISIBLE
                 startAuthTime()
+                viewModel.aa()
 //                if (isValidCellPhoneNumber(binding.incluePhone.etBase.text.toString())) {
 //                    //TODO 인증번호 조건 추가 시 if 조건 추가
 //                    val bundle =
@@ -76,7 +76,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
                         totalTime
                     ) * 60
                     // text 연결
-                    Log.i("AAA", "run $minute 분 $second")
+//                    Log.i("AAA", "run $minute 분 $second")
                     var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
                     binding.tvTimer.text = strTime
                     // 0초일때 timer task 캔슬
