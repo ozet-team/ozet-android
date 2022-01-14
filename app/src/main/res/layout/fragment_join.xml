@@ -15,10 +15,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/back_button"
+        <com.team.ozet.views.custom_view.DefaultAppbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icon_back_"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,32 +34,21 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="휴대전화번호를 입력해주세요"
-                    android:textColor="@color/black"
-                    style="@style/Text.H4" />
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp">
 
-                    <include
-                        android:id="@+id/inclue_phone"
+                    <com.team.ozet.views.custom_view.JoinEditText
+                        android:id="@+id/custom_phone"
                         style="@style/Text.H4"
                         android:imeOptions="actionDone"
-                        layout="@layout/edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="숫자만 입력해주세요"
+                        app:tv_join_title = "휴대전화번호"
+                        app:et_join_hint ="숫자만 입력해 주세요"
                         android:inputType="phone"
                         android:maxLength="11"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="15dp"
-                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +60,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/inclue_phone"
+                        app:layout_constraintEnd_toEndOf="@+id/custom_phone"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/button_close_round" />
 
@@ -86,26 +76,14 @@
                 android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView2"
+                <com.team.ozet.views.custom_view.JoinEditText
+                    android:id="@+id/custom_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="인증번호를 입력해주세요"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <include
-                    layout="@layout/edit_text"
-                    android:id="@+id/editTextPhone2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:background="@color/transparent"
-                    android:ems="10"
-                    android:hint="숫자만 입력해주세요"
+                    app:tv_join_title = "인증번호를 입력해주세요"
+                    app:et_join_hint ="숫자만 입력해 주세요"
                     android:inputType="phone"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
                     android:textSize="16sp" />
 
                 <LinearLayout

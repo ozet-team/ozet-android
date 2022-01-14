@@ -43,50 +43,28 @@
                 android:layout_gravity="center"
                 />
 
-            <TextView
-                android:id="@+id/textView6"
-                style="@style/Text.Subtitle1"
-                android:textColor="@color/system_gray03"
+            <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="이름" />
-
-            <include
-                android:id="@+id/inclue_phone"
-                style="@style/Text.H4"
-                layout="@layout/edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="숫자만 입력해주세요"
+                android:layout_height="match_parent"
                 android:inputType="phone"
+                app:tv_join_title = "휴대전화번호"
+                app:et_join_hint ="숫자만 입력해 주세요"
                 android:maxLength="11"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView7"
-                style="@style/Text.Subtitle1"
-                android:textColor="@color/system_gray03"
-                android:layout_marginTop="20dp"
+            <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="이름" />
-
-            <include
-                android:id="@+id/inclue_phone2"
-                style="@style/Text.H4"
-                layout="@layout/edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="숫자만 입력해주세요"
+                android:layout_height="match_parent"
                 android:inputType="phone"
+                app:tv_join_title = "휴대전화번호"
+                app:et_join_hint ="숫자만 입력해 주세요"
                 android:maxLength="11"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:textSize="16sp" />
+
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

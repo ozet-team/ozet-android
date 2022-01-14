@@ -3,6 +3,8 @@ package com.team.ozet.views
 import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.team.ozet.data.zet.ZetSimple
+import com.team.ozet.views.custom_view.add_recycler.AddAdapter
 import com.team.ozet.views.main_fragment.NoticeAdapter
 
 
@@ -19,6 +21,15 @@ fun RecyclerView.setAdapterItems(items:List<Any>?){
                 }
             }
         }
+        is AddAdapter ->{
+            items?.let {
+                with(adapter as AddAdapter){
+                    clear()
+                    addItems(it as List<ZetSimple>)
+                }
+            }
+        }
+
 
 
         else ->{

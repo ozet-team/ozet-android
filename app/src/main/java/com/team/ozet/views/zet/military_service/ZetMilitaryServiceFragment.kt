@@ -17,9 +17,11 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbYet.isChecked = false
                     rbExemption.isChecked = false
+                    rbNot.isChecked = false
                     cmDateMilitaryStart.visibility = View.VISIBLE
                     cmDateMilitaryEnd.visibility = View.VISIBLE
                     cmDefaultExemption.visibility = View.GONE
+                    center.visibility = View.VISIBLE
 
                 }
 
@@ -30,9 +32,11 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbFinish.isChecked = false
                     rbExemption.isChecked = false
+                    rbNot.isChecked = false
                     cmDateMilitaryStart.visibility = View.GONE
                     cmDateMilitaryEnd.visibility = View.GONE
                     cmDefaultExemption.visibility = View.GONE
+                    center.visibility = View.GONE
                 }
             }
         }
@@ -41,9 +45,24 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
                 binding.apply {
                     rbYet.isChecked = false
                     rbFinish.isChecked = false
+                    rbNot.isChecked = false
                     cmDateMilitaryStart.visibility = View.GONE
                     cmDateMilitaryEnd.visibility = View.GONE
                     cmDefaultExemption.visibility = View.VISIBLE
+                    center.visibility = View.GONE
+                }
+            }
+        }
+        binding.rbNot.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked){
+                binding.apply {
+                    rbFinish.isChecked = false
+                    rbExemption.isChecked = false
+                    rbYet.isChecked = false
+                    cmDateMilitaryStart.visibility = View.GONE
+                    cmDateMilitaryEnd.visibility = View.GONE
+                    cmDefaultExemption.visibility = View.GONE
+                    center.visibility = View.GONE
                 }
             }
         }

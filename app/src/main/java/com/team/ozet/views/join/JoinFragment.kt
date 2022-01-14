@@ -9,6 +9,7 @@ import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentJoinBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.regex.Matcher
@@ -31,6 +32,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
             clickEvent.observe(this@JoinFragment, Observer {
                 binding.llAuth.visibility = View.VISIBLE
                 startAuthTime()
+                viewModel.aa()
 //                if (isValidCellPhoneNumber(binding.incluePhone.etBase.text.toString())) {
 //                    //TODO 인증번호 조건 추가 시 if 조건 추가
 //                    val bundle =
@@ -47,11 +49,24 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     // timerTask onDestroy 일떄 캔슬 해줘야함   재시작 로직 없음
     private fun startAuthTime() {
 
+
         var totalTime = 180L // 3분
+
+//        // 시작 시간.
+//        val startTime = System.currentTimeMillis()
+//        // 시간포맷을위한 포맷설정
+//        var dateFormat = SimpleDateFormat("mm:ss")
+//        var ti = dateFormat.format(Date(startTime))
+//        Log.i("SDFSD","run :  $ti")
+//        //클릭할때 받아올 시간
+//        val clickTime = System.currentTimeMillis()
 
         timer.schedule(timerTask {
             activity?.runOnUiThread {
                 this.run {
+
+//                    val time = (startTime - clickTime) / 1000
+
                     totalTime--
 
                     var minute = TimeUnit.SECONDS.toMinutes(totalTime) - TimeUnit.SECONDS.toHours(
@@ -61,7 +76,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
                         totalTime
                     ) * 60
                     // text 연결
-                    Log.i("AAA", "run $minute 분 $second")
+//                    Log.i("AAA", "run $minute 분 $second")
                     var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
                     binding.tvTimer.text = strTime
                     // 0초일때 timer task 캔슬
@@ -72,8 +87,8 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
                 }
             }
         }, 0, 1000)
-
     }
+
 
     private fun stopAuthTime() {
         timer.cancel()
@@ -81,14 +96,14 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     }
 
     fun checkPhoneNumber() {
-        binding.incluePhone.etBase.addTextChangedListener {
-            if (isValidCellPhoneNumber(binding.incluePhone.etBase.text.toString())) {
-                binding.btnNext.setBackgroundColor(Color.parseColor("#5D2FFF"));
-                binding.btnNext.setTextColor(Color.parseColor("#FFFFFF"))
-            } else {
-                binding.btnNext.setBackgroundColor(Color.parseColor("#F0F2F5"));
-            }
-        }
+//        binding.customPhone.addTextChangedListener {
+//            if (isValidCellPhoneNumber(binding.customNumber.etBase.text.toString())) {
+//                binding.btnNext.setBackgroundColor(Color.parseColor("#5D2FFF"));
+//                binding.btnNext.setTextColor(Color.parseColor("#FFFFFF"))
+//            } else {
+//                binding.btnNext.setBackgroundColor(Color.parseColor("#F0F2F5"));
+//            }
+//        }
     }
 
     fun isValidCellPhoneNumber(cellphoneNumber: String): Boolean {

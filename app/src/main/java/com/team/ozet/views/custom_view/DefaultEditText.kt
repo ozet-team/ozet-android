@@ -3,12 +3,16 @@ package com.team.ozet.views.custom_view
 import android.content.Context
 import android.content.res.TypedArray
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.team.ozet.R
 import com.team.ozet.databinding.CustomDefaultEditTextBinding
 
@@ -19,6 +23,7 @@ class DefaultEditText @JvmOverloads constructor(
     private var binding = DataBindingUtil.inflate<CustomDefaultEditTextBinding>(
         LayoutInflater.from(context),R.layout.custom_default_edit_text,this,true
     )
+
 
     init {
         getAttrs(attrs, defStyleAttr)
@@ -36,6 +41,8 @@ class DefaultEditText @JvmOverloads constructor(
         setTypeArrayText(typedArray)
         setTypeArrayEdit(typedArray)
     }
+
+
     private fun setTypeArrayEdit(typedArray: TypedArray) {
         binding.etInput.apply {
 
@@ -43,7 +50,6 @@ class DefaultEditText @JvmOverloads constructor(
                 typedArray.getBoolean(R.styleable.default_edit_text_et_single_line, true)
             var etBackground: Boolean =
                 typedArray.getBoolean(R.styleable.default_edit_text_et_background, true)
-            setText(typedArray.getString(R.styleable.default_edit_text_et_input_text))
 
             isEnabled = typedArray.getBoolean(R.styleable.default_edit_text_et_enabled,true)
 
@@ -55,9 +61,7 @@ class DefaultEditText @JvmOverloads constructor(
 
             if (single) {
                 isSingleLine = single
-                Log.i("AAA", "boolean $single")
             } else {
-                Log.i("AAA", "boolean $single")
                 isSingleLine = single
             }
             if (etBackground) {
@@ -92,6 +96,37 @@ class DefaultEditText @JvmOverloads constructor(
 
     public fun setText(text:String){
         binding.tvTitle.text = text
+    }
+
+    object DefaultEditAdapter{
+        @JvmStatic
+        @BindingAdapter("app:et_info_text")
+        fun setEtText(view:DefaultEditText,text:String){
+            view.binding.etInput.setText(text)
+        }
+        @JvmStatic
+        @BindingAdapter("etInputChanged")
+        fun setEtInputBindingListener(view: DefaultEditText, listener: InverseBindingListener?) {
+            val watcher = object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                }
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                }
+                override fun afterTextChanged(editable: Editable) {
+                    listener?.onChange()
+                }
+            }
+            view.binding.etInput.addTextChangedListener(watcher)
+        }
+        //*study*
+        //InverseBindingAdpater 메서드는 역으로 레이아웃의 사용자 정의 속성값이 변경되었을 때 뷰 모델 등과 같은
+        //레이아웃 변수에 변경 사항을 전달하여 양방향 바인딩이 구현될 수 있게 한다.
+        @InverseBindingAdapter(attribute = "app:et_info_text",event = "etInputChanged")
+        @JvmStatic
+        fun getEtInput(view: DefaultEditText): String {
+            return view.binding.etInput.text.toString()
+        }
+
     }
 
 

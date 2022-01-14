@@ -1,24 +1,27 @@
 package com.team.ozet.views.zet.career
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetCareerBinding
 import com.team.ozet.views.dialog.PositionSelectorDialog
+import com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragmentArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragment_zet_career) {
     val viewModel:ZetCareerViewModel by viewModel()
-
+    private val args: ZetCareerFragmentArgs by navArgs()
 
     override fun init() {
         binding.vm = viewModel
-        binding.includeAppbar.tvTitle.text = "경력"
         callback()
         checkWorking()
+        viewModel.setCareerData(args.career)
     }
 
     private fun callback() {
@@ -29,14 +32,8 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
                }
                 positionSelectorDialog.show(requireActivity().supportFragmentManager,"tag")
             })
-            clickDone.observe(this@ZetCareerFragment, Observer {
-                val shopName = binding.cmDefaultShopName.getEditText()
-                val startWork = binding.cmDateStartWork.getText()
-                val endWork = binding.cmDateEndWork.getText()
-                val position = binding.tvPosition.text
-                val workResult = binding.cmDefaultResultWork.getEditText()
-//                findNavController().navigate(R.id.action_zetCareerFragment_to_zetCertificateFragment)
-
+            backClick.observe(this@ZetCareerFragment, Observer {
+                Log.i("AAA","back click")
             })
         }
     }
@@ -48,11 +45,8 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
         }
     }
 
-    fun positionSelector(){
-        val bottomSheetView = layoutInflater.inflate(R.layout.dialog_position_selector,null)
+    fun clickDone(){
 
-        val bottomSheetDialog = BottomSheetDialog(thisContext)
-        bottomSheetDialog.setContentView(bottomSheetView)
-        bottomSheetDialog.show()
     }
+
 }
