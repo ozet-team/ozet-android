@@ -41,7 +41,7 @@
 
                     <com.team.ozet.views.custom_view.JoinEditText
                         android:id="@+id/custom_phone"
-                        style="@style/Text.H4"
+                        style="@style/Text.Heading4"
                         android:imeOptions="actionDone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

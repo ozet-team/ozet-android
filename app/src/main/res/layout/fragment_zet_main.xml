@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/tv_basic"
-            style="@style/Text.H3"
+            style="@style/Text.Heading3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_update_day"
@@ -206,7 +206,7 @@
             >
             <TextView
                 android:id="@+id/tv_address_title"
-                style="@style/Text.H4"
+                style="@style/Text.Heading4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -255,7 +255,7 @@
             >
             <TextView
                 android:id="@+id/tv_self_intro_title"
-                style="@style/Text.H4"
+                style="@style/Text.Heading4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"

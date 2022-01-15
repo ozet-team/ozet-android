@@ -11,14 +11,27 @@
 
     <!--  OZET_COLOR  -->
     <color name="ozet">#5D2FFF</color>
+    <color name="ozet8">#F2EEFF</color>
+    <color name="ozet50">#AE97FF</color>
+
     <color name="system_white">#FFFFFF</color>
-    <color name="system_black">#000000</color>
+    <color name="system_white_op10">#1AFFFFFF</color>
+    <color name="system_white_op50">#80FFFFFF</color>
+
     <color name="system_gray01">#F0F2F5</color>
     <color name="system_gray02">#d7d7d7</color>
     <color name="system_gray03">#939497</color>
     <color name="system_gray04">#666666</color>
-    <color name="system_gray01_50">#80F0F2F5</color>
+    <color name="system_gray01_op50">#80F0F2F5</color>
+
     <color name="Background_Dark">#2D2E31</color>
+
+    <color name="system_black">#000000</color>
+    <color name="system_black_op5">#0D000000</color>
+    <color name="system_black_op10">#1A000000</color>
+    <color name="system_black_op20">#33000000</color>
+    <color name="system_black_op30">#4D000000</color>
+    <color name="system_black_op40">#66000000</color>
 
     <!--  투명  -->
     <color name="transparent" type="color">#00000000</color>

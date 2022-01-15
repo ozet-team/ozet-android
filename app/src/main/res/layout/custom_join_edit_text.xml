@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/tv_join_title"
-            style="@style/Text.H4"
+            style="@style/Text.Heading4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="인증번호를 입력해주세요"

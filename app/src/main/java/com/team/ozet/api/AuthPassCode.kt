@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface AuthPassCode {
     //패스코드 인증 API
     @POST("api/v1/member/auth/passcode")
-    fun postPassCode(@Query("phoneNumber",) loginId: String): Single<PassCode>
+    fun postPassCode(@Body body: PassCode): Single<RequestedVerify>
 
     //패스코드 강제 성공 API @DEBUG
     @POST("api/v1/member/auth/passcode/pass")

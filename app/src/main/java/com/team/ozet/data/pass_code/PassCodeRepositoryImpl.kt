@@ -10,6 +10,10 @@ import io.reactivex.Single
 class PassCodeRepositoryImpl(
     private val authPassCode: AuthPassCode
 ) : PassCodeRepository {
+    override fun postPassCode(passCode: PassCode): Single<RequestedVerify> {
+        return authPassCode.postPassCode(passCode)
+    }
+
     override fun postPassCodeRequest(passCode: PassCode): Single<RequestedVerify> {
         return authPassCode.postPassCodeRequest(passCode)
     }

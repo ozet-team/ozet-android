@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/Text.H4"
+            style="@style/Text.Heading4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +43,7 @@
             android:text="+ 추가하기"
             android:textColor="@color/ozet"
             android:background="@drawable/bg_border_radius"
-            android:backgroundTint="@color/system_gray01_50"
+            android:backgroundTint="@color/system_gray01_op50"
             android:visibility="gone"
             />
 
