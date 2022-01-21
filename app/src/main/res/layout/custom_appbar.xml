@@ -14,7 +14,7 @@
 
 
         <ImageButton
-            android:id="@+id/imageView"
+            android:id="@+id/img_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/Text.Heading2"
+            style="@style/Text.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,16 +39,31 @@
                 />
 
         <TextView
-            android:id="@+id/tv_sub_title"
-            style="@style/Text.Body2"
+            android:id="@+id/tv_sub_first"
+            style="@style/Text.Caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="미리보기"
+            android:text="저장"
+            android:textColor="@color/ozet"
+            android:visibility="gone"
+            />
 
+        <TextView
+            android:id="@+id/tv_sub_second"
+            style="@style/Text.Caption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            app:layout_constraintRight_toLeftOf="@+id/tv_sub_first"
+            app:layout_constraintTop_toTopOf="@id/tv_sub_first"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sub_first"
+            android:text="저장"
+            android:textColor="@color/red"
+            android:visibility="gone"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

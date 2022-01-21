@@ -22,8 +22,10 @@
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "학력"
-            android:textColor = "@color/ozet"
-            app:tv_appbar_sub_title = "저장하기"
+            app:tv_appbar_sub_first = "저장"
+            app:tv_appbar_sub_second = "삭제"
+            app:tv_appbar_sub_first_color = "@color/ozet"
+            app:tv_appbar_sub_second_color = "@color/red"
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
@@ -38,6 +40,7 @@
             android:layout_marginTop="30dp"
             app:tv_title = "학교명"
             app:et_input_hint = "학교명을 기재해주세요"
+            app:et_info_text="@={vm.academic.location}"
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
@@ -121,24 +124,6 @@
             app:tv_date="@={vm.academic.quitAt}"
             />
 
-
-
-
-
-        <com.team.ozet.views.custom_view.DefaultEditText
-            android:id="@+id/cm_academic_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/cm_academic_day"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="30dp"
-            app:tv_title = "학교 소재지"
-            app:et_input_hint = "학교 소재지를 입력해주세요"
-            app:et_info_text="@={vm.academic.location}"
-            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

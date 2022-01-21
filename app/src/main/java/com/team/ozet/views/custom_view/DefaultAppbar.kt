@@ -36,22 +36,45 @@ class DefaultAppbar @JvmOverloads constructor(
     private fun setTypeArray(typedArray: TypedArray) {
         binding.apply {
 
-            imageView.setImageResource(
+            imgBtn.setImageResource(
                 typedArray.getResourceId(R.styleable.default_appbar_srcCompat,-1)
             )
-            binding.imageView.setOnClickListener {
+            binding.imgBtn.setOnClickListener {
                 findNavController().popBackStack()
             }
 
             tvTitle.text = typedArray.getText(R.styleable.default_appbar_tv_appbar_title)
 
-            tvSubTitle.text = typedArray.getText(R.styleable.default_appbar_tv_appbar_sub_title)
-            tvSubTitle.setTextColor(typedArray.getColor(R.styleable.default_appbar_android_textColor, Color.BLACK))
+            var first = typedArray.getString(R.styleable.default_appbar_tv_appbar_sub_first)
+            when(first){
+                null -> tvSubFirst.visibility = View.GONE
+                "" -> tvSubFirst.visibility = View.GONE
+                else -> tvSubFirst.visibility = View.VISIBLE
+            }
+
+            var second = typedArray.getString(R.styleable.default_appbar_tv_appbar_sub_second)
+            when(second){
+                null -> tvSubSecond.visibility = View.GONE
+                "" -> tvSubSecond.visibility = View.GONE
+                else -> tvSubSecond
+                    .visibility = View.VISIBLE
+            }
+            tvSubFirst.text = first
+            tvSubFirst.setTextColor(typedArray.getColor(R.styleable.default_appbar_tv_appbar_sub_first_color, Color.BLACK))
+            tvSubSecond.text = second
+            tvSubSecond.setTextColor(typedArray.getColor(R.styleable.default_appbar_tv_appbar_sub_second_color, Color.BLACK))
+
         }
     }
 
-    fun tvSubTitle(): TextView {
-        return binding.tvSubTitle
+
+
+    fun tvSubFirst(): TextView {
+        return binding.tvSubFirst
+    }
+
+    fun tvSubSecond(): TextView {
+        return binding.tvSubSecond
     }
 
 }

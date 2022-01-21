@@ -35,7 +35,8 @@
             android:singleLine="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            android:textColor="@color/system_gray02"
+            android:textColor="@color/system_black"
+            android:textColorHint="@color/system_gray02"
             android:clickable="true"
             />
 

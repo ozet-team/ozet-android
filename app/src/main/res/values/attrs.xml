@@ -16,7 +16,7 @@
     <declare-styleable name="date_picker_text">
         <attr name="tv_title_visibility" format="reference|boolean"/>
         <attr name="tv_title_name" format="reference|string" />
-        <attr name="tv_date_text" format="reference|string"/>
+        <attr name="tv_date_hint" format="reference|string"/>
         <attr name="date_mode" format="reference|integer"/>
     </declare-styleable>
 
@@ -33,8 +33,12 @@
 
     <declare-styleable name="default_appbar">
         <attr name="tv_appbar_title" format="reference|string" />
-        <attr name="tv_appbar_sub_title" format="reference|string" />
-        <attr name="android:textColor"/>
+        <attr name="tv_appbar_sub_first" format="reference|string" />
+        <attr name="tv_appbar_sub_second" format="reference|string" />
+        <attr name="tv_appbar_sub_first_color" format="reference|color" />
+        <attr name="tv_appbar_sub_second_color" format="reference|color" />
+        <attr name="tv_appbar_sub_first_visibility" format="reference|boolean"/>
+        <attr name="tv_appbar_sub_second_visibility" format="reference|boolean"/>
         <attr name="srcCompat" />
         <attr name="android:onClick"/>
 

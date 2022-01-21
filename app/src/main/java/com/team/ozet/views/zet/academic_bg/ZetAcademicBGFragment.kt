@@ -10,18 +10,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ZetAcademicBGFragment : BaseFragment<FragmentZetAcademicBgBinding>(R.layout.fragment_zet_academic_bg) {
     private val viewModel:ZetAcademicBGViewModel by viewModel()
     private val args:ZetAcademicBGFragmentArgs by navArgs()
+    
 
 
     override fun init() {
         binding.vm = viewModel
         appbar()
         viewModel.setAcademicData(args.academic)
-
-
     }
 
     private fun appbar(){
-        binding.appbar.tvSubTitle().setOnClickListener {
+        binding.appbar.tvSubFirst().setOnClickListener {
             findNavController().popBackStack()
         }
     }

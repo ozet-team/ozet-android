@@ -33,8 +33,10 @@
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "경력"
-            android:textColor = "@color/ozet"
-            app:tv_appbar_sub_title = "저장하기"
+            app:tv_appbar_sub_first = "저장"
+            app:tv_appbar_sub_second = "삭제"
+            app:tv_appbar_sub_first_color = "@color/ozet"
+            app:tv_appbar_sub_second_color = "@color/red"
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
@@ -64,7 +66,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_center"
             app:tv_title_name="근무 기간"
-            app:tv_date_text = "YYYY.MM"
+            app:tv_date_hint = "YYYY.MM"
             app:date_mode ="1"
             app:tv_date="@={vm.career.joinAt}"
             />
@@ -80,7 +82,7 @@
             android:layout_marginLeft="10dp"
             android:paddingLeft="3dp"
             app:tv_title_visibility = "false"
-            app:tv_date_text = "YYYY.MM"
+            app:tv_date_hint = "YYYY.MM"
             app:date_mode ="1"
             app:tv_date="@={vm.career.quitAt}"
             />
@@ -145,16 +147,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_border_radius"
-                android:text="근무하신 샵 내 직책을 선택해주세요"
+                android:text="@={vm.career.position}"
                 android:paddingTop="17dp"
                 android:paddingBottom="17dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textSize="15sp"
-                android:textColor="@color/system_gray02"
+                android:hint="직급을 선택하세요"
+                android:textColor="@color/system_black"
+                android:textColorHint="@color/system_gray02"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_position_title"
+                android:onClick="@{()->vm.clickPosition()}"
+                android:drawableRight="@drawable/icon_down_"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

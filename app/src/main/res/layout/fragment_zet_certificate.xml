@@ -25,8 +25,10 @@
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "자격증"
-            android:textColor = "@color/ozet"
-            app:tv_appbar_sub_title = "저장하기"
+            app:tv_appbar_sub_first = "저장"
+            app:tv_appbar_sub_second = "삭제"
+            app:tv_appbar_sub_first_color = "@color/ozet"
+            app:tv_appbar_sub_second_color = "@color/red"
             />
 
 
@@ -58,7 +60,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:tv_title_name="근무 기간"
-            app:tv_date_text = "YYYY.MM.DD"
+            app:tv_date_hint = "YYYY.MM.DD"
             app:date_mode ="0"
             app:tv_date="@={vm.certificate.certificateAt}"
             />

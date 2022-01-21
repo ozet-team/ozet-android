@@ -15,6 +15,7 @@ import com.team.ozet.base.BaseFragment
 import com.team.ozet.data.resume.Academic
 import com.team.ozet.data.resume.Career
 import com.team.ozet.data.resume.Certificate
+import com.team.ozet.data.resume.Military
 import com.team.ozet.data.zet.ZetSimple
 import com.team.ozet.databinding.FragmentZetMainBinding
 import com.team.ozet.views.custom_view.add_recycler.AddAdapter
@@ -36,9 +37,10 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
                 var acSimpleList = arrayListOf<ZetSimple>()
                 var crSimpleList = arrayListOf<ZetSimple>()
                 var cfSimpleList = arrayListOf<ZetSimple>()
+                var mySimpleLIst = arrayListOf<ZetSimple>()
 
                 for (i in it.academic){
-                    acSimpleList.add(ZetSimple(i.major,"${i.joinAt} ~ ${i.quitAt}"))
+                    acSimpleList.add(ZetSimple(i.location,"${i.joinAt} ~ ${i.quitAt}"))
                 }
                 for (i in it.career){
                     crSimpleList.add(ZetSimple(i.company,"${i.joinAt} ~ ${i.quitAt}"))
@@ -46,9 +48,18 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
                 for (i in it.certificate){
                     cfSimpleList.add(ZetSimple(i.name,"${i.certificateAt}"))
                 }
+                if (it.military.service != null){
+                    var at =""
+                    if (!it.military.joinAt.equals("")){
+                        at = "${it.military.joinAt} ~ ${it.military.quitAt}"
+                    }
+                    mySimpleLIst.add(ZetSimple(it.military.service,at))
+                }
+
                 binding.arAcademicBg.setItems(acSimpleList)
                 binding.arCareer.setItems(crSimpleList)
                 binding.arCertificate.setItems(cfSimpleList)
+                binding.arMilitary.setItems(mySimpleLIst)
 
 
             })
@@ -111,7 +122,7 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
         }
 
         binding.arMilitary.apply {
-            var action = ZetMainFragmentDirections.actionZetMainFragmentToZetMilitaryServiceFragment()
+            var action = ZetMainFragmentDirections.actionZetMainFragmentToZetMilitaryServiceFragment(Military())
             btnAdd().setOnClickListener{
                 findNavController().navigate(action)
             }
@@ -120,10 +131,10 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
             }
             adapter().setItemClickListener(object :AddAdapter.OnItemClickListener{
                 override fun onClick(position:Int) {
-//                    val data:Certificate = viewModel.resume.value?.let{
-//                        it.certificate[position]
-//                    }!!
-                    findNavController().navigate(action)
+                    val data:Military = viewModel.resume.value?.let{
+                        it.military
+                    }!!
+                    findNavController().navigate(ZetMainFragmentDirections.actionZetMainFragmentToZetMilitaryServiceFragment(data))
                 }
             })
         }

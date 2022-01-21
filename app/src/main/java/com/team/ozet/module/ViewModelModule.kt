@@ -12,6 +12,7 @@ import com.team.ozet.views.zet.academic_bg.ZetAcademicBGViewModel
 import com.team.ozet.views.zet.career.ZetCareerViewModel
 import com.team.ozet.views.zet.certificate.ZetCertificateViewModel
 import com.team.ozet.views.zet.main.ZetMainViewModel
+import com.team.ozet.views.zet.military_service.ZetMilitaryServiceViewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,5 +29,6 @@ val viewModelModule: Module = module {
     viewModel { ZetMainViewModel(get()) }
     viewModel { ZetAcademicBGViewModel() }
     viewModel { ZetCertificateViewModel() }
+    viewModel { ZetMilitaryServiceViewModel() }
 //    viewModel {  }
 }

@@ -1,16 +1,15 @@
 package com.team.ozet.views.zet.career
 
+import android.os.Build
 import android.util.Log
-import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetCareerBinding
-import com.team.ozet.views.dialog.PositionSelectorDialog
-import com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragmentArgs
+import com.team.ozet.views.dialog.SelectorBottomDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragment_zet_career) {
@@ -19,21 +18,18 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
 
     override fun init() {
         binding.vm = viewModel
-        callback()
+        viewModelCallback()
         checkWorking()
         viewModel.setCareerData(args.career)
     }
 
-    private fun callback() {
+    private fun viewModelCallback() {
         with(viewModel){
             clickPosition.observe(this@ZetCareerFragment, Observer {
-               val positionSelectorDialog = PositionSelectorDialog{
-                binding.tvPosition.text = it
-               }
-                positionSelectorDialog.show(requireActivity().supportFragmentManager,"tag")
+                showBottomSheet()
             })
             backClick.observe(this@ZetCareerFragment, Observer {
-                Log.i("AAA","back click")
+                findNavController().popBackStack()
             })
         }
     }
@@ -47,6 +43,16 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
 
     fun clickDone(){
 
+    }
+
+    // todo 하드코딩한거 이전 해야함
+    private fun showBottomSheet(){
+        var bottomDialog = SelectorBottomDialog(dialogClick = {
+            binding.tvPosition.apply{
+                text = it
+            }
+        },"직급 선택", arrayListOf("인턴(스탭)","매니저","디자이너","원장"))
+        bottomDialog.show(requireActivity().supportFragmentManager,"tag")
     }
 
 }

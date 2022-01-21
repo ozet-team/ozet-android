@@ -23,7 +23,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     override fun init() {
         binding.vm = viewModel
         initAdapter()
-        callback()
+        viewModelCallback()
 
 
     }
@@ -34,7 +34,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     }
 
 
-    private fun callback() {
+    private fun viewModelCallback() {
         with(viewModel) {
             themeChange.observe(this@MainFragment, Observer {
                 // dark mode test

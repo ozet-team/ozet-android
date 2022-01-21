@@ -84,7 +84,13 @@
     <fragment
         android:id="@+id/zetMilitaryServiceFragment"
         android:name="com.team.ozet.views.zet.military_service.ZetMilitaryServiceFragment"
-        android:label="ZetMilitaryServiceFragment" />
+        android:label="ZetMilitaryServiceFragment" >
+
+        <argument
+            android:name="military"
+            app:argType="com.team.ozet.data.resume.Military"
+            />
+    </fragment>
     <fragment
         android:id="@+id/zetAddressFragment"
         android:name="com.team.ozet.views.zet.address.ZetAddressFragment"

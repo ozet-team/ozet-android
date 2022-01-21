@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.team.ozet.views.zet.military_service.ZetMilitaryServiceViewModel" />
 
     </data>
 
@@ -21,12 +24,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "병역"
-            android:textColor = "@color/ozet"
-            app:tv_appbar_sub_title = "저장하기"
+            app:tv_appbar_sub_first = "저장"
+            app:tv_appbar_sub_second = "삭제"
+            app:tv_appbar_sub_first_color = "@color/ozet"
+            app:tv_appbar_sub_second_color = "@color/red"
             />
 
         <TextView
-            android:id="@+id/tv_military_select"
+            android:id="@+id/tv_military"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/appbar"
@@ -41,76 +46,31 @@
 
 
 
-                <RadioButton
-                    android:id="@+id/rb_finish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="군필"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_military_select"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginTop="20dp"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/rb_selector"
-                    android:drawablePadding="8dp"
-                    />
-
-                <RadioButton
-                    android:id="@+id/rb_yet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="미필"
-                    android:textSize="15sp"
-                    app:layout_constraintTop_toTopOf="@+id/rb_finish"
-                    app:layout_constraintLeft_toRightOf="@+id/rb_finish"
-                    app:layout_constraintRight_toLeftOf="@id/center"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/rb_selector"
-                    android:drawablePadding="8dp"
-                    />
 
 
-                <View
-                    android:id="@+id/center"
-                    android:layout_width="1dp"
-                    android:layout_height="1dp"
-                    app:layout_constraintLeft_toRightOf="@id/rb_finish"
-                    app:layout_constraintRight_toLeftOf="@id/rb_not"
-                    app:layout_constraintTop_toTopOf="@id/rb_not"
-                    app:layout_constraintBottom_toBottomOf="@id/rb_not"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/rb_selector"
-                    android:drawablePadding="8dp"
-                    />
-                <RadioButton
-                    android:id="@+id/rb_exemption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="면제"
-                    android:textSize="15sp"
-                    app:layout_constraintTop_toTopOf="@+id/rb_finish"
-                    app:layout_constraintRight_toLeftOf="@+id/rb_not"
-                    app:layout_constraintLeft_toRightOf="@+id/center"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/rb_selector"
-                    android:drawablePadding="8dp"
-                    />
-
-                <RadioButton
-                    android:id="@+id/rb_not"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:text="해당없음"
-                    android:textSize="15sp"
-                    app:layout_constraintTop_toTopOf="@+id/rb_finish"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/rb_selector"
-                    android:drawablePadding="8dp"
-                    />
-
+        <TextView
+            android:id="@+id/tv_military_selector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_border_radius"
+            android:paddingTop="17dp"
+            android:paddingBottom="17dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/system_black"
+            android:hint="병역여부를 선택하세요"
+            android:text="@={vm.military.service }"
+            android:textColorHint="@color/system_gray02"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_military"
+            android:drawableRight="@drawable/icon_down_"
+            android:onClick="@{()-> vm.clickSelector()}"
+            />
 
 
 
@@ -123,13 +83,15 @@
             android:layout_marginRight="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/rb_finish"
+            app:layout_constraintTop_toBottomOf="@+id/tv_military_selector"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_center"
             app:tv_title_name="복무 기간"
             android:paddingRight="3dp"
-            app:tv_date_text = "YYYY.MM.DD"
+            app:tv_date_hint = "YYYY.MM.DD"
+            app:tv_date="@={vm.military.joinAt}"
             app:date_mode ="1"
+            android:visibility="@{vm.finishedVisible ? View.VISIBLE:View.GONE }"
             />
 
         <TextView
@@ -142,7 +104,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:textSize="14sp"
             android:text="~"
-
+            android:visibility="@{vm.finishedVisible ?View.VISIBLE:View.GONE }"
             />
 
 
@@ -158,8 +120,10 @@
             app:layout_constraintLeft_toRightOf="@+id/tv_center"
             android:paddingLeft="3dp"
             app:tv_title_visibility = "false"
-            app:tv_date_text = "YYYY.MM.DD"
+            app:tv_date_hint = "YYYY.MM.DD"
+            app:tv_date="@={vm.military.joinAt}"
             app:date_mode ="1"
+            android:visibility="@{vm.finishedVisible ?View.VISIBLE:View.GONE }"
             />
 
 
@@ -170,12 +134,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/cm_date_military_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_military_selector"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="30dp"
             app:tv_title = "면제 사유"
+            app:et_info_text="@={vm.military.exemptionReason}"
             app:et_input_hint = "면제 사유를 입력해주세요"
+            android:visibility="@{vm.exemptionVisible ? View.VISIBLE : View.GONE }"
             />
 
 

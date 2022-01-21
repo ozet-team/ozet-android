@@ -55,7 +55,7 @@ class DatePickerTextView @JvmOverloads constructor(
             }
         }
         binding.tvDate.apply {
-            text = typedArray.getString(R.styleable.date_picker_text_tv_date_text)
+            hint = typedArray.getString(R.styleable.date_picker_text_tv_date_hint)
 
         }
 
@@ -77,18 +77,13 @@ class DatePickerTextView @JvmOverloads constructor(
         binding.tvDate.apply {
             if (check){
                 text = content
-                //todo enabled  false 시 text color 설정 문제 있음
                 isEnabled = false
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    setTextColor(context.getColor(R.color.text_selector))
-                }
+
 
             }else{
                 text = "YYYY.DD"
                 isEnabled = true
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    binding.tvDate.setTextColor(context.getColor(R.color.system_gray02))
-                }
+
             }
         }
 
