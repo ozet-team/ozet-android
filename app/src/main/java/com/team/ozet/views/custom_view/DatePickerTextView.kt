@@ -120,8 +120,8 @@ class DatePickerTextView @JvmOverloads constructor(
                         Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
                     // ...
                     var month = monthOfYear + 1
-                    binding.tvDate.text = "${year.toString()}." +
-                            "${DecimalFormat("00").format(month)}." +
+                    binding.tvDate.text = "${year.toString()}-" +
+                            "${DecimalFormat("00").format(month)}-" +
                             "${DecimalFormat("00").format(dayOfMonth)}"
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                         binding.tvDate.setTextAppearance(R.style.TextAppearance_AppCompat_Body2)

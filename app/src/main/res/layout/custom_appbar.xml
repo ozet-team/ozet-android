@@ -5,7 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
         <data>
-
+                <variable
+                    name="defaultAppbar"
+                    type="com.team.ozet.views.custom_view.DefaultAppbar" />
         </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -49,7 +51,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="저장"
             android:textColor="@color/ozet"
-            android:visibility="gone"
             />
 
         <TextView
@@ -63,7 +64,6 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_sub_first"
             android:text="저장"
             android:textColor="@color/red"
-            android:visibility="gone"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "자격증"
             app:tv_appbar_sub_first = "저장"
-            app:tv_appbar_sub_second = "삭제"
+            tv_appbar_sub_second = "@{vm.secondText}"
             app:tv_appbar_sub_first_color = "@color/ozet"
             app:tv_appbar_sub_second_color = "@color/red"
             />
@@ -45,7 +45,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:tv_title = "자격증 이름"
             app:et_input_hint = "자격증 이름을 기재해주세요 "
-            app:et_info_text="@={vm.certificate.name}"
+            app:et_info_text="@={vm.certificateModel.name}"
             />
 
 
@@ -59,10 +59,10 @@
             app:layout_constraintTop_toBottomOf="@id/cm_certificate_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:tv_title_name="근무 기간"
+            app:tv_title_name="합격일"
             app:tv_date_hint = "YYYY.MM.DD"
             app:date_mode ="0"
-            app:tv_date="@={vm.certificate.certificateAt}"
+            app:tv_date="@={vm.certificateModel.certificateAt}"
             />
 
 
@@ -80,7 +80,7 @@
             app:tv_title = "자격증 발급기관"
             app:et_input_hint = "자격증 발급 기관을 기재해주세요"
             android:imeOptions = "actionDone"
-            app:et_info_text="@={vm.certificate.vendor}"
+            app:et_info_text="@={vm.certificateModel.vendor}"
             />
 
 

@@ -25,7 +25,7 @@
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "병역"
             app:tv_appbar_sub_first = "저장"
-            app:tv_appbar_sub_second = "삭제"
+            tv_appbar_sub_second = "@{vm.secondText}"
             app:tv_appbar_sub_first_color = "@color/ozet"
             app:tv_appbar_sub_second_color = "@color/red"
             />
@@ -63,7 +63,7 @@
             android:textSize="15sp"
             android:textColor="@color/system_black"
             android:hint="병역여부를 선택하세요"
-            android:text="@={vm.military.service }"
+            android:text="@={vm.militaryModel.service }"
             android:textColorHint="@color/system_gray02"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -89,7 +89,7 @@
             app:tv_title_name="복무 기간"
             android:paddingRight="3dp"
             app:tv_date_hint = "YYYY.MM.DD"
-            app:tv_date="@={vm.military.joinAt}"
+            app:tv_date="@={vm.militaryModel.joinAt}"
             app:date_mode ="1"
             android:visibility="@{vm.finishedVisible ? View.VISIBLE:View.GONE }"
             />
@@ -121,7 +121,7 @@
             android:paddingLeft="3dp"
             app:tv_title_visibility = "false"
             app:tv_date_hint = "YYYY.MM.DD"
-            app:tv_date="@={vm.military.joinAt}"
+            app:tv_date="@={vm.militaryModel.joinAt}"
             app:date_mode ="1"
             android:visibility="@{vm.finishedVisible ?View.VISIBLE:View.GONE }"
             />
@@ -139,7 +139,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="30dp"
             app:tv_title = "면제 사유"
-            app:et_info_text="@={vm.military.exemptionReason}"
+            app:et_info_text="@={vm.militaryModel.exemptionReason}"
             app:et_input_hint = "면제 사유를 입력해주세요"
             android:visibility="@{vm.exemptionVisible ? View.VISIBLE : View.GONE }"
             />

@@ -68,7 +68,7 @@
         android:label="ZetCertificateFragment" >
         <argument
             android:name="certificate"
-            app:argType="com.team.ozet.data.resume.Certificate"
+            app:argType="com.team.ozet.data.resume.CertificateModel"
             />
 
     </fragment>
@@ -78,7 +78,7 @@
         android:label="ZetCareerFragment" >
         <argument
             android:name="career"
-            app:argType="com.team.ozet.data.resume.Career"
+            app:argType="com.team.ozet.data.resume.CareerModel"
             />
     </fragment>
     <fragment
@@ -88,7 +88,7 @@
 
         <argument
             android:name="military"
-            app:argType="com.team.ozet.data.resume.Military"
+            app:argType="com.team.ozet.data.resume.MilitaryModel"
             />
     </fragment>
     <fragment
@@ -101,7 +101,7 @@
         android:label="ZetAcademicBGFragment" >
         <argument
             android:name="academic"
-            app:argType="com.team.ozet.data.resume.Academic"
+            app:argType="com.team.ozet.data.resume.AcademicModel"
             />
 
     </fragment>

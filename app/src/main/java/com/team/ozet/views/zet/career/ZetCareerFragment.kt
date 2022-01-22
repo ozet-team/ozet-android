@@ -20,6 +20,7 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
         binding.vm = viewModel
         viewModelCallback()
         checkWorking()
+        appbarOnClick()
         viewModel.setCareerData(args.career)
     }
 
@@ -31,7 +32,28 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
             backClick.observe(this@ZetCareerFragment, Observer {
                 findNavController().popBackStack()
             })
+            showToast.observe(this@ZetCareerFragment, Observer {
+                showToast(it)
+            })
+
         }
+    }
+
+    private fun appbarOnClick() {
+        val token =
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDMxNzAwMjl9.AiU_nUBPmUXUVweYM_ESRrBCbZtWuyafg6H9gW_bJ5o"
+        binding.appbar.tvSubFirst().setOnClickListener {
+            // todo SharedPreferences 사용해야함
+            if (viewModel.isCreate.value == true){
+                viewModel.createCareer(token)
+            }else{
+                viewModel.updateCareer(token)
+            }
+        }
+        binding.appbar.tvSubSecond().setOnClickListener {
+            viewModel.deleteCareer(token)
+        }
+
     }
 
 

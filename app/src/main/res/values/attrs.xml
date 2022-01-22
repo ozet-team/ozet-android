@@ -34,11 +34,8 @@
     <declare-styleable name="default_appbar">
         <attr name="tv_appbar_title" format="reference|string" />
         <attr name="tv_appbar_sub_first" format="reference|string" />
-        <attr name="tv_appbar_sub_second" format="reference|string" />
         <attr name="tv_appbar_sub_first_color" format="reference|color" />
         <attr name="tv_appbar_sub_second_color" format="reference|color" />
-        <attr name="tv_appbar_sub_first_visibility" format="reference|boolean"/>
-        <attr name="tv_appbar_sub_second_visibility" format="reference|boolean"/>
         <attr name="srcCompat" />
         <attr name="android:onClick"/>
 

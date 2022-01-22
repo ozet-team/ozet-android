@@ -19,6 +19,7 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
     override fun init() {
         binding.vm = viewModel
         viewModelCallback()
+        appbarOnClick()
         viewModel.setMilitary(args.military)
     }
 
@@ -30,10 +31,28 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
             backClick.observe(this@ZetMilitaryServiceFragment, Observer {
                 findNavController().popBackStack()
             })
+            showToast.observe(this@ZetMilitaryServiceFragment, Observer {
+                showToast(it)
+            })
 
         }
     }
+    private fun appbarOnClick() {
+        val token =
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDMxNzAwMjl9.AiU_nUBPmUXUVweYM_ESRrBCbZtWuyafg6H9gW_bJ5o"
+        binding.appbar.tvSubFirst().setOnClickListener {
+            // todo SharedPreferences 사용해야함
+            if (viewModel.isCreate.value == true){
+                viewModel.createMilitary(token)
+            }else{
+                viewModel.updateMilitary(token)
+            }
+        }
+        binding.appbar.tvSubSecond().setOnClickListener {
+            viewModel.deleteMilitary(token)
+        }
 
+    }
 
     // todo 하드코딩한거 이전 해야함
     private fun showBottomSheet(){

@@ -33,6 +33,8 @@
             app:layout_constraintLeft_toRightOf="@+id/tv_title"
             android:layout_marginLeft="20dp"
             android:textColor="@color/system_black"
+            android:maxLines="1"
+            android:ellipsize="end"
             />
 
 

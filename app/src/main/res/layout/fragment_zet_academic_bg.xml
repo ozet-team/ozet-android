@@ -23,7 +23,7 @@
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "학력"
             app:tv_appbar_sub_first = "저장"
-            app:tv_appbar_sub_second = "삭제"
+            tv_appbar_sub_second = "@{vm.secondText}"
             app:tv_appbar_sub_first_color = "@color/ozet"
             app:tv_appbar_sub_second_color = "@color/red"
             />
@@ -40,7 +40,7 @@
             android:layout_marginTop="30dp"
             app:tv_title = "학교명"
             app:et_input_hint = "학교명을 기재해주세요"
-            app:et_info_text="@={vm.academic.location}"
+            app:et_info_text="@={vm.academicModel.location}"
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
@@ -55,7 +55,7 @@
             android:layout_marginTop="30dp"
             app:tv_title = "학과명"
             app:et_input_hint = "학과명을 기재해주세요"
-            app:et_info_text="@={vm.academic.major}"
+            app:et_info_text="@={vm.academicModel.major}"
             />
 <!--   app:et_input_text = "@{vm.academic.major}"-->
         <androidx.appcompat.widget.SwitchCompat
@@ -92,7 +92,7 @@
             app:tv_title_name="재학 기간"
             android:paddingRight="3dp"
             app:date_mode ="1"
-            app:tv_date="@={vm.academic.joinAt}"
+            app:tv_date="@={vm.academicModel.joinAt}"
             />
 
         <TextView
@@ -121,7 +121,7 @@
             android:paddingLeft="3dp"
             app:tv_title_visibility = "false"
             app:date_mode ="1"
-            app:tv_date="@={vm.academic.quitAt}"
+            app:tv_date="@={vm.academicModel.quitAt}"
             />
 
 

@@ -20,6 +20,7 @@ class AddRecyclerView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private lateinit var addAdapter: AddAdapter
+    private var subBoolean = true
 
     private var binding = DataBindingUtil.inflate<CustomAddRecyclerviewBinding>(
         LayoutInflater.from(context),R.layout.custom_add_recyclerview,this,true
@@ -68,6 +69,7 @@ class AddRecyclerView @JvmOverloads constructor(
     private fun setTypeArray(typedArray: TypedArray){
         binding.tvTitle.text = typedArray.getString(R.styleable.add_recycler_ar_title)
         var sub = typedArray.getString(R.styleable.add_recycler_ar_sub_title)
+        subBoolean = typedArray.getBoolean(R.styleable.add_recycler_sub_visibility,true)
         when(sub){
             null -> binding.tvSub.visibility = View.GONE
             "" -> binding.tvSub.visibility = View.GONE
@@ -92,8 +94,14 @@ class AddRecyclerView @JvmOverloads constructor(
         if(list.size != 0){
             binding.apply {
                 rv.visibility = View.VISIBLE
-                tvSub.visibility = View.VISIBLE
                 btnAdd.visibility = View.GONE
+                if (subBoolean){
+                    tvSub.visibility = View.VISIBLE
+                }else{
+                    tvSub.visibility = View.GONE
+                }
+
+
             }
         }else{
             binding.apply {

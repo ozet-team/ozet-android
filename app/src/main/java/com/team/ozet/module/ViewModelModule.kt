@@ -25,10 +25,9 @@ val viewModelModule: Module = module {
     viewModel { JoinViewModel(get()) }
     viewModel { InfoInputViewModel() }
     viewModel { MypageViewModel() }
-    viewModel { ZetCareerViewModel() }
-    viewModel { ZetMainViewModel(get()) }
-    viewModel { ZetAcademicBGViewModel() }
-    viewModel { ZetCertificateViewModel() }
-    viewModel { ZetMilitaryServiceViewModel() }
-//    viewModel {  }
+    viewModel { ZetCareerViewModel(get()) }
+    viewModel { ZetMainViewModel(get(),get()) }
+    viewModel { ZetAcademicBGViewModel(get()) }
+    viewModel { ZetCertificateViewModel(get()) }
+    viewModel { ZetMilitaryServiceViewModel(get()) }
 }
