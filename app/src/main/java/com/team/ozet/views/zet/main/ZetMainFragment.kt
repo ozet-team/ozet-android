@@ -21,9 +21,9 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
         addRvCallback()
         // todo SharedPreferences token 으로 대체
         val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDMxNzAwMjl9.AiU_nUBPmUXUVweYM_ESRrBCbZtWuyafg6H9gW_bJ5o"
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
         viewModel.apply {
-            getResume(token)
+            getResume("9", token)
 //            getUser(token)
         }
 

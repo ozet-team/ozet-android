@@ -5,7 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface ResumeRepository {
-    fun getResume(token: String): Single<ResumeModel>
+    fun getResume(userId: String): Single<ResumeModel>
     fun postAcademicAdd(token: String,body:AcademicModel): Single<AcademicModel>
     fun patchAcademicUpdate(token: String,id:Int,body:AcademicModel): Single<AcademicModel>
     fun deleteAcademic(token: String,id:Int): Completable

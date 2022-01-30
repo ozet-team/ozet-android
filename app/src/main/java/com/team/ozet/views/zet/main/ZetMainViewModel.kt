@@ -35,10 +35,10 @@ class ZetMainViewModel(
     val resumeModel: LiveData<ResumeModel> get() = _resume
     val user:LiveData<UserModel> get() = _user
 
-    fun getResume(token: String) {
+    fun getResume(resumeId: String, token: String) {
 
         compositeDisposable.add(
-            resumeRepo.getResume(token)
+            resumeRepo.getResume(resumeId)
                 .zipWith(userRepo.getUser(token), BiFunction{resume,user ->
                     _resume.postValue(resume)
                     _user.postValue(user)

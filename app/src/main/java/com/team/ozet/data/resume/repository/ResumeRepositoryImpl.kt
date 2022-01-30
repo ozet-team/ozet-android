@@ -7,8 +7,8 @@ import io.reactivex.Single
 
 class ResumeRepositoryImpl (private val resumeApi: ResumeApi) : ResumeRepository{
 
-    override fun getResume(token: String): Single<ResumeModel> =
-        resumeApi.getResume(token)
+    override fun getResume(userId: String): Single<ResumeModel> =
+        resumeApi.getResume(userId)
 
     override fun postAcademicAdd(token: String, body: AcademicModel): Single<AcademicModel> =resumeApi.postAcademicAdd(token,body)
     override fun patchAcademicUpdate(token: String, id: Int, body: AcademicModel): Single<AcademicModel> =resumeApi.patchAcademicUpdate(token, id, body)

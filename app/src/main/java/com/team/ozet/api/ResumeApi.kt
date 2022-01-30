@@ -7,8 +7,8 @@ import retrofit2.http.*
 
 interface ResumeApi {
 
-    @GET("api/v1/member/user/me/resume")
-    fun getResume(@Header("authorization") token: String): Single<ResumeModel>
+    @GET("api/v1/member/user/{user_id}/resume")
+    fun getResume(@Path("user_id") userId: String): Single<ResumeModel>
 
     @GET("api/v1/member/user/me/resume/academics")
     fun getAcademic(@Header("authorization") token: String): Single<AcademicModel>
