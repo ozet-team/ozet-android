@@ -46,7 +46,7 @@ class JoinEditText @JvmOverloads constructor(
             binding.etBase.apply {
                 hint = typedArray.getString(R.styleable.join_edit_text_et_join_hint)
                 inputType =
-                    typedArray.getInt(R.styleable.default_edit_text_android_inputType, 0x00000001)
+                    typedArray.getInt(R.styleable.join_edit_text_android_inputType, 0x00000001)
             }
         }
     }
