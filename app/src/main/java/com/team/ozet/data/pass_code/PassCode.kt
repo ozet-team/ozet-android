@@ -10,6 +10,7 @@ data class PassCode(
     var phoneNumber: String,
     var passCode: String ="",
     var userId: String="",
+
     @SerializedName("requestedVerify")
     @Expose
     var requestedVerify:RequestedVerify? =null,
@@ -36,6 +37,9 @@ data class RequestedVerify(
 )
 @Entity(tableName = "user")
 data class User(
+    @SerializedName("id")
+    @Expose
+    var id: String = "",
     @SerializedName("username")
     @Expose
     var username: String = "",
@@ -48,6 +52,9 @@ data class User(
     @SerializedName("phoneNumber")
     @Expose
     var phoneNumber: String = "",
+    @SerializedName("isRegistration")
+    @Expose
+    var isRegistration: String = "",
 )
 
 @Entity(tableName = "token")

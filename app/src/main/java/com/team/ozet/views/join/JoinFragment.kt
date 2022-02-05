@@ -5,8 +5,12 @@ import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
+import com.team.ozet.data.pass_code.RequestedVerify
+import com.team.ozet.data.zet.ZetSimple
 import com.team.ozet.databinding.FragmentJoinBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -29,10 +33,41 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
     private fun callback() {
         with(viewModel) {
+//            requestedVerify.observe(this@JoinFragment, {
+//                //TODO timer
+//                it.requestedVerify?.let {
+////                    startAuthTime(it.expireAt)
+//                }
+//            })
             clickEvent.observe(this@JoinFragment, Observer {
-                binding.llAuth.visibility = View.VISIBLE
-                startAuthTime()
-                viewModel.aa()
+//                binding.llAuth.visibility = View.VISIBLE
+                val phoneNumber =
+                    binding.customPhone.getEditText().toString().toNationalPhoneNumber()
+                viewModel.requestedVerify.value?.requestedVerify.let {
+                    if (it == null) {
+                        viewModel.postPassCodeRequest(
+                            phoneNumber
+                        )
+//                        binding.ll_timer.visbility = View.VISIBLE
+                    } else {
+                        viewModel.postPassCode(
+                            phoneNumber,
+                            binding.customNumber.getEditText().toString()
+                        )
+                        findNavController().navigate(
+                            R.id.action_joinFragment_to_infoInputFragment,
+
+                            )
+                    }
+                }
+//                if (requestedVerify.value != null) {
+//                } else {
+//                    viewModel.postPassCode(
+//                        binding.customPhone.getEditText().toString(),
+//                        binding.customNumber.getEditText().toString()
+//                    )
+//                }
+
 //                if (isValidCellPhoneNumber(binding.incluePhone.etBase.text.toString())) {
 //                    //TODO 인증번호 조건 추가 시 if 조건 추가
 //                    val bundle =
@@ -47,18 +82,29 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     }
 
     // timerTask onDestroy 일떄 캔슬 해줘야함   재시작 로직 없음
-    private fun startAuthTime() {
+    private fun startAuthTime(expireAt: String) {
 
 
         var totalTime = 180L // 3분
+        var expireAtTime = expireAt.substring(0, expireAt.length - 4)
 
 //        // 시작 시간.
-//        val startTime = System.currentTimeMillis()
+        var start = System.currentTimeMillis()
 //        // 시간포맷을위한 포맷설정
-//        var dateFormat = SimpleDateFormat("mm:ss")
-//        var ti = dateFormat.format(Date(startTime))
-//        Log.i("SDFSD","run :  $ti")
-//        //클릭할때 받아올 시간
+
+        var old_format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm.ss")
+        old_format.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+
+
+        var dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm.ss")
+        var startTime = dateFormat.format(Date(start))
+
+        var oldTime: String = old_format.format(expireAtTime)
+        var newExpireAt: String = dateFormat.format(oldTime)
+//        var newEx = dateFormat.parse(expireAt)
+        Log.i("SDFSD", "run :  $startTime")
+        Log.i("SDFSD", "run :  $newExpireAt")
+        //클릭할때 받아올 시간
 //        val clickTime = System.currentTimeMillis()
 
         timer.schedule(timerTask {
@@ -122,4 +168,15 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         }
         return returnValue
     }
+
+    fun String.toNationalPhoneNumber(): String {
+        val phoneNumberUtil = PhoneNumberUtil.getInstance()
+        val locale = Locale.getDefault().country
+        val toNationalNum = phoneNumberUtil.parse(this, locale)
+        return phoneNumberUtil.format(
+            toNationalNum,
+            PhoneNumberUtil.PhoneNumberFormat.E164
+        )
+    }
+
 }
