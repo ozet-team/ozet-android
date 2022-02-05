@@ -40,7 +40,7 @@
             />
 
         <com.team.ozet.views.custom_view.DefaultEditText
-            android:id="@+id/cm_default_shop_name"
+            android:id="@+id/cm_default_workplace"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -49,7 +49,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="30dp"
-            app:tv_title = "샵 이름"
             app:et_input_hint = "근무하신 샵 이름을 적어주세요"
             app:et_info_text="@={vm.careerModel.company}"
             />
@@ -112,7 +111,7 @@
             android:textColor="@drawable/switch_text_color"
             android:thumb="@drawable/selector_switch_thumb"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cm_default_shop_name"
+            app:layout_constraintTop_toBottomOf="@+id/cm_default_workplace"
             app:switchMinWidth="40dp"
             app:switchPadding="4dp"
             app:track="@drawable/selector_switch_track" />

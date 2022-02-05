@@ -17,6 +17,7 @@ class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.lay
         viewModelCallback()
         appbarOnClick()
         viewModel.setCertificateData(args.certificate)
+        setTextViewHtml(binding.cmCertificateName.tvTitle(),getString(R.string.zet_certificate_name))
     }
 
     private fun viewModelCallback() {

@@ -38,7 +38,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="30dp"
-            app:tv_title = "학교명"
             app:et_input_hint = "학교명을 기재해주세요"
             app:et_info_text="@={vm.academicModel.location}"
             />

@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/zetSelfIntroFragment"
-        android:name="com.team.ozet.views.zet.self_intro.ZetSelfIntroFragment"
+        android:name="com.team.ozet.views.zet.introduce.ZetIntroduceFragment"
         android:label="ZetSelfIntroFragment" />
     <fragment
         android:id="@+id/zetSNSFragment"

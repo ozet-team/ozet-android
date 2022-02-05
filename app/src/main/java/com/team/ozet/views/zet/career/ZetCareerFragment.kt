@@ -1,7 +1,10 @@
 package com.team.ozet.views.zet.career
 
 import android.os.Build
+import android.text.Html
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,6 +25,7 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
         checkWorking()
         appbarOnClick()
         viewModel.setCareerData(args.career)
+        setTextViewHtml(binding.cmDefaultWorkplace.tvTitle(),getString(R.string.zet_career_workplace))
     }
 
     private fun viewModelCallback() {
@@ -39,9 +43,12 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
         }
     }
 
+
+
     private fun appbarOnClick() {
         val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
+                    ".fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
         binding.appbar.tvSubFirst().setOnClickListener {
             // todo SharedPreferences 사용해야함
             if (viewModel.isCreate.value == true){

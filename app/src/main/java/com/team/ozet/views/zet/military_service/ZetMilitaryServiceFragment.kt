@@ -21,6 +21,7 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
         viewModelCallback()
         appbarOnClick()
         viewModel.setMilitary(args.military)
+        setTextViewHtml(binding.tvMilitary,getString(R.string.zet_military))
     }
 
     private fun viewModelCallback() {

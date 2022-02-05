@@ -2,10 +2,12 @@ package com.team.ozet.base
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -47,6 +49,12 @@ abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes val layoutId: Int) :
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
 
 
-
+    protected fun setTextViewHtml(view: TextView, source:String) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            view.text = Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            view.text = Html.fromHtml(source)
+        }
+    }
 
 }

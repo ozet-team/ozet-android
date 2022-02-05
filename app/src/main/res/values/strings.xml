@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">OZET</string>
+    <string name="zet_career_workplace"><![CDATA[근무지명<font color=\'#5d30ff\'>*</font>]]></string>
+    <string name="zet_certificate_name"><![CDATA[자격종목<font color=\'#5d30ff\'>*</font>]]></string>
+    <string name="zet_academic_name"><![CDATA[학교명<font color=\'#5d30ff\'>*</font>]]></string>
+    <string name="zet_military"><![CDATA[병역구분<font color=\'#5d30ff\'>*</font>]]></string>
+    <string name="zet_address"><![CDATA[주소<font color=\'#5d30ff\'>*</font>]]></string>
+    <string name="zet_introduce_workplace"><![CDATA[자기소개<font color=\'#5d30ff\'>*</font>]]></string>
 
 </resources>

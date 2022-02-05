@@ -1,4 +1,4 @@
-package com.team.ozet.views.zet.self_intro
+package com.team.ozet.views.zet.introduce
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.team.ozet.R
 
-class ZetSelfIntroFragment : Fragment() {
+class ZetIntroduceFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ZetSelfIntroFragment()
+        fun newInstance() = ZetIntroduceFragment()
     }
 
-    private lateinit var viewModel: ZetSelfIntroViewModel
+    private lateinit var viewModel: ZetIntroduceViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_zet_self_intro, container, false)
+        return inflater.inflate(R.layout.fragment_zet_introduce, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ZetSelfIntroViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ZetIntroduceViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

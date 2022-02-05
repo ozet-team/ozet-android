@@ -42,7 +42,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:et_input_hint="주소를 입력해주세요"
-            app:tv_title = "주소"
             />
         <com.team.ozet.views.custom_view.DefaultEditText
             android:id="@+id/de_address_detail"

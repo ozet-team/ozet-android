@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
@@ -86,16 +87,8 @@ class DefaultEditText @JvmOverloads constructor(
         }
 
 
-    public fun setEditText(text:String){
-        binding.etInput.setText(text)
-    }
-
-    public fun getEditText(): Editable? {
-        return binding.etInput.text
-    }
-
-    public fun setText(text:String){
-        binding.tvTitle.text = text
+    public fun tvTitle(): TextView {
+        return binding.tvTitle
     }
 
     object DefaultEditAdapter{

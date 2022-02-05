@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/appbar"
             android:layout_marginTop="30dp"
-            android:text="병역구분"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="20dp"

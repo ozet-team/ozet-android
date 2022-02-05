@@ -20,7 +20,7 @@ class ZetAcademicBGFragment :
         checkWorking()
         viewModelCallBak()
         viewModel.setAcademicData(args.academic)
-
+        setTextViewHtml(binding.cmAcademicName.tvTitle(),getString(R.string.zet_academic_name))
     }
 
     private fun viewModelCallBak() {
