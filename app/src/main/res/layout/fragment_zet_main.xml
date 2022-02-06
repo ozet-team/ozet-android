@@ -81,7 +81,7 @@
             android:layout_marginTop="14dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            info_content="@{vm.user.name}"
+            info_content="@{vm.userModel.name}"
             />
 
         <com.team.ozet.views.custom_view.InfoTextView
@@ -92,7 +92,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:info_title ="휴대전화번호"
-            info_content="@{vm.user.phoneNumber}"
+            info_content="@{vm.userModel.phoneNumber}"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -106,7 +106,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:info_title ="닉네임"
-            info_content="@{vm.user.username}"
+            info_content="@{vm.userModel.username}"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -120,7 +120,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:info_title ="생년월일"
-            info_content="@{vm.user.birthday}"
+            info_content="@{vm.userModel.birthday}"
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"

@@ -6,12 +6,12 @@ import java.io.Serializable
 @Keep
 data class MilitaryModel(
     val id: Int,
-    var exemptionReason: String,
-    var joinAt: String?,
-    var quitAt: String?,
-    var service: String
-): Serializable {
-    constructor(id:Int):this(id,"","","","")
-    constructor():this(0,"","","","")
+    var exemptionReason: String = "",
+    var joinAt: String = "",
+    var quitAt: String = "",
+    var service: String = ""
+) : Serializable {
+    constructor(id: Int) : this(id, "", "", "", "")
+    constructor() : this(0, "", "", "", "")
 
 }

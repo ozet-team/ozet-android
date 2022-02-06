@@ -85,7 +85,6 @@
         android:id="@+id/zetMilitaryServiceFragment"
         android:name="com.team.ozet.views.zet.military_service.ZetMilitaryServiceFragment"
         android:label="ZetMilitaryServiceFragment" >
-
         <argument
             android:name="military"
             app:argType="com.team.ozet.data.resume.MilitaryModel"
@@ -94,7 +93,12 @@
     <fragment
         android:id="@+id/zetAddressFragment"
         android:name="com.team.ozet.views.zet.address.ZetAddressFragment"
-        android:label="ZetAddressFragment" />
+        android:label="ZetAddressFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.team.ozet.data.user.UserModel"
+            />
+    </fragment>
     <fragment
         android:id="@+id/zetAcademicBGFragment"
         android:name="com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragment"
@@ -122,8 +126,8 @@
             android:id="@+id/action_zetMainFragment_to_zetCareerFragment"
             app:destination="@id/zetCareerFragment" />
         <action
-            android:id="@+id/action_zetMainFragment_to_zetSelfIntroFragment"
-            app:destination="@id/zetSelfIntroFragment" />
+            android:id="@+id/action_zetMainFragment_to_zetIntroduceFragment"
+            app:destination="@id/zetIntroduceFragment" />
         <action
             android:id="@+id/action_zetMainFragment_to_zetSNSFragment"
             app:destination="@id/zetSNSFragment" />
@@ -132,9 +136,14 @@
             app:destination="@id/zetMilitaryServiceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/zetSelfIntroFragment"
+        android:id="@+id/zetIntroduceFragment"
         android:name="com.team.ozet.views.zet.introduce.ZetIntroduceFragment"
-        android:label="ZetSelfIntroFragment" />
+        android:label="ZetIntroduceFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.team.ozet.data.user.UserModel"
+            />
+    </fragment>
     <fragment
         android:id="@+id/zetSNSFragment"
         android:name="com.team.ozet.views.zet.sns.ZetSNSFragment"

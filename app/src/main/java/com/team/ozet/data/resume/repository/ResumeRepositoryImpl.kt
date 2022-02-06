@@ -22,9 +22,7 @@ class ResumeRepositoryImpl (private val resumeApi: ResumeApi) : ResumeRepository
     override fun patchCertificateUpdate(token: String, id: Int, body: CertificateModel): Single<CertificateModel> =resumeApi.patchCertificateUpdate(token, id, body)
     override fun deleteCertificate(token: String, id: Int): Completable = resumeApi.deleteCertificateDelete(token, id)
 
-    override fun postMilitaryAdd(token: String, body: MilitaryModel): Single<MilitaryModel> =resumeApi.postMilitaryAdd(token,body)
-    override fun patchMilitaryUpdate(token: String, id: Int, body: MilitaryModel): Single<MilitaryModel> =resumeApi.patchMilitaryUpdate(token, id, body)
-    override fun deleteMilitary(token: String, id: Int): Completable = resumeApi.deleteMilitaryDelete(token, id)
+    override fun patchMilitaryUpdate(token: String, body: MilitaryModel): Single<MilitaryModel> =resumeApi.patchMilitaryUpdate(token, body)
 
 
 }

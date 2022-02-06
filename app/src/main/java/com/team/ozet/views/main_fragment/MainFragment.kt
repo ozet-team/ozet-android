@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentMainBinding
+import com.team.ozet.views.custom_view.CustomToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -48,7 +49,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
             goZet.observe(this@MainFragment, Observer {
                 findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
-
             })
 
 

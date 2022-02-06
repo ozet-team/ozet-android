@@ -120,7 +120,7 @@
             android:paddingLeft="3dp"
             app:tv_title_visibility = "false"
             app:tv_date_hint = "YYYY.MM.DD"
-            app:tv_date="@={vm.militaryModel.joinAt}"
+            app:tv_date="@={vm.militaryModel.quitAt}"
             app:date_mode ="1"
             android:visibility="@{vm.finishedVisible ?View.VISIBLE:View.GONE }"
             />

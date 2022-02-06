@@ -6,7 +6,7 @@ import androidx.navigation.fragment.navArgs
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetAcademicBgBinding
-import com.team.ozet.utils.PreferenceManager
+import com.team.ozet.views.custom_view.CustomToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZetAcademicBGFragment :
@@ -20,16 +20,14 @@ class ZetAcademicBGFragment :
         checkWorking()
         viewModelCallBak()
         viewModel.setAcademicData(args.academic)
-        setTextViewHtml(binding.cmAcademicName.tvTitle(),getString(R.string.zet_academic_name))
+        setTextViewHtml(binding.cmAcademicName.tvTitle(), getString(R.string.zet_academic_name))
     }
 
     private fun viewModelCallBak() {
         with(viewModel){
-            backClick.observe(this@ZetAcademicBGFragment, Observer {
-                findNavController().popBackStack()
-            })
             showToast.observe(this@ZetAcademicBGFragment, Observer {
-                showToast(it)
+                val y = viewLocationOnScreen(binding.appbar)
+                CustomToast.createToast(thisContext,it,y).show()
             })
         }
     }

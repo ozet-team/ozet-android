@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/Text.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:text="저장되었습니다."
+            android:textColor="@color/ozet"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="@drawable/bg_border_radius"
+            android:backgroundTint="@color/system_gray01"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

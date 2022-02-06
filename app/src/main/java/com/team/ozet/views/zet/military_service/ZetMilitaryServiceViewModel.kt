@@ -38,12 +38,7 @@ class ZetMilitaryServiceViewModel(private val resumeRepo: ResumeRepository) : Ba
 
     fun setMilitary(militaryModel:MilitaryModel){
         _military.value = militaryModel
-        isCreate(militaryModel.id == 0)
-        if (militaryModel.id == 0){
-            setSecondText("")
-        }else{
-            setSecondText("삭제")
-        }
+        isCreate(militaryModel.id == 1)
 
         when(militaryModel.service){
             "군필" -> {
@@ -69,48 +64,48 @@ class ZetMilitaryServiceViewModel(private val resumeRepo: ResumeRepository) : Ba
 
     }
 
-    fun createMilitary(token: String){
-        var body = militaryModel.value
-
-        if (body != null) {
-
-            /**
-             * date format 은 일까지 있어야함
-             */
-            if (body.joinAt.equals("YYYY.MM")  ){
-                body.joinAt = null
-            }else{
-                body.joinAt = "${body!!.joinAt}-01"
-            }
-            if (body.quitAt.equals("YYYY.MM") ){
-                body.quitAt = null
-            }else{
-                body.quitAt = "${body!!.quitAt}-01"
-            }
-
-            compositeDisposable.add(
-                resumeRepo.postMilitaryAdd(token,  body)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeBy(
-                        onSuccess = {
-                            onShowToast("저장 되었습니다.")
-                            onBackClick()
-                        },
-                        onError = {
-                            Log.e("Error", "$it")
-                        }
-                    )
-            )
-        }
-
-    }
-
     fun updateMilitary(token: String) {
-        var body = militaryModel.value
-        if (body?.id != null) {
+        var body:MilitaryModel = militaryModel.value!!
+
+        // todo map 으로 관리 하는게 좋을듯
+        when(body.service){
+            "군필" -> {
+                body.service = "FINISHED"
+            }
+            "미필" -> {
+                body.service = "UNFINISHED"
+            }
+
+            "면제" -> {
+                body.service = "EXEMPTION"
+            }
+
+            "해당없음" -> {
+                body.service = "NA"
+            }
+            "" ->{
+                Log.i("AAA","값을 선택해주세요")
+                return
+            }
+
+
+        }
+
+        /**
+         * date format 은 일까지 있어야함
+         */
+        if (body.joinAt.equals("YYYY.MM") ||body.joinAt.equals("재학중") ){
+            body.joinAt = ""
+        }else{
+            body.joinAt = "${body!!.joinAt}-01"
+        }
+        if (body.quitAt.equals("YYYY.MM") ||body.quitAt.equals("재학중") ){
+            body.quitAt = ""
+        }else{
+            body.quitAt = "${body!!.quitAt}-01"
+        }
             compositeDisposable.add(
-                resumeRepo.patchMilitaryUpdate(token, body.id, body)
+                resumeRepo.patchMilitaryUpdate(token, body)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeBy(
@@ -123,27 +118,6 @@ class ZetMilitaryServiceViewModel(private val resumeRepo: ResumeRepository) : Ba
                         }
                     )
             )
-        }
-    }
-
-    fun deleteMilitary(token: String) {
-        var id = militaryModel.value?.id
-        if (id != null) {
-            compositeDisposable.add(
-                resumeRepo.deleteMilitary(token, id)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeBy(
-                        onComplete = {
-                            onShowToast("삭제 되었습니다.")
-                            onBackClick()
-                        },
-                        onError = {
-                            Log.e("Error", "$it")
-                        }
-                    )
-            )
-        }
 
     }
 

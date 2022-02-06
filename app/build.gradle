@@ -116,4 +116,6 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    // coil image
+    implementation("io.coil-kt:coil:1.4.0")
 }

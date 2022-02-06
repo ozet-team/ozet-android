@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.team.ozet.views.zet.introduce.ZetIntroduceViewModel" />
 
     </data>
 
@@ -32,7 +34,7 @@
 
 
         <com.team.ozet.views.custom_view.DefaultEditText
-            android:id="@+id/cm_certificate_name"
+            android:id="@+id/cm_default_introduce"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -45,6 +47,7 @@
             app:et_input_hint="자기소개를 입력해주세요"
             app:et_single_line="false"
             app:tv_title = "자기소개"
+            app:et_info_text="@={vm.userModel.introduce}"
             />
 
 

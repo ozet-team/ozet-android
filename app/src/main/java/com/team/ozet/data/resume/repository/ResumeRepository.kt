@@ -18,8 +18,6 @@ interface ResumeRepository {
     fun patchCertificateUpdate(token: String,id:Int,body:CertificateModel): Single<CertificateModel>
     fun deleteCertificate(token: String,id:Int): Completable
 
-    fun postMilitaryAdd(token: String,body: MilitaryModel): Single<MilitaryModel>
-    fun patchMilitaryUpdate(token: String,id:Int,body:MilitaryModel): Single<MilitaryModel>
-    fun deleteMilitary(token: String,id:Int): Completable
+    fun patchMilitaryUpdate(token: String,body:MilitaryModel): Single<MilitaryModel>
 
 }

@@ -33,7 +33,7 @@ class ZetMainViewModel(
     val carSimpleList: LiveData<List<ZetSimple>> get() = _carSimpleList
     val cerSimpleList: LiveData<List<ZetSimple>> get() = _cerSimpleList
     val resumeModel: LiveData<ResumeModel> get() = _resume
-    val user:LiveData<UserModel> get() = _user
+    val userModel:LiveData<UserModel> get() = _user
 
     fun getResume(resumeId: String, token: String) {
 
@@ -57,21 +57,7 @@ class ZetMainViewModel(
 
     }
 
-    fun getUser(token: String){
-        compositeDisposable.add(
-            resumeRepo.getResume(token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onSuccess = {
-                        _resume.value = it
-                    },
-                    onError = {
-                        Log.e("Error", "$it")
-                    }
-                )
-        )
-    }
+
 
     // todo binding adapter 적용해야함
     fun setList() {

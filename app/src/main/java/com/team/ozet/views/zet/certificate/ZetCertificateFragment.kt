@@ -6,6 +6,7 @@ import androidx.navigation.fragment.navArgs
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetCertificateBinding
+import com.team.ozet.views.custom_view.CustomToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.layout.fragment_zet_certificate) {
@@ -27,7 +28,8 @@ class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.lay
                 findNavController().popBackStack()
             })
             showToast.observe(this@ZetCertificateFragment, Observer {
-                showToast(it)
+                val y = viewLocationOnScreen(binding.appbar)
+                CustomToast.createToast(thisContext,it,y).show()
             })
         }
     }

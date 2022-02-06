@@ -57,4 +57,11 @@ abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes val layoutId: Int) :
         }
     }
 
+    // view y축 위치
+    fun viewLocationOnScreen(view:View): Int {
+        val coords = intArrayOf(0, 0)
+        view.getLocationOnScreen(coords)
+        return coords[1]
+    }
+
 }
