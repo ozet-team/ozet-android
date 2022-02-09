@@ -8,7 +8,8 @@ import com.team.ozet.R
 import com.team.ozet.databinding.ItemNoticeBinding
 
 class NoticeAdapter (
-        private val context:Context
+        private val context:Context,
+        private val itemClick: () -> Unit,
         ): RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
     private val items:ArrayList<String> = ArrayList()
 
@@ -30,6 +31,9 @@ class NoticeAdapter (
                             // test 용
                             ivBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_active_))
 
+                        }
+                        cl.setOnClickListener {
+                            itemClick()
                         }
                     }
 

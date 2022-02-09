@@ -1,5 +1,6 @@
 package com.team.ozet.views.notice_list
 
+import android.content.Context
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,10 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
+import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebView.setWebContentsDebuggingEnabled
 import android.webkit.WebViewClient
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
@@ -22,35 +28,42 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.fragment_notice_list) {
 
-    private val viewModel:NoticeListViewModel by viewModel()
+    private val viewModel: NoticeListViewModel by viewModel()
 
     val url = "https://hybrid.ozet.app/#/list/all?_si=1"
 
-    val naver = "https://www.naver.com"
 
     override fun init() {
 
         initWebView(url)
         webViewChange()
         callback()
+        backPressed()
         // todo 나중에 상태바 설정 다시
         activity?.actionBar?.hide()
+
+        binding.btn.setOnClickListener {
+            val token =
+                "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk "
+            binding.wv.loadUrl("javascript:window.setAccessToken(\"" + token + "\")")
+        }
+
 
     }
 
     private fun callback() {
-            with(viewModel){
-                go.observe(this@NoticeListFragment, Observer {
-                    Log.i("AAA",binding.etUrl.text.toString())
-                    binding.wv.loadUrl(binding.etUrl.text.toString())
-                })
-            }
+        with(viewModel) {
+            go.observe(this@NoticeListFragment, Observer {
+                Log.i("AAA", binding.etUrl.text.toString())
+                binding.wv.loadUrl(binding.etUrl.text.toString())
+            })
+        }
 
     }
 
 
-    private fun webViewChange(){
-        binding.etUrl.setOnEditorActionListener{ textView, action, event ->
+    private fun webViewChange() {
+        binding.etUrl.setOnEditorActionListener { textView, action, event ->
             var handled = false
             if (action == EditorInfo.IME_ACTION_DONE) {
                 binding.wv.loadUrl(textView.text.toString())
@@ -62,16 +75,59 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
     }
 
 
-    private fun initWebView(url:String) {
+    private fun initWebView(url: String) {
 
-        binding.wv.apply{
+        binding.wv.apply {
+            addJavascriptInterface(
+                WebAppInterface(
+                    thisContext,
+                    findNavController(),
+                    binding.wv
+                ), "webviewBrdige"
+            )
             setWebViewClient(WebViewClient())// 클릭시 새창 안뜨게
             settings.javaScriptEnabled = true// 웹페이지 자바스클비트 허용 여부
             isHorizontalScrollBarEnabled = false
             isVerticalScrollBarEnabled = false
             loadUrl(url)
             setWebContentsDebuggingEnabled(true);
-
         }
     }
+
+    private fun backPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    binding.wv.loadUrl("javascript:window.backEvent()")
+                }
+
+            })
+    }
+
+    class WebAppInterface(
+        private val context: Context,
+        nav: NavController,
+        wv: WebView,
+    ) {
+        val navController = nav
+        var webView = wv
+
+        @JavascriptInterface
+        fun token() {
+            val token =
+                "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+            webView.loadUrl("javascript:window.setAccessToken(\"" + token + "\")")
+        }
+
+        @JavascriptInterface
+        fun login() {
+            navController.navigate(R.id.action_mainFragment_to_joinFragment)
+        }
+
+        @JavascriptInterface
+        fun closeWebView() {
+            navController.popBackStack()
+        }
+    }
+
 }
