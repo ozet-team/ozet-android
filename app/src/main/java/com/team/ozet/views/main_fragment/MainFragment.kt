@@ -58,7 +58,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private fun initAdapter() {
         viewModel.setNoticeList()
 
-        noticeAdapter = NoticeAdapter(thisContext)
+        noticeAdapter = NoticeAdapter(thisContext,itemClick = {
+            findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+        })
 
         binding.rvNotice.apply {
             layoutManager = LinearLayoutManager(

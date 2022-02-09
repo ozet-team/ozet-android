@@ -33,7 +33,7 @@
         android:name="com.team.ozet.views.notice_list.NoticeListFragment"
         android:label="NoticeListFragment" >
         <argument
-            android:name="name"
+            android:name="url"
             app:argType="string"
             />
     </fragment>
