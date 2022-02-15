@@ -6,27 +6,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.team.ozet.R
+import com.team.ozet.base.BaseFragment
+import com.team.ozet.databinding.FragmentJoinBinding
+import com.team.ozet.databinding.FragmentOnbordingBinding
+import com.team.ozet.views.info_input.InfoInputViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OnbordingFragment : Fragment() {
+class OnbordingFragment : BaseFragment<FragmentOnbordingBinding>(R.layout.fragment_onbording) {
 
-    companion object {
-        fun newInstance() = OnbordingFragment()
+    private val viewModel: OnbordingViewModel by viewModel()
+
+    override fun init() {
+        binding.vm = viewModel
+        callback()
+        aa()
     }
 
-    private lateinit var viewModel: OnbordingViewModel
+    private fun callback() {
+        with(viewModel) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_onbording, container, false)
+        }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OnbordingViewModel::class.java)
-        // TODO: Use the ViewModel
+    fun aa(){
+        val arg = requireArguments()
+        val phonNumber = arg.getString("userPhonNumber")
+//        binding.incluePhone.etBase.text = phonNumber
     }
 
 }
