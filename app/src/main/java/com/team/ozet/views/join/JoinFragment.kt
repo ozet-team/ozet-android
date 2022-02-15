@@ -1,8 +1,10 @@
 package com.team.ozet.views.join
 
 import android.graphics.Color
+import android.os.Build
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,9 @@ import com.team.ozet.data.zet.ZetSimple
 import com.team.ozet.databinding.FragmentJoinBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.regex.Matcher
@@ -40,11 +45,10 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //                }
 //            })
             clickEvent.observe(this@JoinFragment, Observer {
-//                binding.llAuth.visibility = View.VISIBLE
+                startAuthTime("2022-02-15T22:38:01.612072")
                 val phoneNumber =
-                    binding.customPhone.getEditText().toString().toNationalPhoneNumber()
+                    binding.customPhone?.getEditText().toString()?.toNationalPhoneNumber()
                 viewModel.requestedVerify.value?.requestedVerify?.let {
-                    startAuthTime(it.expireAt)
                     if (it == null) {
                         viewModel.postPassCodeRequest(
                             phoneNumber
@@ -81,15 +85,18 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     }
 
     // timerTask onDestroy 일떄 캔슬 해줘야함   재시작 로직 없음
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun startAuthTime(expireAt: String) {
 
-
-        var totalTime = 180L // 3분
         var expireAtTime = expireAt.substring(0, expireAt.length - 4)
 
+        var convertTime = LocalDateTime.parse(expireAtTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
 //        // 시작 시간.
         var start = System.currentTimeMillis()
 //        // 시간포맷을위한 포맷설정
+        var now = LocalDateTime.parse(start.toString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+
+        val compareTime = ChronoUnit.MINUTES.between(now, convertTime)
 
         var old_format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm.ss")
         old_format.timeZone = TimeZone.getTimeZone("Asia/Seoul")
@@ -112,23 +119,23 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
 //                    val time = (startTime - clickTime) / 1000
 
-                    totalTime--
-
-                    var minute = TimeUnit.SECONDS.toMinutes(totalTime) - TimeUnit.SECONDS.toHours(
-                        totalTime
-                    )
-                    var second = TimeUnit.SECONDS.toSeconds(totalTime) - TimeUnit.SECONDS.toMinutes(
-                        totalTime
-                    ) * 60
-                    // text 연결
-//                    Log.i("AAA", "run $minute 분 $second")
-                    var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
-                    binding.tvTimer.text = strTime
-                    // 0초일때 timer task 캔슬
-                    if (totalTime == 0L) {
-                        this.cancel()
-                        Log.i("AAA", "cancel")
-                    }
+//                    totalTime--
+//
+//                    var minute = TimeUnit.SECONDS.toMinutes(totalTime) - TimeUnit.SECONDS.toHours(
+//                        totalTime
+//                    )
+//                    var second = TimeUnit.SECONDS.toSeconds(totalTime) - TimeUnit.SECONDS.toMinutes(
+//                        totalTime
+//                    ) * 60
+//                    // text 연결
+////                    Log.i("AAA", "run $minute 분 $second")
+//                    var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
+//                    binding.tvTimer.text = strTime
+//                    // 0초일때 timer task 캔슬
+//                    if (totalTime == 0L) {
+//                        this.cancel()
+//                        Log.i("AAA", "cancel")
+//                    }
                 }
             }
         }, 0, 1000)
@@ -172,6 +179,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         val phoneNumberUtil = PhoneNumberUtil.getInstance()
         val locale = Locale.getDefault().country
         val toNationalNum = phoneNumberUtil.parse(this, locale)
+
         return phoneNumberUtil.format(
             toNationalNum,
             PhoneNumberUtil.PhoneNumberFormat.E164
