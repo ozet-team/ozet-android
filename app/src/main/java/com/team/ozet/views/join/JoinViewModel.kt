@@ -42,7 +42,7 @@ class JoinViewModel(private val repository: PassCodeRepository) : BaseViewModel(
                 )
         )
     }
-    //TODO 희락오빠한테질문 : 서버 500
+
     fun postPassCode(phoneNumber: String, passCode: String) {
         val passCode = PassCode(phoneNumber, passCode)
         compositeDisposable.add(

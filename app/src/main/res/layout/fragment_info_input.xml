@@ -8,66 +8,82 @@
             name="vm"
             type="com.team.ozet.views.info_input.InfoInputViewModel"/>
     </data>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <include
+            android:id="@+id/include2"
+            layout="@layout/back_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                layout="@layout/back_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/include2"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circle_iv"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                app:srcCompat="@drawable/but"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="30dp"
                 android:src="@color/system_gray01"
-                android:layout_gravity="center"
-                />
+                app:srcCompat="@drawable/but" />
 
             <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:tv_title = "이름"
-                app:et_input_hint = "이름을 입력해주세요"
                 android:maxLength="11"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:et_input_hint="이름을 입력해주세요"
+                app:tv_title="이름" />
 
             <com.team.ozet.views.custom_view.DefaultEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
-                app:tv_title = "휴대전화번호"
                 android:maxLength="11"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:tv_title="휴대전화번호" />
+
+            <com.team.ozet.views.custom_view.DefaultEditText
+                android:id="@+id/et_nikname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLength="11"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="16sp"
+                app:et_input_hint="닉네임을 입력해주세요"
+                app:tv_title="닉네임"
+                android:visibility="gone"/>
+
+            <com.team.ozet.views.custom_view.DefaultEditText
+                android:id="@+id/et_birth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLength="11"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="16sp"
+                app:et_input_hint=""
+                app:tv_title="생년월일"
+                android:visibility="gone" />
+
 
         </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btn_next"
@@ -85,8 +101,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>>
 </layout>

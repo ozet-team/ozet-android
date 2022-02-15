@@ -36,19 +36,19 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //            requestedVerify.observe(this@JoinFragment, {
 //                //TODO timer
 //                it.requestedVerify?.let {
-////                    startAuthTime(it.expireAt)
+//                    startAuthTime(it.expireAt)
 //                }
 //            })
             clickEvent.observe(this@JoinFragment, Observer {
 //                binding.llAuth.visibility = View.VISIBLE
                 val phoneNumber =
                     binding.customPhone.getEditText().toString().toNationalPhoneNumber()
-                viewModel.requestedVerify.value?.requestedVerify.let {
+                viewModel.requestedVerify.value?.requestedVerify?.let {
+                    startAuthTime(it.expireAt)
                     if (it == null) {
                         viewModel.postPassCodeRequest(
                             phoneNumber
                         )
-//                        binding.ll_timer.visbility = View.VISIBLE
                     } else {
                         viewModel.postPassCode(
                             phoneNumber,
@@ -56,7 +56,6 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
                         )
                         findNavController().navigate(
                             R.id.action_joinFragment_to_infoInputFragment,
-
                             )
                     }
                 }
