@@ -45,7 +45,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //                }
 //            })
             clickEvent.observe(this@JoinFragment, Observer {
-                startAuthTime("2022-02-15T22:38:01.612072")
+//                startAuthTime("2022-02-15T22:38:01.612072")
                 val phoneNumber =
                     binding.customPhone?.getEditText().toString()?.toNationalPhoneNumber()
                 viewModel.requestedVerify.value?.requestedVerify?.let {
