@@ -123,5 +123,5 @@ dependencies {
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.6'
 
     //slide view
-    implementation 'com.github.AppIntro:AppIntro:6.2.0'
+//    implementation 'com.github.AppIntro:AppIntro:6.2.0'
 }
