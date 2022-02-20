@@ -6,6 +6,7 @@ import androidx.navigation.fragment.navArgs
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetCertificateBinding
+import com.team.ozet.utils.Test
 import com.team.ozet.views.custom_view.CustomToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,19 +36,18 @@ class ZetCertificateFragment : BaseFragment<FragmentZetCertificateBinding>(R.lay
     }
 
     private fun appbarOnClick() {
-        val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+
         binding.appbar.tvSubFirst().setOnClickListener {
             // todo SharedPreferences 사용해야함
 
             if (viewModel.isCreate.value == true){
-                viewModel.createCertificate(token)
+                viewModel.createCertificate(Test.testToken)
             }else{
-                viewModel.updateCertificate(token)
+                viewModel.updateCertificate(Test.testToken)
             }
         }
         binding.appbar.tvSubSecond().setOnClickListener {
-            viewModel.deleteCertificate(token)
+            viewModel.deleteCertificate(Test.testToken)
         }
 
     }

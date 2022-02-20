@@ -27,7 +27,6 @@ val apiModule:Module = module {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(ResumeApi::class.java)
-
     }
     single {
         Retrofit.Builder()
@@ -36,6 +35,13 @@ val apiModule:Module = module {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(UserApi::class.java)
-
+    }
+    single {
+        Retrofit.Builder()
+            .baseUrl(ApiClient.URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+            .create(AnnouncementApi::class.java)
     }
 }

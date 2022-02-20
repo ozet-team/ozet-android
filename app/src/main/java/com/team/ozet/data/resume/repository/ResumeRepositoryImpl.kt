@@ -1,4 +1,4 @@
-package com.team.ozet.data.resume.repository
+package com.team.ozet.data.resume.remote
 
 import com.team.ozet.api.ResumeApi
 import com.team.ozet.data.resume.*

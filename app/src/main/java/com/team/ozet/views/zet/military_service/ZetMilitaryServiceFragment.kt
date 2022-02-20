@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.team.ozet.utils.Military
+import com.team.ozet.utils.Test
 import com.team.ozet.views.custom_view.CustomToast
 import okhttp3.internal.userAgent
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,11 +44,10 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
         }
     }
     private fun appbarOnClick() {
-        val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+
         binding.appbar.tvSubFirst().setOnClickListener {
             // todo SharedPreferences 사용해야함
-            viewModel.updateMilitary(token)
+            viewModel.updateMilitary(Test.testToken)
         }
 
     }
