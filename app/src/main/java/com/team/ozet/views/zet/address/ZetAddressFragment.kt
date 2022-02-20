@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetAddressBinding
+import com.team.ozet.utils.Test
 import com.team.ozet.views.custom_view.CustomToast
 import com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragmentArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,12 +39,11 @@ class ZetAddressFragment : BaseFragment<FragmentZetAddressBinding>(R.layout.frag
     }
 
     private fun appbarOnClick() {
-        val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+
         binding.appbar.tvSubFirst().setOnClickListener {
             // todo SharedPreferences 사용해야함
 
-            viewModel.userUpdate(token)
+            viewModel.userUpdate(Test.testToken)
 
         }
 

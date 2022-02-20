@@ -24,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentNoticeListBinding
+import com.team.ozet.utils.Test
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.fragment_notice_list) {
@@ -43,9 +44,8 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
         activity?.actionBar?.hide()
 
         binding.btn.setOnClickListener {
-            val token =
-                "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk "
-            binding.wv.loadUrl("javascript:window.setAccessToken(\"" + token + "\")")
+
+            binding.wv.loadUrl("javascript:window.setAccessToken(\"" + Test.testToken + "\")")
         }
 
 
@@ -114,9 +114,8 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
 
         @JavascriptInterface
         fun token() {
-            val token =
-                "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
-            webView.loadUrl("javascript:window.setAccessToken(\"" + token + "\")")
+
+            webView.loadUrl("javascript:window.setAccessToken(\"" + Test.testToken + "\")")
         }
 
         @JavascriptInterface

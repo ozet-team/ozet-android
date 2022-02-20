@@ -12,6 +12,7 @@ import com.team.ozet.data.resume.MilitaryModel
 import com.team.ozet.data.user.UserModel
 import com.team.ozet.data.zet.ZetSimple
 import com.team.ozet.databinding.FragmentZetMainBinding
+import com.team.ozet.utils.Test
 import com.team.ozet.views.custom_view.add_recycler.AddAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,11 +22,10 @@ class ZetMainFragment : BaseFragment<FragmentZetMainBinding>(R.layout.fragment_z
         binding.vm = viewModel
         viewModelCallBack()
         addRvCallback()
-        // todo SharedPreferences token 으로 대체
-        val token =
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NDQ2NTk1Njl9.fBx1QnFXjnQRD1qqahJWoGWYtmJRMXQofZAFjwsn0wk"
+
+        // todo datastore token 으로 대체
         viewModel.apply {
-            getResume("9", token)
+            getResume("9", Test.testToken)
 //            getUser(token)
         }
 

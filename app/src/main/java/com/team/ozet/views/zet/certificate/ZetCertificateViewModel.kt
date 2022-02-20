@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team.ozet.base.BaseViewModel
 import com.team.ozet.data.resume.CertificateModel
-import com.team.ozet.data.resume.repository.ResumeRepository
+import com.team.ozet.data.resume.remote.ResumeRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers

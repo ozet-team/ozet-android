@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 val viewModelModule: Module = module {
     viewModel { MainViewModel() }
     viewModel { NoticeDetailViewModel() }
-    viewModel { MainFragmentViewModel() }
+    viewModel { MainFragmentViewModel(get()) }
     viewModel { NoticeListViewModel() }
     viewModel { JoinViewModel(get()) }
     viewModel { InfoInputViewModel() }

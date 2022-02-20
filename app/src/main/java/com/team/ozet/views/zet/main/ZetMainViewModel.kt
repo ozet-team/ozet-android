@@ -1,22 +1,19 @@
 package com.team.ozet.views.zet.main
 
-import android.util.JsonToken
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team.ozet.base.BaseViewModel
 import com.team.ozet.data.resume.ResumeModel
-import com.team.ozet.data.resume.repository.ResumeRepository
+import com.team.ozet.data.resume.remote.ResumeRepository
 import com.team.ozet.data.user.UserModel
 import com.team.ozet.data.user.repository.UserRepository
 import com.team.ozet.data.zet.ZetSimple
-import io.reactivex.Observable
+import com.team.ozet.utils.Military
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.rxkotlin.zipWith
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.flow.merge
 
 class ZetMainViewModel(
     private val resumeRepo: ResumeRepository,
@@ -36,6 +33,7 @@ class ZetMainViewModel(
     val userModel:LiveData<UserModel> get() = _user
 
     fun getResume(resumeId: String, token: String) {
+
 
         compositeDisposable.add(
             resumeRepo.getResume(resumeId)
