@@ -25,6 +25,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.concurrent.timerTask
 
+@RequiresApi(Build.VERSION_CODES.O)
 class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
     private val viewModel: JoinViewModel by viewModel()
@@ -45,23 +46,26 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //                }
 //            })
             clickEvent.observe(this@JoinFragment, Observer {
-//                startAuthTime("2022-02-15T22:38:01.612072")
+                startAuthTime("2022-02-15T22:38:01.612072")
                 val phoneNumber =
-                    binding.customPhone?.getEditText().toString()?.toNationalPhoneNumber()
+                    binding.customPhone.getEditText().toString()?.toNationalPhoneNumber()
                 viewModel.requestedVerify.value?.requestedVerify?.let {
-                    if (it == null) {
-                        viewModel.postPassCodeRequest(
-                            phoneNumber
-                        )
-                    } else {
-                        viewModel.postPassCode(
-                            phoneNumber,
-                            binding.customNumber.getEditText().toString()
-                        )
-                        findNavController().navigate(
-                            R.id.action_joinFragment_to_infoInputFragment,
+                    if (phoneNumber != null){
+                        if (it == null) {
+                            viewModel.postPassCodeRequest(
+                                phoneNumber
                             )
+                        } else {
+                            viewModel.postPassCode(
+                                phoneNumber,
+                                binding.customNumber.getEditText().toString()
+                            )
+                            findNavController().navigate(
+                                R.id.action_joinFragment_to_infoInputFragment,
+                            )
+                        }
                     }
+
                 }
 //                if (requestedVerify.value != null) {
 //                } else {
@@ -85,31 +89,25 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     }
 
     // timerTask onDestroy 일떄 캔슬 해줘야함   재시작 로직 없음
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun startAuthTime(expireAt: String) {
 
-        var expireAtTime = expireAt.substring(0, expireAt.length - 4)
+        val t_dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale("ko", "KR"))
+        var date = t_dateFormat.parse(expireAt)
 
-        var convertTime = LocalDateTime.parse(expireAtTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+
+
 //        // 시작 시간.
+        var today = Calendar.getInstance()
+        var calcuDate = (today.time.time - date.time) / 1000
+
         var start = System.currentTimeMillis()
+
+
 //        // 시간포맷을위한 포맷설정
-        var now = LocalDateTime.parse(start.toString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-
-        val compareTime = ChronoUnit.MINUTES.between(now, convertTime)
-
-        var old_format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm.ss")
-        old_format.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+        val t_date = Date(start)
+        val str_date = t_dateFormat.format(t_date)
 
 
-        var dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm.ss")
-        var startTime = dateFormat.format(Date(start))
-
-        var oldTime: String = old_format.format(expireAtTime)
-        var newExpireAt: String = dateFormat.format(oldTime)
-//        var newEx = dateFormat.parse(expireAt)
-        Log.i("SDFSD", "run :  $startTime")
-        Log.i("SDFSD", "run :  $newExpireAt")
         //클릭할때 받아올 시간
 //        val clickTime = System.currentTimeMillis()
 
@@ -117,25 +115,24 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
             activity?.runOnUiThread {
                 this.run {
 
-//                    val time = (startTime - clickTime) / 1000
 
-//                    totalTime--
-//
-//                    var minute = TimeUnit.SECONDS.toMinutes(totalTime) - TimeUnit.SECONDS.toHours(
-//                        totalTime
-//                    )
-//                    var second = TimeUnit.SECONDS.toSeconds(totalTime) - TimeUnit.SECONDS.toMinutes(
-//                        totalTime
-//                    ) * 60
-//                    // text 연결
-////                    Log.i("AAA", "run $minute 분 $second")
-//                    var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
-//                    binding.tvTimer.text = strTime
-//                    // 0초일때 timer task 캔슬
-//                    if (totalTime == 0L) {
-//                        this.cancel()
-//                        Log.i("AAA", "cancel")
-//                    }
+                    calcuDate--
+
+                    var minute = TimeUnit.SECONDS.toMinutes(calcuDate) - TimeUnit.SECONDS.toHours(
+                        calcuDate
+                    )
+                    var second = TimeUnit.SECONDS.toSeconds(calcuDate) - TimeUnit.SECONDS.toMinutes(
+                        calcuDate
+                    ) * 60
+                    // text 연결
+//                    Log.i("AAA", "run $minute 분 $second")
+                    var strTime = "%02d".format(minute) + " : " + "%02d".format(second)
+                    binding.tvTimer.text = strTime
+                    // 0초일때 timer task 캔슬
+                    if (calcuDate == 0L) {
+                        this.cancel()
+                        Log.i("AAA", "cancel")
+                    }
                 }
             }
         }, 0, 1000)
@@ -158,7 +155,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //        }
     }
 
-    fun isValidCellPhoneNumber(cellphoneNumber: String): Boolean {
+    fun isValidCellPhoneNumber(cellphoneNumber: String?): Boolean {
         //핸드폰번호 유효성
 //        if (!Pattern.matches("^01(?:0|1|[6-9]) - (?:\\d{3}|\\d{4}) - \\d{4}$", cellphoneNumber)) {
 //            Toast.makeText(thisContext, "올바른 핸드폰 번호가 아닙니다.", Toast.LENGTH_SHORT).show()
@@ -175,7 +172,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         return returnValue
     }
 
-    fun String.toNationalPhoneNumber(): String {
+    fun String.toNationalPhoneNumber(): String? {
         val phoneNumberUtil = PhoneNumberUtil.getInstance()
         val locale = Locale.getDefault().country
         val toNationalNum = phoneNumberUtil.parse(this, locale)
