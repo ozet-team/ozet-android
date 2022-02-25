@@ -9,6 +9,7 @@ import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentMainBinding
 import com.team.ozet.utils.Test
 import com.team.ozet.views.custom_view.CustomToast
+import com.team.ozet.views.dialog.CustomDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -18,6 +19,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
     private val viewModel: MainFragmentViewModel by viewModel()
+    private var confirmDialog: CustomDialog? = null
 
     private lateinit var noticeAdapter: NoticeAdapter
     private val timer = Timer()
@@ -48,7 +50,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             })
 
             goZet.observe(this@MainFragment, Observer {
-                findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
+                showDialog()
+//                findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
             })
 
 
@@ -83,6 +86,22 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             )
             adapter = noticeAdapter
         }
+    }
+
+    private fun showDialog(){
+        if(confirmDialog == null) {
+            confirmDialog = CustomDialog(40, "seasonTicket", "dataModel.ticket")
+            confirmDialog!!.setListener(object : CustomDialog.BtnClickListener {
+                override fun onPositiveClick() {
+                    //TODO
+                }
+
+                override fun onNegativeClick() {
+                //TODO
+                }
+            })
+        }
+
     }
 
 

@@ -54,6 +54,7 @@ class CustomDialog(private val marginX: Int, private val title: String, private 
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
+        layoutParams.width = size.x - marginX * 3
         dialog!!.window!!.attributes = layoutParams
         dialog!!.window!!.setBackgroundDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.bg_dialog))
     }

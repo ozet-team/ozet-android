@@ -39,32 +39,29 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
     private fun callback() {
         with(viewModel) {
-//            requestedVerify.observe(this@JoinFragment, {
-//                //TODO timer
-//                it.requestedVerify?.let {
-//                    startAuthTime(it.expireAt)
-//                }
-//            })
+            requestedVerify.observe(this@JoinFragment, {
+                it.requestedVerify?.let {
+                    startAuthTime(it.expireAt)
+                }
+            })
             clickEvent.observe(this@JoinFragment, Observer {
-                startAuthTime("2022-02-15T22:38:01.612072")
                 val phoneNumber =
                     binding.customPhone.getEditText().toString()?.toNationalPhoneNumber()
                 viewModel.requestedVerify.value?.requestedVerify?.let {
-                    if (phoneNumber != null){
-                        if (it == null) {
-                            viewModel.postPassCodeRequest(
-                                phoneNumber
-                            )
-                        } else {
-                            viewModel.postPassCode(
-                                phoneNumber,
-                                binding.customNumber.getEditText().toString()
-                            )
-                            findNavController().navigate(
-                                R.id.action_joinFragment_to_infoInputFragment,
-                            )
-                        }
+                    if (it == null) {
+                        viewModel.postPassCodeRequest(
+                            phoneNumber
+                        )
+                    } else {
+                        viewModel.postPassCode(
+                            phoneNumber,
+                            binding.customNumber.getEditText().toString()
+                        )
+                        findNavController().navigate(
+                            R.id.action_joinFragment_to_infoInputFragment,
+                        )
                     }
+
 
                 }
 //                if (requestedVerify.value != null) {
@@ -93,7 +90,6 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
         val t_dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale("ko", "KR"))
         var date = t_dateFormat.parse(expireAt)
-
 
 
 //        // 시작 시간.
@@ -172,7 +168,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         return returnValue
     }
 
-    fun String.toNationalPhoneNumber(): String? {
+    fun String.toNationalPhoneNumber(): String {
         val phoneNumberUtil = PhoneNumberUtil.getInstance()
         val locale = Locale.getDefault().country
         val toNationalNum = phoneNumberUtil.parse(this, locale)
