@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.team.ozet.base.BaseViewModel
 import com.team.ozet.data.resume.MilitaryModel
 import com.team.ozet.data.resume.remote.ResumeRepository
+import com.team.ozet.utils.Military
 import com.team.ozet.utils.SingleLiveEvent
 import com.team.ozet.utils.ZetEnum
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,26 +39,27 @@ class ZetMilitaryServiceViewModel(private val resumeRepo: ResumeRepository) : Ba
     }
 
     fun setMilitary(militaryModel:MilitaryModel){
+        //string 변환
+        militaryModel.service = ZetEnum.MILITARY.valueChange(militaryModel.service)
         _military.value = militaryModel
-        isCreate(militaryModel.id == 1)
 
         when(militaryModel.service){
-            "군필" -> {
+            Military.FINISHED_KR -> {
                 _finishedVisible.value = true
                 _exemptionVisible.value = false
             }
 
-            "미필" -> {
+            Military.UNFINISHED_KR -> {
                 _finishedVisible.value = false
                 _exemptionVisible.value = true
             }
 
-            "면제" -> {
+            Military.EXEMPTION_KR -> {
                 _finishedVisible.value = false
                 _exemptionVisible.value = false
             }
 
-            "해당없음" -> {
+            Military.NA_KR -> {
                 _finishedVisible.value = false
                 _exemptionVisible.value = false
             }
@@ -67,30 +69,9 @@ class ZetMilitaryServiceViewModel(private val resumeRepo: ResumeRepository) : Ba
 
     fun updateMilitary(token: String) {
         var body:MilitaryModel = militaryModel.value!!
-
+        //string 변환
+        body.service = ZetEnum.MILITARY.valueChange(body.service)
         // todo map 으로 관리 하는게 좋을듯
-        when(body.service){
-            "군필" -> {
-                body.service = "FINISHED"
-            }
-            "미필" -> {
-                body.service = "UNFINISHED"
-            }
-
-            "면제" -> {
-                body.service = "EXEMPTION"
-            }
-
-            "해당없음" -> {
-                body.service = "NA"
-            }
-            "" ->{
-                Log.i("AAA","값을 선택해주세요")
-                return
-            }
-
-
-        }
 
         /**
          * date format 은 일까지 있어야함

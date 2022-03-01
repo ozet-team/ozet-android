@@ -1,6 +1,5 @@
 package com.team.ozet.views.main_fragment
 
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,11 +7,8 @@ import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentMainBinding
 import com.team.ozet.utils.Test
-import com.team.ozet.views.custom_view.CustomToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.concurrent.timerTask
 
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 

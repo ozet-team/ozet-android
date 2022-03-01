@@ -12,7 +12,9 @@ import androidx.navigation.fragment.navArgs
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentZetCareerBinding
+import com.team.ozet.utils.Position
 import com.team.ozet.utils.Test
+import com.team.ozet.utils.ZetEnum
 import com.team.ozet.views.custom_view.CustomToast
 import com.team.ozet.views.dialog.SelectorBottomDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -81,7 +83,7 @@ class ZetCareerFragment : BaseFragment<FragmentZetCareerBinding>(R.layout.fragme
             binding.tvPosition.apply{
                 text = it
             }
-        },"직급 선택", arrayListOf("인턴(스탭)","매니저","디자이너","원장"))
+        },"직급 선택", arrayListOf(Position.STAFF_KR,Position.MANAGER_KR,Position.DESIGNER_KR,Position.DIRECTOR_KR))
         bottomDialog.show(requireActivity().supportFragmentManager,"tag")
     }
 

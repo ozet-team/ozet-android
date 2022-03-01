@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.team.ozet.base.BaseViewModel
 import com.team.ozet.data.resume.CareerModel
 import com.team.ozet.data.resume.remote.ResumeRepository
-import com.team.ozet.utils.Military
 import com.team.ozet.utils.SingleLiveEvent
-import com.team.ozet.utils.Zet
 import com.team.ozet.utils.ZetEnum
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -28,9 +26,9 @@ class ZetCareerViewModel(private val resumeRepo:ResumeRepository) : BaseViewMode
     }
 
     fun setCareerData(data: CareerModel){
-        var z =ZetEnum.valueOf(data.position)
+        //string 변환
+        data.position = ZetEnum.CAREER.valueChange(data.position)
 
-        data.position = changeStr(data.position)
         _career.value = data
         isCreate(data.id == 0)
         if (data.id == 0){
@@ -59,6 +57,8 @@ class ZetCareerViewModel(private val resumeRepo:ResumeRepository) : BaseViewMode
             }else{
                 body.quitAt = "${body!!.quitAt}-01"
             }
+            //string 변환
+            body.position = ZetEnum.CAREER.valueChange(body.position)
 
             compositeDisposable.add(
                 resumeRepo.postCareerAdd(token,  body)
@@ -80,6 +80,10 @@ class ZetCareerViewModel(private val resumeRepo:ResumeRepository) : BaseViewMode
 
     fun updateCareer(token: String) {
         var body = careerModel.value
+        //string 변환
+        if (body != null) {
+            body.position = ZetEnum.MILITARY.valueChange(body.position)
+        }
         if (body?.id != null) {
             compositeDisposable.add(
                 resumeRepo.patchCareerUpdate(token, body.id, body)
@@ -119,12 +123,5 @@ class ZetCareerViewModel(private val resumeRepo:ResumeRepository) : BaseViewMode
 
     }
 
-    fun changeStr(str: String): String {
-        when(str){
-            Zet.STAFF -> return Zet.STAFF_KR
-            Zet.STAFF_KR -> return Zet.STAFF
-        }
-        return str
-    }
 }
 

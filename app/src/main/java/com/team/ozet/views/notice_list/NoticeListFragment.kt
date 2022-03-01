@@ -114,7 +114,6 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
 
         @JavascriptInterface
         fun token() {
-
             webView.loadUrl("javascript:window.setAccessToken(\"" + Test.testToken + "\")")
         }
 

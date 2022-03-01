@@ -1,17 +1,40 @@
 package com.team.ozet.utils
 
 
-enum class ZetEnum ( value: String){
-    NA("해당없음"),
-    EXEMPTION("면제"),
-    UNFINISHED("미필"),
-    FINISHED("군필"),
-    STAFF("인턴"),
-    STAFF_KR("인턴(스탭)"),
-    MANAGER("매니저");
+enum class ZetEnum (){
+    MILITARY{
+        override fun valueChange(value: String): String {
+            return when(value){
+                Military.NA -> Military.NA_KR
+                Military.NA_KR -> Military.NA
+                Military.EXEMPTION -> Military.EXEMPTION_KR
+                Military.EXEMPTION_KR -> Military.EXEMPTION
+                Military.UNFINISHED  -> Military.UNFINISHED_KR
+                Military.UNFINISHED_KR -> Military.UNFINISHED
+                Military.FINISHED -> Military.FINISHED_KR
+                Military.FINISHED_KR -> Military.FINISHED
+                else -> value
+            }
+        }
+    },
+    CAREER{
+        override fun valueChange(value: String): String {
+            return when(value){
+                Position.STAFF -> Position.STAFF_KR
+                Position.STAFF_KR -> Position.STAFF
+                Position.MANAGER -> Position.MANAGER_KR
+                Position.MANAGER_KR -> Position.MANAGER
+                Position.DESIGNER  -> Position.DESIGNER_KR
+                Position.DESIGNER_KR -> Position.DESIGNER
+                Position.DIRECTOR -> Position.DIRECTOR_KR
+                Position.DIRECTOR_KR -> Position.DIRECTOR
+                else -> value
+            }
+        }
 
-    companion object {
-        fun valueOf(value: String) = ZetEnum.values().find { it.equals(value) }
-    }
+    };
+
+    abstract fun valueChange(value: String) : String
+
 }
 

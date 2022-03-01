@@ -47,6 +47,7 @@ class ZetMilitaryServiceFragment : BaseFragment<FragmentZetMilitaryServiceBindin
 
         binding.appbar.tvSubFirst().setOnClickListener {
             // todo SharedPreferences 사용해야함
+
             viewModel.updateMilitary(Test.testToken)
         }
 

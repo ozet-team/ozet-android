@@ -25,7 +25,6 @@
             app:srcCompat = "@drawable/icon_back_"
             app:tv_appbar_title = "병역"
             app:tv_appbar_sub_first = "저장"
-            tv_appbar_sub_second = "@{vm.secondText}"
             app:tv_appbar_sub_first_color = "@color/ozet"
             app:tv_appbar_sub_second_color = "@color/red"
             />
