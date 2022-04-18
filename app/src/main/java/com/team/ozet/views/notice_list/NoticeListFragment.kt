@@ -39,7 +39,7 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
         initWebView(url)
         webViewChange()
         callback()
-        backPressed()
+//        backPressed()
         // todo 나중에 상태바 설정 다시
         activity?.actionBar?.hide()
 
@@ -94,15 +94,15 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
         }
     }
 
-    private fun backPressed() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    binding.wv.loadUrl("javascript:window.backEvent()")
-                }
-
-            })
-    }
+//    private fun backPressed() {
+//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+//            object : OnBackPressedCallback(true) {
+//                override fun handleOnBackPressed() {
+//                    binding.wv.loadUrl("javascript:window.backEvent()")
+//                }
+//
+//            })
+//    }
 
     class WebAppInterface(
         private val context: Context,

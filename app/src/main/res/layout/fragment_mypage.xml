@@ -61,25 +61,7 @@
             android:layout_height="match_parent"
             android:text="내 이력서" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_test"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="17dp"
-            app:cardBackgroundColor="@color/system_gray01"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintTop_toBottomOf="@id/cl_top">
 
-            <TextView
-                android:id="@+id/tv"
-                style="@style/Text.Heading2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="ㅇㅣ력서 공유~~~~~~" />
-
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"

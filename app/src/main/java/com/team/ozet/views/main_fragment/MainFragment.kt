@@ -1,7 +1,9 @@
 package com.team.ozet.views.main_fragment
 
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
@@ -15,14 +17,16 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private val viewModel: MainFragmentViewModel by viewModel()
 
-    private lateinit var noticeAdapter: NoticeAdapter
+    private lateinit var noticeListAdapter: NoticeInfoAdapter
     private val timer = Timer()
 
     override fun init() {
         binding.vm = viewModel
         initAdapter()
         viewModelCallback()
-        viewModel.getAnnouncement(0,20, Test.testToken)
+        viewModel.setNoticeList()
+//        viewModel.getTest(0,5)
+        viewModel.getAnnouncement(0,5)
     }
 
     override fun onDestroy() {
@@ -39,46 +43,25 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                 // white mde test
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             })
-            goLogin.observe(this@MainFragment, Observer {
-                findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)
-            })
+            noticeList.observe(this@MainFragment, Observer {
+                var concatAdapter = ConcatAdapter(
+                    NoticeAdapter(
+                        loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)},
+                        noticeClick = {findNavController().navigate(R.id.action_mainFragment_to_joinFragment)}
+                    ),
+//                    NoticeListAdapter() {}
+                )
 
-            goZet.observe(this@MainFragment, Observer {
-                findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
-            })
+                binding.rv.adapter = concatAdapter
 
+            })
 
         }
     }
 
     private fun initAdapter() {
-        viewModel.setNoticeList()
 
-        noticeAdapter = NoticeAdapter(thisContext,itemClick = {
-            findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
-        })
 
-        binding.rvNotice.apply {
-            layoutManager = LinearLayoutManager(
-                thisContext, LinearLayoutManager.HORIZONTAL, false
-            )
-            adapter = noticeAdapter
-            setRecyclerListener {
-            }
-        }
-
-        binding.rvNotice2.apply {
-            layoutManager = LinearLayoutManager(
-                thisContext, LinearLayoutManager.HORIZONTAL, false
-            )
-            adapter = noticeAdapter
-        }
-        binding.rvNotice3.apply {
-            layoutManager = LinearLayoutManager(
-                thisContext, LinearLayoutManager.HORIZONTAL, false
-            )
-            adapter = noticeAdapter
-        }
     }
 
 

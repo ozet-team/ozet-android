@@ -5,58 +5,37 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.team.ozet.R
+import com.team.ozet.databinding.ItemMainNoticeBinding
 import com.team.ozet.databinding.ItemNoticeBinding
 
 class NoticeAdapter (
-        private val context:Context,
-        private val itemClick: () -> Unit,
+    private val loginClick : () -> Unit,
+    private val noticeClick : () -> Unit
         ): RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
-    private val items:ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(ItemNoticeBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+            ViewHolder(ItemMainNoticeBinding.inflate(LayoutInflater.from(parent.context),parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind()
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = 1
 
-    inner class ViewHolder (private val binding: ItemNoticeBinding):
+    inner class ViewHolder (private val binding: ItemMainNoticeBinding):
             RecyclerView.ViewHolder(binding.root){
-                fun bind (item:String){
-                    binding.apply {
-                        tvTitle.text = item
-                        cvBookmark.setOnClickListener {
-                            // test 용
-                            ivBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_active_))
-
-                        }
-                        cl.setOnClickListener {
-                            itemClick()
-                        }
-                    }
-
-                }
-
+        fun bind() {
+            binding.cvLogin.setOnClickListener {
+                loginClick()
+            }
+            binding.cvNotice.setOnClickListener {
+                noticeClick()
+            }
+        }
 
     }
 
-    // viewDatabindingAdapters 를 위한 함수 3
-    fun addItems(items: List<String>) {
-        this.items.addAll(items)
-        notifyDataSetChanged()
-    }
 
-    fun addItem(item: String) {
-        this.items.add(item)
-        notifyDataSetChanged()
-    }
-
-    fun clear() {
-        this.items.clear()
-        notifyDataSetChanged()
-    }
 
 
 }

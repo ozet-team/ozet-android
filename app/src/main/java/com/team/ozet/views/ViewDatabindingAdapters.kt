@@ -16,8 +16,7 @@ fun RecyclerView.setAdapterItems(items:List<Any>?){
         is NoticeAdapter ->{
             items?.let {
                 with(adapter as NoticeAdapter){
-                    clear()
-                    addItems(it as List<String>)
+
                 }
             }
         }

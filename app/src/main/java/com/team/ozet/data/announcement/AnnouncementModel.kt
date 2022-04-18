@@ -1,8 +1,11 @@
 package com.team.ozet.data.announcement
 
-data class AnnouncementModel(
+import androidx.annotation.Keep
+import java.io.Serializable
+
+@Keep data class AnnouncementModel(
     var description: String,
-    var employeeTypes: List<Any>,
+    var employeeTypes: List<EmployeeTypesModel>,
     var expireType: String,
     var expiredDatetime: String,
     var id: Int,
@@ -13,5 +16,7 @@ data class AnnouncementModel(
     var shopLocation: String,
     var shopName: String,
     var title: String,
-    var workingHour: String
-)
+    var workingHour: String,
+    var bookmarkCount: String,
+    var imageUrl: String
+):Serializable
