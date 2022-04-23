@@ -16,7 +16,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
     private val viewModel: MainFragmentViewModel by viewModel()
-    private var confirmDialog: CustomDialog? = null
 
     private lateinit var noticeListAdapter: NoticeInfoAdapter
     private val timer = Timer()
@@ -55,7 +54,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                         NoticeListAdapter.ItemHandler { event ->
                             when(event){
                                 NoticeEvent.NOTICE_CLICK ->{
-
                                 }
                                 NoticeEvent.DETAIL_CLICK ->{
 

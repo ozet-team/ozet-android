@@ -18,9 +18,13 @@ import okhttp3.internal.http.hasBody
 class JoinViewModel(private val repository: PassCodeRepository) : BaseViewModel() {
     private val _clickEvent = SingleLiveEvent<Unit>()
     private val _requestedVerify = SingleLiveEvent<PassCode>()
+    private val _userInfo = SingleLiveEvent<String>()
+    private val _fail = SingleLiveEvent<Unit>()
 
     val clickEvent: LiveData<Unit> get() = _clickEvent
     val requestedVerify: LiveData<PassCode> get() = _requestedVerify
+    val userInfo : LiveData<String> get() = _userInfo
+    val fail : LiveData<Unit>get() = _fail
 
     fun click() {
         _clickEvent.call()
@@ -51,9 +55,11 @@ class JoinViewModel(private val repository: PassCodeRepository) : BaseViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
+
                     Log.i("AAA", "hi : ${it.toString()}")
                 },
                     onError = {
+                        _fail.call()
                     Log.i("AAA", "err : ${it.toString()}")
                 })
         )

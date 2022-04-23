@@ -1,9 +1,11 @@
 package com.team.ozet.views.join
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
@@ -39,6 +41,15 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
     private fun callback() {
         with(viewModel) {
+            fail.observe(this@JoinFragment, Observer {
+                Toast.makeText(thisContext, "인증번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+            })
+            userInfo.observe(this@JoinFragment, Observer {
+                //todo  local data 저장 이후 이동
+                findNavController().navigate(
+                    R.id.action_joinFragment_to_infoInputFragment,
+                )
+            })
             requestedVerify.observe(this@JoinFragment) { model ->
                 model.requestedVerify?.let {
                     startAuthTime(it.expireAt)
@@ -47,18 +58,17 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
             clickEvent.observe(this@JoinFragment, Observer {
                 var phoneNumber =
                     binding.customPhone.getEditText().toString().toNationalPhoneNumber()
-                viewModel.requestedVerify.value?.requestedVerify?.let {
-                    if (it == null) {
-                        viewModel.postPassCodeRequest(
-                            phoneNumber
-                        )
-                    } else {
+                if (binding.customNumber.visibility == View.GONE){
+                    viewModel.postPassCodeRequest(phoneNumber)
+                    binding.customNumber.visibility = View.VISIBLE
+
+                }else{
+                    if(binding.customNumber.getEditText().toString().trim().equals("")){
+                        Toast.makeText(thisContext, "입력해주세요", Toast.LENGTH_SHORT).show()
+                    }else{
                         viewModel.postPassCode(
                             phoneNumber,
                             binding.customNumber.getEditText().toString()
-                        )
-                        findNavController().navigate(
-                            R.id.action_joinFragment_to_infoInputFragment,
                         )
                     }
 
@@ -82,6 +92,10 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 //                    )
 //                }
             })
+
+
+
+
         }
     }
 

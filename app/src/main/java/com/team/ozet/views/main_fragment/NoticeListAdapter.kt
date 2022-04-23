@@ -38,6 +38,7 @@ class NoticeListAdapter(
                 fun bind (item:AnnouncementList){
                     binding.apply {
                         binding.tvNoticePlus.setOnClickListener { itemHandler.clickEvent(NoticeEvent.DETAIL_CLICK) }
+                        binding.tvNotice.text = item.name
                     }
 
                 }
