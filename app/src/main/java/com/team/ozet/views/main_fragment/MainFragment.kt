@@ -49,7 +49,15 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                         loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)},
                         noticeClick = {findNavController().navigate(R.id.action_mainFragment_to_joinFragment)}
                     ),
-//                    NoticeListAdapter() {}
+                    NoticeListAdapter(
+                        it,
+                        goDetailClick = {
+
+                        },
+                        NoticeListAdapter.ItemHandler {
+                            Toast.makeText(thisContext, "test", Toast.LENGTH_SHORT).show()
+                        }
+                    )
                 )
 
                 binding.rv.adapter = concatAdapter

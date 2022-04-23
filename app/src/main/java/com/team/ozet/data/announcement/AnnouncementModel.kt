@@ -18,5 +18,5 @@ import java.io.Serializable
     var title: String,
     var workingHour: String,
     var bookmarkCount: String,
-    var imageUrl: String
+    var imageUrl: String,
 ):Serializable
