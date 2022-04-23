@@ -1,6 +1,7 @@
 package com.team.ozet.views.main_fragment
 
-import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,18 +9,16 @@ import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentMainBinding
 import com.team.ozet.utils.Test
-import com.team.ozet.views.custom_view.CustomToast
 import com.team.ozet.views.dialog.CustomDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.concurrent.timerTask
 
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
     private val viewModel: MainFragmentViewModel by viewModel()
     private var confirmDialog: CustomDialog? = null
+
 
     private lateinit var noticeAdapter: NoticeAdapter
     private val timer = Timer()
@@ -28,7 +27,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         binding.vm = viewModel
         initAdapter()
         viewModelCallback()
-        viewModel.getAnnouncement(0,20, Test.testToken)
+        viewModel.getAnnouncement(0, 20, Test.testToken)
     }
 
     override fun onDestroy() {
@@ -50,8 +49,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             })
 
             goZet.observe(this@MainFragment, Observer {
-                showDialog()
-//                findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
+                findNavController().navigate(R.id.action_mainFragment_to_joinFragment)
             })
 
 
@@ -61,7 +59,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private fun initAdapter() {
         viewModel.setNoticeList()
 
-        noticeAdapter = NoticeAdapter(thisContext,itemClick = {
+        noticeAdapter = NoticeAdapter(thisContext, itemClick = {
             findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
         })
 
@@ -88,21 +86,23 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         }
     }
 
-    private fun showDialog(){
-        if(confirmDialog == null) {
-            confirmDialog = CustomDialog(40, "seasonTicket", "dataModel.ticket")
-            confirmDialog!!.setListener(object : CustomDialog.BtnClickListener {
-                override fun onPositiveClick() {
-                    //TODO
-                }
-
-                override fun onNegativeClick() {
-                //TODO
-                }
-            })
-        }
-
-    }
-
+//    private fun showDialog(){
+//        if(confirmDialog == null) {
+//            confirmDialog = CustomDialog(40, "seasonTicket", "dataModel.ticket")
+//            confirmDialog!!.setListener(object : CustomDialog.BtnClickListener {
+//                override fun onPositiveClick() {
+//                    //TODO
+//                }
+//
+//                override fun onNegativeClick() {
+//                //TODO
+//                }
+//            })
+//        }
+//        if(!confirmDialog?.isAdded!!) {
+//            confirmDialog?.show((context as FragmentActivity).supportFragmentManager, "custoDialog")
+//        }
 
 }
+
+

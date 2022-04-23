@@ -14,7 +14,7 @@ import com.team.ozet.R
 import com.team.ozet.databinding.DialogCustomBinding
 import com.team.ozet.databinding.DialogYearMonthPickerBinding
 
-class CustomDialog(private val marginX: Int, private val title: String, private val body: String) : DialogFragment() {
+class CustomDialog(private val marginX: Int, private val title: String, private val body: String,private val btnDone:String,private val btnCancel :String) : DialogFragment() {
     private var _binding: DialogCustomBinding? = null
     private lateinit var _listener: BtnClickListener
 
