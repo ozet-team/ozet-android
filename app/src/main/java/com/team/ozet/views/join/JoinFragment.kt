@@ -39,14 +39,14 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
     private fun callback() {
         with(viewModel) {
-            requestedVerify.observe(this@JoinFragment, {
-                it.requestedVerify?.let {
+            requestedVerify.observe(this@JoinFragment) { model ->
+                model.requestedVerify?.let {
                     startAuthTime(it.expireAt)
                 }
-            })
+            }
             clickEvent.observe(this@JoinFragment, Observer {
-                val phoneNumber =
-                    binding.customPhone.getEditText().toString()?.toNationalPhoneNumber()
+                var phoneNumber =
+                    binding.customPhone.getEditText().toString().toNationalPhoneNumber()
                 viewModel.requestedVerify.value?.requestedVerify?.let {
                     if (it == null) {
                         viewModel.postPassCodeRequest(
@@ -88,8 +88,8 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
     // timerTask onDestroy 일떄 캔슬 해줘야함   재시작 로직 없음
     private fun startAuthTime(expireAt: String) {
 
-        val t_dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale("ko", "KR"))
-        var date = t_dateFormat.parse(expireAt)
+        val tDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale("ko", "KR"))
+        var date = tDateFormat.parse(expireAt)
 
 
 //        // 시작 시간.
@@ -100,8 +100,8 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
 
 
 //        // 시간포맷을위한 포맷설정
-        val t_date = Date(start)
-        val str_date = t_dateFormat.format(t_date)
+        val tDate = Date(start)
+        val strDate = tDateFormat.format(tDate)
 
 
         //클릭할때 받아올 시간
@@ -140,7 +140,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         binding.tvTimer.text = "00:00"
     }
 
-    fun checkPhoneNumber() {
+    private fun checkPhoneNumber() {
 //        binding.customPhone.addTextChangedListener {
 //            if (isValidCellPhoneNumber(binding.customNumber.etBase.text.toString())) {
 //                binding.btnNext.setBackgroundColor(Color.parseColor("#5D2FFF"));
@@ -168,7 +168,7 @@ class JoinFragment : BaseFragment<FragmentJoinBinding>(R.layout.fragment_join) {
         return returnValue
     }
 
-    fun String.toNationalPhoneNumber(): String {
+    private fun String.toNationalPhoneNumber(): String {
         val phoneNumberUtil = PhoneNumberUtil.getInstance()
         val locale = Locale.getDefault().country
         val toNationalNum = phoneNumberUtil.parse(this, locale)
