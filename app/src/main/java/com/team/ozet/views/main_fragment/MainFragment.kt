@@ -51,16 +51,23 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                     ),
                     NoticeListAdapter(
                         it,
-                        goDetailClick = {
+                        NoticeListAdapter.ItemHandler { event ->
+                            when(event){
+                                NoticeEvent.NOTICE_CLICK ->{
 
-                        },
-                        NoticeListAdapter.ItemHandler {
-                            Toast.makeText(thisContext, "test", Toast.LENGTH_SHORT).show()
+                                }
+                                NoticeEvent.DETAIL_CLICK ->{
+
+                                }
+                            }
                         }
                     )
                 )
 
                 binding.rv.adapter = concatAdapter
+
+            })
+            announcementResult.observe(this@MainFragment, Observer {
 
             })
 

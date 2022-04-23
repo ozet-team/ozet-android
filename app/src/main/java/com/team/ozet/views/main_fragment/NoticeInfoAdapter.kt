@@ -4,28 +4,34 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.team.ozet.R
+import com.team.ozet.data.announcement.AnnouncementList
+import com.team.ozet.data.announcement.AnnouncementModel
 import com.team.ozet.databinding.ItemNoticeBinding
 import com.team.ozet.databinding.ItemNoticeListBinding
 
 class NoticeInfoAdapter (
     private val itemHandler: ItemHandler,
         ): RecyclerView.Adapter<NoticeInfoAdapter.ViewHolder>() {
-    private val items:ArrayList<String> = ArrayList()
+    private var items: AnnouncementList = AnnouncementList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
             ViewHolder(ItemNoticeBinding.inflate(LayoutInflater.from(parent.context),parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(items.list!![position])
     }
 
-    override fun getItemCount(): Int = 6
+    override fun getItemCount(): Int = items.list!!.size
 
     inner class ViewHolder (private val binding: ItemNoticeBinding):
             RecyclerView.ViewHolder(binding.root){
-                fun bind (){
+                fun bind (item:AnnouncementModel){
                     binding.apply {
+
+                        binding.ivImg.load(item.imageUrl)
+
                         binding.cl.setOnClickListener {
                             itemHandler.clickNotice()
                         }
@@ -39,21 +45,12 @@ class NoticeInfoAdapter (
         fun clickNotice()
     }
 
-    // viewDatabindingAdapters 를 위한 함수 3
-    fun addItems(items: List<String>) {
-        this.items.addAll(items)
+    fun addItems(items:  AnnouncementList) {
+        this.items = items
         notifyDataSetChanged()
     }
 
-    fun addItem(item: String) {
-        this.items.add(item)
-        notifyDataSetChanged()
-    }
 
-    fun clear() {
-        this.items.clear()
-        notifyDataSetChanged()
-    }
 
 
 }

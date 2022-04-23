@@ -4,7 +4,8 @@ import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Keep data class AnnouncementResponse(
+@Keep
+data class AnnouncementResponse(
     @SerializedName("count")
     @Expose
     val count: Int,
@@ -16,5 +17,5 @@ import com.google.gson.annotations.SerializedName
     val previous: String,
     @SerializedName("results")
     @Expose
-    val results: List<AnnouncementModel>
+    val results: List<AnnouncementModel>,
 )

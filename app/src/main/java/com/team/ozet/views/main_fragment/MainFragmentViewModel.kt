@@ -14,18 +14,19 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 import kotlin.concurrent.timerTask
 
 class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository) : BaseViewModel() {
     private val _clickEvent = SingleLiveEvent<Unit>()
     private val _string = SingleLiveEvent<String>()
     private val _themeChange = SingleLiveEvent<Unit>()
-    private val _noticeList = MutableLiveData<AnnouncementList>()
+    private val _noticeList = MutableLiveData<ArrayList<AnnouncementList>>()
     private val _announcementResult = MutableLiveData<AnnouncementResponse>()
 
     val clickEvent : LiveData<Unit> get() = _clickEvent
     val string: LiveData<String> get() = _string
-    val noticeList: LiveData<AnnouncementList> get() = _noticeList
+    val noticeList: LiveData<ArrayList<AnnouncementList>> get() = _noticeList
     val themeChange: LiveData<Unit> get() = _themeChange
 
     val announcementResult:LiveData<AnnouncementResponse> get() = _announcementResult;
@@ -34,7 +35,7 @@ class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository
         _clickEvent.call()
     }
     fun setNoticeList(){
-      _noticeList.value =   AnnouncementList();
+//      _noticeList.value =   AnnouncementList();
     }
 
     fun themeChange(){
@@ -50,7 +51,10 @@ class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository
                 .subscribeBy(
                     onSuccess = {
                         if (it != null){
-                            _noticeList.value!!.basicList = it.results
+                            var value = ArrayList<AnnouncementList>()
+                            value.add(AnnouncementList(it.results,"북마크"))
+
+                            _noticeList.value = value
                         }
                     },
                     onError = {
