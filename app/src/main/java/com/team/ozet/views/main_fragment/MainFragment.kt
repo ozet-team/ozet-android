@@ -16,6 +16,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
     private val viewModel: MainFragmentViewModel by viewModel()
+    private var confirmDialog: CustomDialog? = null
 
     private lateinit var noticeListAdapter: NoticeInfoAdapter
     private val timer = Timer()
@@ -79,5 +80,23 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     }
 
+//    private fun showDialog(){
+//        if(confirmDialog == null) {
+//            confirmDialog = CustomDialog(40, "seasonTicket", "dataModel.ticket")
+//            confirmDialog!!.setListener(object : CustomDialog.BtnClickListener {
+//                override fun onPositiveClick() {
+//                    //TODO
+//                }
+//
+//                override fun onNegativeClick() {
+//                //TODO
+//                }
+//            })
+//        }
+//        if(!confirmDialog?.isAdded!!) {
+//            confirmDialog?.show((context as FragmentActivity).supportFragmentManager, "custoDialog")
+//        }
 
 }
+
+
