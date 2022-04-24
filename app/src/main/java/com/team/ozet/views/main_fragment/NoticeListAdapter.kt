@@ -11,10 +11,10 @@ import com.team.ozet.databinding.ItemNoticeBinding
 import com.team.ozet.databinding.ItemNoticeListBinding
 
 class NoticeListAdapter(
-    items: ArrayList<AnnouncementList>,
     private val itemHandler: ItemHandler
         ): RecyclerView.Adapter<NoticeListAdapter.ViewHolder>() {
-    private var items:ArrayList<AnnouncementList> = items
+    private var items:ArrayList<AnnouncementList> = arrayListOf()
+    private lateinit var adapter : NoticeInfoAdapter
 
     private val noticeInfoItemHandler = object : NoticeInfoAdapter.ItemHandler {
         override fun clickNotice() {
@@ -37,12 +37,13 @@ class NoticeListAdapter(
             RecyclerView.ViewHolder(binding.root){
                 fun bind (item:AnnouncementList){
                     binding.apply {
+                        binding.tvNotice.text = item.name
                         binding.tvNoticePlus.setOnClickListener { itemHandler.clickEvent(NoticeEvent.DETAIL_CLICK) }
                     }
 
                 }
                 fun bindAdapter(item:AnnouncementList){
-                    var adapter = NoticeInfoAdapter(noticeInfoItemHandler)
+                    adapter = NoticeInfoAdapter(noticeInfoItemHandler)
 
                     if (items.size != 0){
                         adapter.addItems(item)
@@ -58,9 +59,13 @@ class NoticeListAdapter(
     }
 
     fun addItems(items: ArrayList<AnnouncementList>) {
-        this.items = (items)
+        this.items = items
         notifyDataSetChanged()
     }
+    fun noticeInfoNotify(){
+        adapter.notifyDataSetChanged()
+    }
+
 
 
 }

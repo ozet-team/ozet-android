@@ -4,19 +4,19 @@ import androidx.annotation.Keep
 import java.io.Serializable
 
 @Keep data class AnnouncementModel(
-    var description: String,
+    var description: String = "",
     var employeeTypes: List<EmployeeTypesModel>,
-    var expireType: String,
-    var expiredDatetime: String,
-    var id: Int,
-    var managerName: String,
-    var managerPhoneNumber: String,
-    var payAmount: Long,
-    var payType: String,
-    var shopLocation: String,
-    var shopName: String,
-    var title: String,
-    var workingHour: String,
-    var bookmarkCount: String,
-    var imageUrl: String,
+    var expireType: String = "",
+    var expiredDatetime: String = "",
+    var id: Int = 0 ,
+    var managerName: String = "",
+    var managerPhoneNumber: String = "",
+    var payAmount: Int = 0,
+    var payType: String = "",
+    var shopLocation: String = "",
+    var shopName: String = "",
+    var title: String = "",
+    var workingHour: String = "",
+    var bookmarkCount: Int = 0,
+    var imageUrl: String = ""
 ):Serializable

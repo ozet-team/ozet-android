@@ -17,5 +17,5 @@ data class AnnouncementResponse(
     val previous: String,
     @SerializedName("results")
     @Expose
-    val results: List<AnnouncementModel>,
+    val results: ArrayList<AnnouncementModel>,
 )

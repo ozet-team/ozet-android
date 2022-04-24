@@ -16,18 +16,18 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
     private val viewModel: MainFragmentViewModel by viewModel()
-    private var confirmDialog: CustomDialog? = null
 
-    private lateinit var noticeListAdapter: NoticeInfoAdapter
+    private lateinit var noticeListAdapter: NoticeListAdapter
+    private lateinit var noticeAdapter: NoticeAdapter
+
     private val timer = Timer()
 
     override fun init() {
         binding.vm = viewModel
         initAdapter()
         viewModelCallback()
-        viewModel.setNoticeList()
-//        viewModel.getTest(0,5)
-        viewModel.getAnnouncement(0,5)
+        viewModel.setNoticeList(0,5)
+
     }
 
     override fun onDestroy() {
@@ -38,6 +38,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private fun viewModelCallback() {
         with(viewModel) {
+            announcementAdd.observe(this@MainFragment, Observer {
+                noticeListAdapter.noticeInfoNotify()
+            })
             themeChange.observe(this@MainFragment, Observer {
                 // dark mode test
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -45,38 +48,37 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             })
             noticeList.observe(this@MainFragment, Observer {
-                var concatAdapter = ConcatAdapter(
-                    NoticeAdapter(
-                        loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)},
-                        noticeClick = {findNavController().navigate(R.id.action_mainFragment_to_joinFragment)}
-                    ),
-                    NoticeListAdapter(
-                        it,
-                        NoticeListAdapter.ItemHandler { event ->
-                            when(event){
-                                NoticeEvent.NOTICE_CLICK ->{
-
-                                }
-                                NoticeEvent.DETAIL_CLICK ->{
-
-                                }
-                            }
-                        }
-                    )
-                )
-
-                binding.rv.adapter = concatAdapter
-
-            })
-            announcementResult.observe(this@MainFragment, Observer {
-
+                noticeListAdapter.addItems(it)
             })
 
         }
     }
 
     private fun initAdapter() {
+        noticeListAdapter = NoticeListAdapter(
+            NoticeListAdapter.ItemHandler { event ->
+                when(event){
+                    NoticeEvent.NOTICE_CLICK ->{
+                        findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+                    }
+                    NoticeEvent.DETAIL_CLICK ->{
+                        findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+                    }
+                }
+            }
+        )
 
+        noticeAdapter = NoticeAdapter(
+            loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)},
+            noticeClick = {findNavController().navigate(R.id.action_mainFragment_to_joinFragment)}
+        )
+
+        var concatAdapter = ConcatAdapter(
+            noticeAdapter,
+            noticeListAdapter
+        )
+
+        binding.rv.adapter = concatAdapter
 
     }
 
