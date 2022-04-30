@@ -9,6 +9,7 @@ import com.team.ozet.views.my_page.MypageViewModel
 import com.team.ozet.views.notice_detail.NoticeDetailViewModel
 import com.team.ozet.views.notice_list.NoticeListViewModel
 import com.team.ozet.views.onbording.OnbordingViewModel
+import com.team.ozet.views.web_view.NoticeWebViewModel
 import com.team.ozet.views.zet.academic_bg.ZetAcademicBGViewModel
 import com.team.ozet.views.zet.address.ZetAddressViewModel
 import com.team.ozet.views.zet.career.ZetCareerViewModel
@@ -36,4 +37,5 @@ val viewModelModule: Module = module {
     viewModel { ZetAddressViewModel(get()) }
     viewModel { ZetIntroduceViewModel(get()) }
     viewModel { OnbordingViewModel() }
+    viewModel { NoticeWebViewModel() }
 }

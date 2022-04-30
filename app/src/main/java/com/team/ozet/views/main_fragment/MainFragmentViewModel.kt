@@ -10,6 +10,7 @@ import com.team.ozet.data.announcement.AnnouncementList
 import com.team.ozet.data.announcement.AnnouncementResponse
 import com.team.ozet.data.announcement.remote.AnnouncementRepository
 import com.team.ozet.utils.SingleLiveEvent
+import com.team.ozet.utils.Web
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -36,7 +37,7 @@ class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository
 
     fun getAnnouncement(offset: Int, limit: Int) {
         compositeDisposable.add(
-            announcementRepo.getAnnouncement(offset, limit)
+            announcementRepo.getAnnouncement(offset, limit,"")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
@@ -60,21 +61,23 @@ class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository
     fun setNoticeList(offset: Int, limit: Int) {
         var value = ArrayList<AnnouncementList>()
         compositeDisposable.add(
-            announcementRepo.getAnnouncement(offset, limit)
+            announcementRepo.getAnnouncement(offset, limit,"")
                 .flatMap { all ->
-                    value.add(AnnouncementList(all.results, "모든공고"))
-                    announcementRepo.getBookmarks(offset, limit)
+                    value.add(AnnouncementList(all.results, Web.WEB_ALL))
+                    announcementRepo.getAnnouncement(offset, limit,"")
                         .subscribeOn(Schedulers.io())
                         .doOnError {
+                            Log.i("AAA","모든 공고 error : $it")
                         }
                         .subscribeOn(Schedulers.io())
 
                 }
                 .flatMap { bookmark ->
-                    value.add(AnnouncementList(bookmark.results, "북마크"))
-                    announcementRepo.getBookmarks(offset, limit)
+                    value.add(AnnouncementList(bookmark.results, Web.WEB_BOOKMARK))
+                    announcementRepo.getAnnouncement(offset, limit,"bookmark_count")
                         .subscribeOn(Schedulers.io())
                         .doOnError {
+                            Log.i("AAA","북마크 error : $it")
                         }
                         .subscribeOn(Schedulers.io())
 
@@ -83,11 +86,11 @@ class MainFragmentViewModel(private val announcementRepo: AnnouncementRepository
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = { recommendation ->
-                        value.add(AnnouncementList(recommendation.results, "추천 공고"))
+                        value.add(AnnouncementList(recommendation.results, Web.WEB_RECOMMEND))
                         _noticeList.value = value
                     },
                     onError = {
-                        Log.e("Error", "$it")
+                        Log.i("AAA","추천 공고 error : $it")
                     }
                 )
         )

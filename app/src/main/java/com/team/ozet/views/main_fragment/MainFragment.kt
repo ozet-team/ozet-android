@@ -9,6 +9,7 @@ import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
 import com.team.ozet.databinding.FragmentMainBinding
 import com.team.ozet.utils.Test
+import com.team.ozet.utils.Web
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -26,7 +27,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         binding.vm = viewModel
         initAdapter()
         viewModelCallback()
-        viewModel.setNoticeList(0,5)
+        viewModel.setNoticeList(0, 5)
 
     }
 
@@ -56,21 +57,39 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private fun initAdapter() {
         noticeListAdapter = NoticeListAdapter(
-            NoticeListAdapter.ItemHandler { event ->
-                when(event){
-                    NoticeEvent.NOTICE_CLICK ->{
-                        findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+            NoticeListAdapter.ItemHandler { event, noticeId ->
+                when (event) {
+                    NoticeEvent.NOTICE_LIST_All_CLICK -> {
+
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToNoticeWebFragment(
+                            Web.WEB_LIST_ALL, noticeId))
                     }
-                    NoticeEvent.DETAIL_CLICK ->{
-                        findNavController().navigate(R.id.action_mainFragment_to_noticeListFragment)
+                    NoticeEvent.NOTICE_LIST_BOOKMARK_CLICK -> {
+
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToNoticeWebFragment(
+                            Web.WEB_LIST_BOOKMARK, noticeId))
+                    }
+                    NoticeEvent.NOTICE_LIST_RECOMMEND_CLICK -> {
+
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToNoticeWebFragment(
+                            Web.WEB_LIST_RECOMMEND, noticeId))
+                    }
+                    NoticeEvent.DETAIL_CLICK -> {
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToNoticeWebFragment(
+                            Web.WEB_DETAIL,
+                            noticeId))
+
+                    }
+                    NoticeEvent.BOOKMARK_CLICK -> {
+
                     }
                 }
             }
         )
 
         noticeAdapter = NoticeAdapter(
-            loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment)},
-            noticeClick = {findNavController().navigate(R.id.action_mainFragment_to_joinFragment)}
+            loginClick = { findNavController().navigate(R.id.action_mainFragment_to_zetMainFragment) },
+            noticeClick = { findNavController().navigate(R.id.action_mainFragment_to_joinFragment) }
         )
 
         var concatAdapter = ConcatAdapter(

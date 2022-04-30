@@ -9,16 +9,17 @@ import com.team.ozet.data.announcement.AnnouncementList
 import com.team.ozet.data.announcement.AnnouncementModel
 import com.team.ozet.databinding.ItemNoticeBinding
 import com.team.ozet.databinding.ItemNoticeListBinding
+import com.team.ozet.utils.Web
 
 class NoticeListAdapter(
     private val itemHandler: ItemHandler
         ): RecyclerView.Adapter<NoticeListAdapter.ViewHolder>() {
     private var items:ArrayList<AnnouncementList> = arrayListOf()
     private lateinit var adapter : NoticeInfoAdapter
-
+    lateinit var event:NoticeEvent
     private val noticeInfoItemHandler = object : NoticeInfoAdapter.ItemHandler {
-        override fun clickNotice() {
-          itemHandler.clickEvent(NoticeEvent.NOTICE_CLICK)
+        override fun clickNotice(event: NoticeEvent,noticeId:Int) {
+          itemHandler.clickEvent(event,noticeId)
         }
     }
 
@@ -38,7 +39,22 @@ class NoticeListAdapter(
                 fun bind (item:AnnouncementList){
                     binding.apply {
                         binding.tvNotice.text = item.name
-                        binding.tvNoticePlus.setOnClickListener { itemHandler.clickEvent(NoticeEvent.DETAIL_CLICK) }
+
+
+                        binding.tvNoticePlus.setOnClickListener {
+                            when(item.name){
+                                Web.WEB_ALL->{
+                                    event = NoticeEvent.NOTICE_LIST_All_CLICK
+                                }
+                                Web.WEB_BOOKMARK ->{
+                                    event = NoticeEvent.NOTICE_LIST_BOOKMARK_CLICK
+                                }
+                                Web.WEB_RECOMMEND ->{
+                                    event = NoticeEvent.NOTICE_LIST_RECOMMEND_CLICK
+                                }
+                            }
+                            itemHandler.clickEvent(event,0)
+                        }
                     }
 
                 }
@@ -55,7 +71,7 @@ class NoticeListAdapter(
     }
 
     fun interface ItemHandler {
-        fun clickEvent(event: NoticeEvent)
+        fun clickEvent(event: NoticeEvent,noticeId: Int)
     }
 
     fun addItems(items: ArrayList<AnnouncementList>) {

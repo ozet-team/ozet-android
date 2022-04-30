@@ -5,6 +5,6 @@ import io.reactivex.Single
 import okhttp3.ResponseBody
 
 interface AnnouncementRepository {
-    fun getBookmarks(offset: Int, limit: Int): Single<AnnouncementResponse>
-    fun getAnnouncement(offset: Int,limit: Int):Single<AnnouncementResponse>
+    fun getBookmarks(offset: Int, limit: Int,userId:Int): Single<AnnouncementResponse>
+    fun getAnnouncement(offset: Int,limit: Int, ordering:String):Single<AnnouncementResponse>
 }

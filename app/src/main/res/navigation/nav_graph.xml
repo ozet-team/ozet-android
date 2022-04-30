@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_mainFragment_to_zetMainFragment"
             app:destination="@id/zetMainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_noticeWebFragment"
+            app:destination="@id/noticeWebFragment" />
 
 
     </fragment>
@@ -148,6 +151,17 @@
         android:id="@+id/zetSNSFragment"
         android:name="com.team.ozet.views.zet.sns.ZetSNSFragment"
         android:label="ZetSNSFragment" />
+    <fragment
+        android:id="@+id/noticeWebFragment"
+        android:name="com.team.ozet.views.web_view.NoticeWebFragment"
+        android:label="NoticeWebFragment" >
+        <argument
+            android:name="event"
+            app:argType="integer" />
+        <argument
+            android:name="notice_id"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.team.ozet.R
 import com.team.ozet.data.announcement.AnnouncementList
 import com.team.ozet.data.announcement.AnnouncementModel
 import com.team.ozet.databinding.ItemNoticeBinding
@@ -26,6 +27,13 @@ class NoticeInfoAdapter (
             RecyclerView.ViewHolder(binding.root){
                 fun bind (item:AnnouncementModel){
                     binding.apply {
+                        if (item.bookmarkCount == 0){
+                            binding.ivBookmark.setImageResource(R.drawable.bookmark_icactive_)
+
+                        }else{
+                            binding.ivBookmark.setImageResource(R.drawable.bookmark_active_)
+                        }
+
 
                         binding.ivImg.load(item.imageUrl)
                         binding.tvTitle.text = item.title
@@ -33,7 +41,10 @@ class NoticeInfoAdapter (
                         binding.tvShopLocation.text = item.shopLocation
 
                         binding.cl.setOnClickListener {
-                            itemHandler.clickNotice()
+                            itemHandler.clickNotice(NoticeEvent.DETAIL_CLICK,item.id)
+                        }
+                        binding.cvBookmark.setOnClickListener {
+                            itemHandler.clickNotice(NoticeEvent.BOOKMARK_CLICK,item.id)
                         }
                     }
 
@@ -42,7 +53,8 @@ class NoticeInfoAdapter (
     }
 
     interface ItemHandler {
-        fun clickNotice()
+        fun clickNotice(event: NoticeEvent,noticeId :Int)
+
     }
 
     fun addItems(items:  AnnouncementList) {

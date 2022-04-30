@@ -1,7 +1,6 @@
-package com.team.ozet.views.notice_list
+package com.team.ozet.views.web_view
 
 import android.content.Context
-import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -9,38 +8,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
-import android.webkit.WebView.setWebContentsDebuggingEnabled
 import android.webkit.WebViewClient
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.gson.JsonObject
 import com.team.ozet.R
 import com.team.ozet.base.BaseFragment
-import com.team.ozet.databinding.FragmentNoticeListBinding
+import com.team.ozet.databinding.FragmentNoticeWebBinding
 import com.team.ozet.utils.Test
+import com.team.ozet.utils.Web
+import com.team.ozet.views.notice_list.NoticeListViewModel
+import com.team.ozet.views.zet.academic_bg.ZetAcademicBGFragmentArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.fragment_notice_list) {
+class NoticeWebFragment : BaseFragment<FragmentNoticeWebBinding>(R.layout.fragment_notice_web) {
+    private val viewModel: NoticeWebViewModel by viewModel()
+    //event 0 = list , 1 = detail
+    private val args: NoticeWebFragmentArgs by navArgs()
+    var listUrl = "https://hybrid.ozet.app/#/list/"
+    var detailUrl = "https://hybrid.ozet.app/#/recruitment/detail/"  //공고 아이디 추가해야함
 
-    private val viewModel: NoticeListViewModel by viewModel()
-
-    val url = "https://hybrid.ozet.app/#/list/all?_si=1"
-    var detailUrl = "https://hybrid.ozet.app/#/recruitment/detail/1"  //공고 아이디 추가해야함
-
+//    /list/all 전체공고  all?_si=1
+///list/recommend 추천공고
+///list/book-marked 북마크
+///filter/address 주소필터
+///recruitment/detail/:id 상세공고
 
     override fun init() {
 
-
-
-        initWebView(detailUrl)
+        urlInit()
         webViewChange()
         callback()
 //        backPressed()
@@ -54,11 +55,32 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
 
 
     }
-    // mobile
 
+    private fun urlInit() {
+        when(args.event){
+            Web.WEB_DETAIL ->{
+                detailUrl += args.3
+                initWebView(detailUrl)
+            }
+            Web.WEB_LIST_ALL ->{
+                listUrl+= "all?_si=1"
+                initWebView(listUrl)
+            }
+            Web.WEB_LIST_BOOKMARK ->{
+                listUrl+= "book-marked"
+                initWebView(listUrl)
+            }
+            Web.WEB_LIST_RECOMMEND ->{
+                listUrl+= "recommend"
+                initWebView(listUrl)
+            }
+        }
+    }
+
+    // mobile
     private fun callback() {
         with(viewModel) {
-            go.observe(this@NoticeListFragment, Observer {
+            go.observe(this@NoticeWebFragment, Observer {
                 Log.i("AAA", binding.etUrl.text.toString())
                 binding.wv.loadUrl(binding.etUrl.text.toString())
             })
@@ -95,7 +117,7 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
             isHorizontalScrollBarEnabled = false
             isVerticalScrollBarEnabled = false
             loadUrl(url)
-            setWebContentsDebuggingEnabled(true);
+            WebView.setWebContentsDebuggingEnabled(true);
         }
     }
 
@@ -123,8 +145,8 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(R.layout.frag
         }
 
         @JavascriptInterface
-        fun apply( user:JsonObject) {
-           // 이력서
+        fun apply( user: JsonObject) {
+            // 이력서
 //  const applyUser: {
 //  name: string;
 //  shopName: string;

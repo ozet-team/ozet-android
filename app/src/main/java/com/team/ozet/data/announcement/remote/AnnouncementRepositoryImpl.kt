@@ -10,12 +10,12 @@ import io.reactivex.Single
 import okhttp3.ResponseBody
 
 class AnnouncementRepositoryImpl (private val announcementApi: AnnouncementApi) : AnnouncementRepository{
-    override fun getBookmarks(offset: Int, limit: Int): Single<AnnouncementResponse> {
+    override fun getBookmarks(offset: Int, limit: Int,userId :Int): Single<AnnouncementResponse> {
        Log.i("AAA"," book -------------")
-        return  announcementApi.getBookmarks(limit,offset)
+        return  announcementApi.getBookmarks(limit,offset,userId)
     }
 
 
-    override fun getAnnouncement(offset: Int, limit: Int): Single<AnnouncementResponse>
-    = announcementApi.getAnnouncement(limit,offset)
+    override fun getAnnouncement(offset: Int, limit: Int,ordering:String): Single<AnnouncementResponse>
+    = announcementApi.getAnnouncement(limit,offset,ordering)
 }

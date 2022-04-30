@@ -29,6 +29,17 @@ object Cities {
 
 }
 
+object Web {
+    const val WEB_LIST_ALL = 1
+    const val WEB_LIST_BOOKMARK = 2
+    const val WEB_LIST_RECOMMEND = 3
+    const val WEB_DETAIL = 0
+    const val WEB_ALL = "모든공고"
+    const val WEB_BOOKMARK = "북마크"
+    const val WEB_RECOMMEND = "추천공고"
+
+}
+
 object Test {
     const val testToken =
         "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJ1c2VybmFtZSI6Im96ZXRfZDE2MDY2ZjA5YjU5NDI3NmJiN2Q5NjI4ZTVlYTE1NjQiLCJleHAiOjE2NTE0NzIxMjN9.iehq4fc4PXXKVnXBFg96FI4j5XD-33w8h31JU2UYS6A"
